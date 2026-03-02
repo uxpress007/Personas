@@ -33,6 +33,67 @@ const personaData = {
               coreNeeds: ["Innovation platforms", "Industry insights", "Cross-practice collaboration"],
               motivations: ["Industry influence", "Transformative impact", "Knowledge sharing"],
               frustrations: ["Technology adoption gaps", "Siloed practices", "Market disruption"]
+            },
+            {
+              id: "csp-sp-3",
+              name: "John",
+              avatar: "john-senior-partner.png",
+              role: "Senior Partner",
+              tenure: "20+ years",
+              office: "London",
+              quote: "I don't want the technology to be in the way of my relationship with the client.",
+              description: "A relationship-driven Senior Partner with 20+ years of tenure based in London. Values deep client trust and high-impact delivery above all. Prefers structured, in-person engagements and relies on EA support for technology and administrative tasks.",
+              techProfile: {
+                techLiteracy: 30,
+                workingStyle: "Structured",
+                adaptabilityToChange: 30,
+                meetingPreference: "In Person"
+              },
+              location: {
+                clientSite: 40,
+                localOffice: 20,
+                remoteHomeOffice: 40
+              },
+              devices: ["Laptop", "Mobile", "Tablet"],
+              inclusiveDesignLenses: ["Time limited", "Attention limited", "Mobile only", "Tenure"],
+              coreNeeds: [
+                "Delivering the highest impact for my clients",
+                "Creating a trustworthy client relationship",
+                "Minimizing the chaos in my life",
+                "Creating a balance between work and personal life – managing time",
+                "No waste of time on low-priority activities, reduce administration tasks",
+                "EA has pre-approved access to all required tools and technology"
+              ],
+              goals: [
+                "Securing new clients",
+                "Offering an easy experience for the client interacting with us",
+                "Leading a happy and healthy team",
+                "Maintain existing client relationships",
+                "Leverage experience, knowledge, and skills to attract the most interesting clients",
+                "Secure the position of McKinsey as an industry leader",
+                "Protecting the Firm and Clients",
+                "Secure long lasting client relationships – R&R are really important"
+              ],
+              motivations: [
+                "Drive the best client impact",
+                "Retention of our people",
+                "Growing the Firm and its people",
+                "Constantly learning and trying to respond to the changing world",
+                "To be innovative / groundbreaking",
+                "Pride in being part of leadership at McKinsey – it is prestigious",
+                "The success of the Firm benefits me",
+                "Preparing well for my retirement"
+              ],
+              frustrations: [
+                "Prefers the 'way it used to be' and resorts to 4 days on client by default",
+                "Difficulty utilizing technology – resorts to white glove support",
+                "No time to learn or read",
+                "Not technology compatible with clients",
+                "VC in offices differs from the one in the meeting rooms",
+                "Technology restrictions slow down work",
+                "Client uses technology not approved by McKinsey Cyber Security",
+                "Too many videoconferences – loses the personal aspects of in-person meetings"
+              ]
             }
           ]
         },
@@ -61,6 +122,199 @@ const personaData = {
               coreNeeds: ["Cross-practice resources", "Client relationship management", "Knowledge sharing"],
               motivations: ["Integrated solutions", "Client success", "Team synergy"],
               frustrations: ["Practice silos", "Inconsistent tools", "Communication gaps"]
+            },
+            {
+              id: "csp-p-3",
+              name: "Collaborating Colleen",
+              avatar: "collaborating-colleen.png",
+              role: "Partner",
+              tenure: "12+ years",
+              office: "London",
+              quote: "I want to develop client opportunities.",
+              description: "An opportunity-driven Partner based in London with 12+ years of tenure. Focused on developing client opportunities and building trustworthy relationships. Values up-to-date information, streamlined workflows, and intuitive tools that require little training.",
+              techProfile: {
+                techLiteracy: 65,
+                workingStyle: "Spontaneous",
+                adaptabilityToChange: 60,
+                meetingPreference: "Hybrid"
+              },
+              devices: ["Mobile", "Laptop"],
+              inclusiveDesignLenses: ["Cultural Difference", "Time Limited"],
+              coreNeeds: [
+                "Up to date client information",
+                "More time to pursue opportunities vs. find them, share them",
+                "Understand the vision for Opportunity Tool",
+                "An intuitive process that requires little training",
+                "A standardized process",
+                "Be able to work and seamlessly collaborate with teams through devices from anywhere, especially while traveling",
+                "Want to leverage technology to work more effectively by reducing the number of tools, organizing communication and simplifying workflows"
+              ],
+              goals: [
+                "Avoid duplication of client efforts – alignment on who is interacting with a company/CEO",
+                "More time to invest in developing opportunities vs. finding them",
+                "Better, current information to help connect with the right people, build the right relationship, and have visibility on this relationship within the pipeline"
+              ],
+              motivations: [
+                "Happy to provide updated information to direct counterpart or office/cell leader within a smaller cell",
+                "Excited to share what's going on in a smaller setting",
+                "Better collaboration with practice teams which in turn supports the growth and success of my own team",
+                "Growing the partner community – being sponsors, creating opportunity for others",
+                "Want to be appreciated for the work done – more motivated when there is a sign of recognition",
+                "Like to see what other Partners are working on"
+              ],
+              frustrations: [
+                "Lack of trust in providing information when it is unclear what/where the information will be used at a higher level",
+                "No transparency around client interaction/opportunity – no idea what is happening with Partners outside of her immediate region",
+                "Don't want outsiders knowing what I'm working on",
+                "Learning another tool will be time consuming",
+                "Continuously being inundated with information, calls, messages – difficult to keep track of things and find time to address everything",
+                "Spends a lot of time responding to many requests for expertise",
+                "Bothered by different methodologies being time consuming but also conflicts with not wanting a standardized process"
+              ]
+            },
+            {
+              id: "csp-p-4",
+              name: "Inundated Ivan",
+              avatar: "inundated-ivan.png",
+              role: "Partner",
+              tenure: "10+ years",
+              office: "Silicon Valley",
+              quote: "I am on so many groups and it was generated through whatever systems. There are just some emails that I don't need.",
+              description: "A Partner based in Silicon Valley with 10+ years of tenure who is overwhelmed by email volume and communication sprawl. Works primarily with Know, Email, and Slack. Seeks more targeted, relevant communications and an easy way to manage distribution lists.",
+              techProfile: {
+                techLiteracy: 70,
+                workingStyle: "Spontaneous",
+                adaptabilityToChange: 50,
+                meetingPreference: "Hybrid"
+              },
+              devices: ["Laptop", "Mobile", "Tablet"],
+              inclusiveDesignLenses: [],
+              keyActivities: [
+                "Read communications",
+                "Respond to communications",
+                "Oversee engagements for my clients",
+                "Advise clients and my team on what is most relevant/useful and determine scope of work",
+                "Help teams with PSing and deliver impact via communication channels/Zoom"
+              ],
+              coreNeeds: [
+                "Organization to focus on the most relevant communications",
+                "Find the information I need",
+                "Quickly answer important communications",
+                "Know what is happening in areas that I care about",
+                "Easy way to remove myself from the distribution lists"
+              ],
+              goals: [
+                "Have more targeted communications that are relevant to my expertise",
+                "Have an easy way to share my expertise",
+                "Keep a tab on evolving discussions in my teams and practice",
+                "Bring the best knowledge and people from the Firm to my clients"
+              ],
+              motivations: [
+                "Champion the Firm's mission to avoid communication sprawl",
+                "Provide relevant information to the respective group",
+                "Follow the Firm's risk guidelines – be a risk sherpa for my practice",
+                "Role model standards and best practices"
+              ],
+              frustrations: [
+                "I get too many emails",
+                "At risk for receiving emails with information that conflicts with my study",
+                "I'm getting lost in threads and don't know where I lend my expertise",
+                "My EA isn't included in a distribution list, so they aren't able to modify my calendar"
+              ]
+            },
+            {
+              id: "csp-p-5",
+              name: "Structured Sasha",
+              avatar: "structured-sasha.png",
+              role: "Partner",
+              tenure: "10+ years",
+              office: "SFO",
+              quote: "I'm comfortable working the way that I have been for years. But I also know that there's value in using technology to lead and collaborate.",
+              description: "A structured Partner based in SFO with 10+ years of tenure who values email as her primary workflow but recognizes the value of technology adoption. Splits time between client's office and home office. Relies heavily on laptop, mobile, and tablet.",
+              techProfile: {
+                techLiteracy: 45,
+                workingStyle: "Structured",
+                adaptabilityToChange: 40,
+                meetingPreference: "In Person"
+              },
+              location: {
+                clientSite: 50,
+                localOffice: 0,
+                remoteHomeOffice: 50
+              },
+              devices: ["Laptop", "Mobile", "Tablet"],
+              inclusiveDesignLenses: [],
+              coreNeeds: [
+                "Share insights and documents internally or externally quickly and easily to keep work moving",
+                "Have the ability to speak with and problem solve with clients efficiently",
+                "Keep tools on limited platforms in order to limit switching communications methods while working",
+                "Communicate clearly with engagement teams to keep everyone on the same page – desire for asynchronous communication"
+              ],
+              goals: [
+                "Speed/ease of communications",
+                "Maintaining client satisfaction",
+                "Efficiency and confidentiality",
+                "Keeping pulse of the team"
+              ],
+              motivations: [
+                "Speed/ease of communications",
+                "Maintaining client satisfaction",
+                "Efficiency and confidentiality",
+                "Keeping pulse of the team"
+              ],
+              frustrations: [
+                "Not everyone you need to communicate with is on Slack – not all Partners are on Slack and there's no way to communicate with clients on Slack",
+                "You can't send files on Slack – forces you to switch between platforms",
+                "There's too much noise on Slack – too many channels and it's hard for a new user to navigate quickly"
+              ]
+            },
+            {
+              id: "csp-p-6",
+              name: "Willing William",
+              avatar: "willing-william.png",
+              role: "Partner",
+              tenure: "8+ years",
+              office: "New York",
+              quote: "My days as an Associate or EM are not too far in the rear-view mirror.",
+              description: "William Brown is a Partner based in New York with 8+ years of tenure who is striving to transition internal communications to Slack. Values seamless collaboration through devices from anywhere, especially while traveling. Actively adopts Box, Slack, and Zoom.",
+              techProfile: {
+                techLiteracy: 65,
+                workingStyle: "Spontaneous",
+                adaptabilityToChange: 70,
+                meetingPreference: "Hybrid"
+              },
+              location: {
+                clientSite: 40,
+                localOffice: 20,
+                remoteHomeOffice: 40
+              },
+              devices: ["Mobile", "Laptop"],
+              inclusiveDesignLenses: [],
+              coreNeeds: [
+                "Build strong collaborative client relationships through ongoing communication and reduce need for co-location",
+                "Have easy access to the engagement teams to review ongoing work, engage in informal conversations, guide the problem solving and check the team health",
+                "Be able to work and seamlessly collaborate with teams through devices from anywhere, especially while traveling",
+                "Want to leverage technology to work more effectively by reducing the number of tools, organizing communication and simplifying workflows"
+              ],
+              goals: [
+                "Conduct VC calls on-the-go easily and with reliability",
+                "Ensure both internal and external clients can join and participate in the meeting",
+                "Facilitate strong collaborative client relationships and solutions with less travel"
+              ],
+              motivations: [
+                "Build stronger team and client relationships",
+                "Create more impact for clients and internal teams with less travel",
+                "Leverage visual cues and consensus features to drive alignment and outcomes"
+              ],
+              frustrations: [
+                "Firm technology and integrations don't cover all collaboration and leadership needs, internally and externally",
+                "Lack of firm-wide guiding principles on using technology creates difference in the way engagements teams operate",
+                "Firm's best practices on securing client information and communication don't always align with the client's preferred way of collaboration",
+                "Increasing clutter of information, documents and communication, which is difficult to organize based on his personal ways of working",
+                "Meeting best practices and education on collaborative features within Zoom",
+                "Conference room integration that allows for full use of Zoom collaboration features",
+                "One-touch dial-in usability and education on dial-in customization"
+              ]
             }
           ]
         },
