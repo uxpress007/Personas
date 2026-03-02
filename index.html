@@ -719,6 +719,167 @@
       flex-shrink: 0;
     }
 
+    /* ========== RICH PERSONA DETAILS ========== */
+    .modal-quote {
+      font-size: 15px;
+      font-style: italic;
+      color: var(--text);
+      padding: 16px 20px;
+      background: var(--border-light);
+      border-left: 3px solid #4338ca;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    .modal-meta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .meta-card {
+      background: var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 16px;
+    }
+
+    .meta-card-title {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .slider-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-size: 11px;
+      color: var(--text-secondary);
+    }
+
+    .slider-row:last-child { margin-bottom: 0; }
+
+    .slider-label {
+      flex-shrink: 0;
+      width: 80px;
+      font-weight: 500;
+      font-size: 11px;
+    }
+
+    .slider-track {
+      flex: 1;
+      height: 6px;
+      background: #e2e8f0;
+      border-radius: 3px;
+      margin: 0 8px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slider-fill {
+      height: 100%;
+      border-radius: 3px;
+      background: #4338ca;
+    }
+
+    .slider-end {
+      flex-shrink: 0;
+      width: 70px;
+      text-align: right;
+      font-size: 10px;
+      color: var(--text-muted);
+    }
+
+    .location-bars {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .location-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    .location-row .loc-label {
+      width: 100px;
+      flex-shrink: 0;
+      font-size: 11px;
+    }
+
+    .location-bar {
+      flex: 1;
+      height: 8px;
+      background: #e2e8f0;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .location-bar-fill {
+      height: 100%;
+      border-radius: 4px;
+    }
+
+    .location-row .loc-pct {
+      width: 36px;
+      text-align: right;
+      font-weight: 600;
+      font-size: 12px;
+      color: var(--text);
+    }
+
+    .device-chips, .lens-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .device-chip {
+      font-size: 11px;
+      padding: 5px 12px;
+      border-radius: 100px;
+      background: #e0e7ff;
+      color: #4338ca;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .lens-chip {
+      font-size: 11px;
+      padding: 5px 12px;
+      border-radius: 100px;
+      background: #fef3c7;
+      color: #92400e;
+      font-weight: 500;
+    }
+
+    .modal-office-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      padding: 4px 12px;
+      border-radius: 100px;
+      background: #f1f5f9;
+      color: #475569;
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      .modal-meta-grid { grid-template-columns: 1fr; }
+    }
+
     /* ========== EMPTY STATE ========== */
     .empty-state {
       text-align: center;
@@ -858,7 +1019,11 @@
           p.frustrations.some(f => f.toLowerCase().includes(q)) ||
           p.category.name.toLowerCase().includes(q) ||
           p.category.fullName.toLowerCase().includes(q) ||
-          p.group.name.toLowerCase().includes(q)
+          p.group.name.toLowerCase().includes(q) ||
+          (p.goals && p.goals.some(g => g.toLowerCase().includes(q))) ||
+          (p.keyActivities && p.keyActivities.some(a => a.toLowerCase().includes(q))) ||
+          (p.quote && p.quote.toLowerCase().includes(q)) ||
+          (p.office && p.office.toLowerCase().includes(q))
         );
       }
 
@@ -1102,6 +1267,15 @@
     }
 
     // ===== RENDER MODAL =====
+    function renderSlider(value, labelLeft, labelRight) {
+      return `
+        <div class="slider-row">
+          <span class="slider-label">${labelLeft}</span>
+          <div class="slider-track"><div class="slider-fill" style="width:${value}%"></div></div>
+          <span class="slider-end">${labelRight}</span>
+        </div>`;
+    }
+
     function renderModal(personaId) {
       const allPersonas = getAllPersonas();
       const persona = allPersonas.find(p => p.id === personaId);
@@ -1109,6 +1283,104 @@
 
       const cat = persona.category;
       const avatarUrl = persona.avatar || `https://api.dicebear.com/9.x/initials/svg?seed=${encodeURIComponent(persona.name)}`;
+
+      let quoteHtml = '';
+      if (persona.quote) {
+        quoteHtml = `<div class="modal-quote">"${persona.quote}"</div>`;
+      }
+
+      let officeBadge = '';
+      if (persona.office) {
+        officeBadge = `<span class="modal-office-badge">&#x1F4CD; ${persona.office}</span>`;
+      }
+
+      let metaGridHtml = '';
+      if (persona.techProfile || persona.location || persona.devices || persona.inclusiveDesignLenses) {
+        let leftCol = '';
+        let rightCol = '';
+
+        if (persona.techProfile) {
+          const tp = persona.techProfile;
+          leftCol += `
+            <div class="meta-card">
+              <div class="meta-card-title">Profile</div>
+              ${renderSlider(tp.techLiteracy, 'Tech Literacy', tp.techLiteracy > 50 ? 'High' : 'Low')}
+              ${renderSlider(tp.workingStyle === 'Structured' ? 20 : 80, 'Structured', 'Spontaneous')}
+              ${renderSlider(tp.adaptabilityToChange, 'Adaptability', tp.adaptabilityToChange > 50 ? 'High' : 'Low')}
+              ${renderSlider(tp.meetingPreference === 'In Person' ? 90 : tp.meetingPreference === 'Hybrid' ? 50 : 10, 'Remote', 'In Person')}
+            </div>`;
+        }
+
+        if (persona.location) {
+          const loc = persona.location;
+          rightCol += `
+            <div class="meta-card">
+              <div class="meta-card-title">Location Split</div>
+              <div class="location-bars">
+                <div class="location-row">
+                  <span class="loc-label">Client site</span>
+                  <div class="location-bar"><div class="location-bar-fill" style="width:${loc.clientSite}%;background:#4338ca"></div></div>
+                  <span class="loc-pct">${loc.clientSite}%</span>
+                </div>
+                <div class="location-row">
+                  <span class="loc-label">Local office</span>
+                  <div class="location-bar"><div class="location-bar-fill" style="width:${loc.localOffice}%;background:#0891b2"></div></div>
+                  <span class="loc-pct">${loc.localOffice}%</span>
+                </div>
+                <div class="location-row">
+                  <span class="loc-label">Remote / Home</span>
+                  <div class="location-bar"><div class="location-bar-fill" style="width:${loc.remoteHomeOffice}%;background:#059669"></div></div>
+                  <span class="loc-pct">${loc.remoteHomeOffice}%</span>
+                </div>
+              </div>
+            </div>`;
+        }
+
+        if (persona.devices) {
+          const icons = { Laptop: '&#x1F4BB;', Mobile: '&#x1F4F1;', Tablet: '&#x1F4F2;' };
+          leftCol += `
+            <div class="meta-card">
+              <div class="meta-card-title">Devices &amp; Tools</div>
+              <div class="device-chips">
+                ${persona.devices.map(d => `<span class="device-chip">${icons[d] || '&#x1F5A5;'} ${d}</span>`).join('')}
+              </div>
+            </div>`;
+        }
+
+        if (persona.inclusiveDesignLenses) {
+          rightCol += `
+            <div class="meta-card">
+              <div class="meta-card-title">Inclusive Design Lenses</div>
+              <div class="lens-chips">
+                ${persona.inclusiveDesignLenses.map(l => `<span class="lens-chip">${l}</span>`).join('')}
+              </div>
+            </div>`;
+        }
+
+        metaGridHtml = `<div class="modal-meta-grid">${leftCol}${rightCol}</div>`;
+      }
+
+      let keyActivitiesHtml = '';
+      if (persona.keyActivities && persona.keyActivities.length > 0) {
+        keyActivitiesHtml = `
+          <div class="modal-section">
+            <div class="modal-section-title">Key Activities</div>
+            <ul class="modal-list">
+              ${persona.keyActivities.map(a => `<li><span class="dot" style="background:#0891b2"></span>${a}</li>`).join('')}
+            </ul>
+          </div>`;
+      }
+
+      let goalsHtml = '';
+      if (persona.goals && persona.goals.length > 0) {
+        goalsHtml = `
+          <div class="modal-section">
+            <div class="modal-section-title">Goals</div>
+            <ul class="modal-list">
+              ${persona.goals.map(g => `<li><span class="dot" style="background:#6366f1"></span>${g}</li>`).join('')}
+            </ul>
+          </div>`;
+      }
 
       const modal = document.getElementById('modalContent');
       modal.innerHTML = `
@@ -1121,10 +1393,14 @@
             <span class="modal-badge" style="background:${cat.colorLight};color:${cat.color}">${cat.name}</span>
             <span class="modal-badge" style="background:${cat.colorLight};color:${cat.color}">${persona.group.name}</span>
             <span class="modal-badge" style="background:#f1f5f9;color:#475569">${persona.tenure}</span>
+            ${officeBadge}
           </div>
         </div>
         <div class="modal-body">
+          ${quoteHtml}
           <div class="modal-description">${persona.description}</div>
+          ${metaGridHtml}
+          ${keyActivitiesHtml}
 
           <div class="modal-section">
             <div class="modal-section-title">Core Needs</div>
@@ -1132,6 +1408,8 @@
               ${persona.coreNeeds.map(n => `<li><span class="dot" style="background:#4338ca"></span>${n}</li>`).join('')}
             </ul>
           </div>
+
+          ${goalsHtml}
 
           <div class="modal-section">
             <div class="modal-section-title">Motivations</div>
