@@ -238,6 +238,36 @@
       color: #4338ca;
     }
 
+    /* ========== LIBRARY TABS (Personas / Archetypes) ========== */
+    .library-tabs {
+      display: flex;
+      gap: 4px;
+      padding: 0 40px 12px;
+      max-width: 1440px;
+      margin: 0 auto;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+    }
+    .library-tab {
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.7);
+      background: none;
+      border: none;
+      padding: 8px 20px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .library-tab:hover {
+      color: #fff;
+      background: rgba(255,255,255,0.1);
+    }
+    .library-tab.active {
+      color: #fff;
+      background: rgba(255,255,255,0.2);
+    }
+
     /* ========== SEARCH BAR ========== */
     .search-section {
       max-width: 1440px;
@@ -1076,6 +1106,59 @@
       .dp-slider-item { flex: 1; min-width: 200px; }
     }
 
+    /* ========== ARCHETYPE LIST (inside library) ========== */
+    .archetype-list-wrap { padding: 24px 40px 60px; max-width: 1440px; margin: 0 auto; }
+    .archetype-list-back { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-secondary); margin-bottom: 20px; cursor: pointer; font-weight: 500; }
+    .archetype-list-back:hover { color: var(--text); }
+    .archetypes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+    .archetype-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; cursor: pointer; transition: box-shadow 200ms ease, transform 200ms ease; text-decoration: none; color: inherit; display: block; }
+    .archetype-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .archetype-card-top { display: flex; align-items: flex-start; gap: 16px; }
+    .archetype-card-avatar { width: 56px; height: 56px; border-radius: 50%; overflow: hidden; flex-shrink: 0; background: #1a2c42; }
+    .archetype-card-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .archetype-card-name { font-size: 18px; font-weight: 700; color: var(--text); }
+    .archetype-card-role { font-size: 13px; color: var(--text-secondary); margin-top: 2px; }
+    .archetype-card-tagline { font-size: 13px; color: var(--text-secondary); font-style: italic; margin-top: 10px; line-height: 1.5; }
+
+    /* ========== ARCHETYPE DETAIL (embedded) ========== */
+    .arch-detail-wrap { display: flex; max-width: 1400px; margin: 0 auto; min-height: 500px; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); border: 1px solid var(--border); background: #fff; }
+    .arch-sidebar { width: 300px; min-width: 260px; background: #1a2c42; color: #fff; padding: 28px 20px; overflow-y: auto; }
+    .arch-sidebar-photo { width: 100px; height: 100px; border-radius: 50%; overflow: hidden; margin: 0 auto 12px; display: block; border: 2px solid rgba(255,255,255,0.2); }
+    .arch-sidebar-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .arch-sidebar-name { font-size: 22px; font-weight: 800; text-align: center; letter-spacing: 0.5px; margin-bottom: 4px; }
+    .arch-sidebar-role { font-size: 12px; text-align: center; opacity: 0.9; margin-bottom: 20px; }
+    .arch-sidebar-section { margin-bottom: 20px; }
+    .arch-sidebar-section-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; opacity: 0.8; margin-bottom: 8px; }
+    .arch-sidebar-section ul { list-style: none; }
+    .arch-sidebar-section li { font-size: 11px; padding: 3px 0; padding-left: 12px; position: relative; }
+    .arch-sidebar-section li::before { content: '•'; position: absolute; left: 0; opacity: 0.7; }
+    .arch-main { flex: 1; padding: 32px 40px 40px; overflow-y: auto; background: #f5f6f8; }
+    .arch-main-title { font-size: 28px; font-weight: 800; color: #263238; margin-bottom: 6px; }
+    .arch-main-tagline { font-size: 15px; font-style: italic; color: #455a64; margin-bottom: 20px; }
+    .arch-main-narrative { font-size: 14px; color: #455a64; line-height: 1.75; margin-bottom: 24px; }
+    .arch-section-title { font-size: 16px; font-weight: 700; color: #263238; margin-bottom: 12px; }
+    .arch-time-section { display: flex; gap: 24px; margin-bottom: 24px; flex-wrap: wrap; }
+    .arch-time-list { flex: 1; min-width: 260px; }
+    .arch-time-list ul { list-style: none; }
+    .arch-time-list li { font-size: 13px; color: #455a64; padding: 4px 0; padding-left: 16px; position: relative; }
+    .arch-time-list li::before { content: '•'; position: absolute; left: 0; color: #2196F3; font-weight: 700; }
+    .arch-time-icons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; max-width: 260px; }
+    .arch-time-icon { background: #e3f2fd; color: #1565c0; border-radius: 50%; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 600; text-align: center; padding: 6px; line-height: 1.3; }
+    .arch-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+    .arch-two-col ul { list-style: none; }
+    .arch-two-col li { font-size: 13px; color: #455a64; padding: 4px 0; padding-left: 14px; position: relative; }
+    .arch-two-col li::before { content: '•'; position: absolute; left: 0; color: #2196F3; }
+    .arch-toolkit-cat { margin-bottom: 12px; }
+    .arch-toolkit-cat-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #455a64; margin-bottom: 6px; }
+    .arch-toolkit-icons { display: flex; flex-wrap: wrap; gap: 6px; }
+    .arch-toolkit-icon { background: #e3f2fd; color: #1565c0; font-size: 11px; font-weight: 600; padding: 5px 10px; border-radius: 4px; }
+    .arch-channel-row { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; font-size: 12px; }
+    .arch-channel-label { width: 90px; flex-shrink: 0; color: #455a64; }
+    .arch-channel-track { flex: 1; height: 6px; background: #e0e0e0; border-radius: 3px; overflow: hidden; }
+    .arch-channel-fill { height: 100%; background: #2196F3; border-radius: 3px; }
+    .arch-footer-block { margin-top: 32px; padding-top: 20px; border-top: 1px solid #e0e0e0; font-size: 14px; font-weight: 700; color: #263238; }
+    @media (max-width: 900px) { .arch-detail-wrap { flex-direction: column; } .arch-sidebar { width: 100%; } .arch-two-col { grid-template-columns: 1fr; } }
+
     /* ========== EMPTY STATE ========== */
     .empty-state {
       text-align: center;
@@ -1138,16 +1221,23 @@
         </div>
       </div>
       <div class="header-stats" id="headerStats"></div>
-      <a href="index.html" style="color:#c7d2fe;text-decoration:none;font-size:13px;font-weight:500;padding:8px 16px;border:1px solid rgba(199,210,254,0.3);border-radius:100px;transition:all 200ms ease;white-space:nowrap;" onmouseover="this.style.background='rgba(199,210,254,0.1)';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#c7d2fe'">&larr; Back to Guide</a>
+      <a href="index.html" style="color:#c7d2fe;text-decoration:none;font-size:13px;font-weight:500;padding:8px 16px;border:1px solid rgba(199,210,254,0.3);border-radius:100px;transition:all 200ms ease;white-space:nowrap;margin-right:8px;" onmouseover="this.style.background='rgba(199,210,254,0.1)';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#c7d2fe'">&larr; Back to Guide</a>
+      <a href="library.html#archetypes" style="color:#c7d2fe;text-decoration:none;font-size:13px;font-weight:500;padding:8px 16px;border:1px solid rgba(199,210,254,0.3);border-radius:100px;transition:all 200ms ease;white-space:nowrap;" onmouseover="this.style.background='rgba(199,210,254,0.1)';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#c7d2fe'">Archetypes</a>
     </div>
 
-    <nav class="nav-bar">
+    <nav class="nav-bar" id="navBarWrap">
       <div class="nav-bar-inner" id="navBar"></div>
     </nav>
+
+    <!-- PERSONAS / ARCHETYPES TAB -->
+    <div class="library-tabs" id="libraryTabs">
+      <button type="button" class="library-tab active" data-tab="personas" id="tabPersonas">Personas</button>
+      <button type="button" class="library-tab" data-tab="archetypes" id="tabArchetypes">Archetypes</button>
+    </div>
   </header>
 
   <!-- SEARCH -->
-  <section class="search-section">
+  <section class="search-section" id="searchSection" data-personas-only>
     <div class="search-container">
       <div class="search-box">
         <span class="search-icon">&#x1F50D;</span>
@@ -1158,7 +1248,7 @@
   </section>
 
   <!-- BREADCRUMB -->
-  <div class="breadcrumb-bar" id="breadcrumb"></div>
+  <div class="breadcrumb-bar" id="breadcrumb" data-personas-only></div>
 
   <!-- MAIN CONTENT -->
   <main class="main-content" id="mainContent"></main>
@@ -1167,13 +1257,16 @@
   <div class="detail-page" id="detailPage"></div>
 
   <script src="data.js"></script>
+  <script src="archetype-data.js"></script>
   <script>
     // ===== STATE =====
     let state = {
       selectedCategory: null,
       selectedGroup: null,
       searchQuery: '',
-      openNav: null
+      openNav: null,
+      activeTab: 'personas',
+      selectedArchetypeId: null
     };
 
     // ===== HELPERS =====
@@ -1735,8 +1828,128 @@
       document.getElementById('mainContent').style.display = '';
     }
 
+    // ===== ARCHETYPES TAB =====
+    function setTab(tab) {
+      state.activeTab = tab;
+      state.selectedArchetypeId = null;
+      document.getElementById('tabPersonas').classList.toggle('active', tab === 'personas');
+      document.getElementById('tabArchetypes').classList.toggle('active', tab === 'archetypes');
+      const personaOnly = document.querySelectorAll('[data-personas-only], #navBarWrap');
+      personaOnly.forEach(el => { el.style.display = tab === 'personas' ? '' : 'none'; });
+      if (tab === 'archetypes') {
+        document.getElementById('detailPage').classList.remove('visible');
+        renderArchetypesView();
+      } else {
+        render();
+      }
+    }
+
+    function renderArchetypesView() {
+      const main = document.getElementById('mainContent');
+      main.style.display = 'block';
+      if (state.selectedArchetypeId) {
+        renderArchetypeDetail(state.selectedArchetypeId, main);
+      } else {
+        renderArchetypeList(main);
+      }
+    }
+
+    function renderArchetypeList(container) {
+      const list = typeof archetypeData !== 'undefined' ? archetypeData.archetypes : [];
+      let html = '<div class="archetype-list-wrap"><div class="archetypes-grid">';
+      list.forEach(a => {
+        const imgSrc = a.avatar;
+        const initials = a.name.split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase();
+        html += `
+          <div class="archetype-card" data-action="open-archetype" data-archetype-id="${a.id}" role="button" tabindex="0">
+            <div class="archetype-card-top">
+              <div class="archetype-card-avatar"><img src="${imgSrc}" alt="${a.name}" loading="lazy" onerror="var d=document.createElement('div');d.className='archetype-card-avatar';d.style.cssText='display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px';d.textContent='${initials}';this.parentNode.replaceChild(d,this)"/></div>
+              <div>
+                <div class="archetype-card-name">${a.name}</div>
+                <div class="archetype-card-role">${a.role}</div>
+              </div>
+            </div>
+            <div class="archetype-card-tagline">${a.tagline}</div>
+          </div>`;
+      });
+      html += '</div></div>';
+      container.innerHTML = html;
+    }
+
+    function renderArchetypeDetail(archetypeId, container) {
+      const list = typeof archetypeData !== 'undefined' ? archetypeData.archetypes : [];
+      const a = list.find(x => x.id === archetypeId);
+      if (!a) { renderArchetypeList(container); return; }
+      const du = a.deviceUsage || {};
+      const total = (du.laptop || 0) + (du.mobile || 0) + (du.tablet || 0) + (du.desktop || 0) || 1;
+      const p1 = ((du.laptop || 0) / total * 100).toFixed(1);
+      const p2 = (((du.laptop || 0) + (du.mobile || 0)) / total * 100).toFixed(1);
+      const otherRolesList = Array.isArray(a.otherRoles) ? a.otherRoles : (a.otherRoles ? [a.otherRoles] : []);
+      let regionsHtml = '';
+      if (a.regionalConsiderations && typeof a.regionalConsiderations === 'object') {
+        regionsHtml = Object.entries(a.regionalConsiderations).map(([region, points]) => {
+          const list = Array.isArray(points) ? points : [points];
+          return '<div class="arch-sidebar-section"><div class="arch-sidebar-section-title">' + region + '</div><ul><li>' + list.join('</li><li>') + '</li></ul></div>';
+        }).join('');
+      }
+      const coreList = a.coreJourneys || a.coreExperiences || [];
+      const collabList = a.keyCollaborators || [];
+      const toolkit = a.dailyToolkit || {};
+      const produce = toolkit.produce || [];
+      const collaborate = toolkit.collaborate || [];
+      const administrate = toolkit.administrate || [];
+      const comm = (a.preferredChannels && a.preferredChannels.communication) || [];
+      const supp = (a.preferredChannels && a.preferredChannels.support) || [];
+      const channelBars = (label, items) => '<div class="arch-toolkit-cat"><div class="arch-toolkit-cat-title">' + label + '</div>' + items.map(c => '<div class="arch-channel-row"><span class="arch-channel-label">' + c.name + '</span><div class="arch-channel-track"><div class="arch-channel-fill" style="width:' + (c.value || 0) + '%"></div></div></div>').join('') + '</div>';
+      const timeIconsHtml = (a.timeIcons || []).slice(0, 6).map(t => '<div class="arch-time-icon">' + (t.label || '') + '</div>').join('');
+
+      container.innerHTML = `
+        <div class="archetype-list-wrap">
+          <div class="archetype-list-back" data-action="arch-back">&larr; Back to Archetypes list</div>
+          <div class="arch-detail-wrap">
+            <aside class="arch-sidebar">
+              <img class="arch-sidebar-photo" src="${a.avatar}" alt="${a.name}" onerror="this.style.display='none';var d=document.createElement('div');d.className='arch-sidebar-photo';d.style.cssText='display:flex;align-items:center;justify-content:center;background:#2d3e52;font-size:32px;font-weight:700';d.textContent='${a.name.substring(0,2)}';this.parentNode.appendChild(d)"/>
+              <div class="arch-sidebar-name">${a.name.toUpperCase()}</div>
+              <div class="arch-sidebar-role">${a.role}</div>
+              ${otherRolesList.length ? '<div class="arch-sidebar-section"><div class="arch-sidebar-section-title">Other Roles</div><ul><li>' + otherRolesList.join('</li><li>') + '</li></ul></div>' : ''}
+              <div class="arch-sidebar-section"><div class="arch-sidebar-section-title">Device Usage</div><div style="font-size:11px;opacity:0.85">Laptop ${du.laptop || 0}% · Mobile ${du.mobile || 0}%</div></div>
+              ${coreList.length ? '<div class="arch-sidebar-section"><div class="arch-sidebar-section-title">Core Journeys</div><ul><li>' + coreList.join('</li><li>') + '</li></ul></div>' : ''}
+              ${collabList.length ? '<div class="arch-sidebar-section"><div class="arch-sidebar-section-title">Key Collaborators</div><ul><li>' + collabList.join('</li><li>') + '</li></ul></div>' : ''}
+              ${regionsHtml}
+            </aside>
+            <div class="arch-main">
+              <h1 class="arch-main-title">${a.role}</h1>
+              <p class="arch-main-tagline">${a.tagline}</p>
+              <div class="arch-main-narrative">${a.narrative}</div>
+              <div class="arch-section-title">How ${a.name} spends their time</div>
+              <div class="arch-time-section">
+                <div class="arch-time-list"><ul>${(a.howSpendsTime || []).map(s => '<li>' + s + '</li>').join('')}</ul></div>
+                <div class="arch-time-icons">${timeIconsHtml}</div>
+              </div>
+              <div class="arch-two-col">
+                <div><div class="arch-section-title">Motivations</div><ul>${(a.motivations || []).map(m => '<li>' + m + '</li>').join('')}</ul></div>
+                <div><div class="arch-section-title">Challenges</div><ul>${(a.challenges || []).map(c => '<li>' + c + '</li>').join('')}</ul></div>
+              </div>
+              <div class="arch-section-title">Daily toolkit</div>
+              <div class="arch-toolkit-cat"><div class="arch-toolkit-cat-title">Produce</div><div class="arch-toolkit-icons">${produce.map(t => '<span class="arch-toolkit-icon">' + t + '</span>').join('')}</div></div>
+              <div class="arch-toolkit-cat"><div class="arch-toolkit-cat-title">Collaborate</div><div class="arch-toolkit-icons">${collaborate.map(t => '<span class="arch-toolkit-icon">' + t + '</span>').join('')}</div></div>
+              <div class="arch-toolkit-cat"><div class="arch-toolkit-cat-title">Administrate</div><div class="arch-toolkit-icons">${administrate.map(t => '<span class="arch-toolkit-icon">' + t + '</span>').join('')}</div></div>
+              <div class="arch-section-title">Preferred channels</div>
+              ${channelBars('Communication', comm)}
+              ${channelBars('Support', supp)}
+              <div class="arch-footer-block">${a.footerTitle || (a.name + ' and friends')}</div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
     // ===== RENDER ALL =====
     function render() {
+      document.getElementById('tabPersonas').classList.toggle('active', state.activeTab === 'personas');
+      document.getElementById('tabArchetypes').classList.toggle('active', state.activeTab === 'archetypes');
+      const personaOnly = document.querySelectorAll('[data-personas-only], #navBarWrap');
+      personaOnly.forEach(el => { el.style.display = ''; });
       renderHeaderStats();
       renderNav();
       renderFilters();
@@ -1746,6 +1959,24 @@
 
     // ===== EVENT HANDLERS =====
     document.addEventListener('click', (e) => {
+      const tabBtn = e.target.closest('[data-tab]');
+      if (tabBtn && tabBtn.classList.contains('library-tab')) {
+        setTab(tabBtn.dataset.tab);
+        if (tabBtn.dataset.tab === 'archetypes') location.hash = 'archetypes';
+        else location.hash = '';
+        return;
+      }
+      const archCard = e.target.closest('[data-action="open-archetype"]');
+      if (archCard) {
+        state.selectedArchetypeId = archCard.dataset.archetypeId;
+        renderArchetypesView();
+        return;
+      }
+      if (e.target.closest('[data-action="arch-back"]')) {
+        state.selectedArchetypeId = null;
+        renderArchetypesView();
+        return;
+      }
       const target = e.target.closest('[data-action]');
       if (!target) {
         if (!e.target.closest('.nav-item')) {
@@ -1838,7 +2069,15 @@
     });
 
     // ===== INIT =====
-    render();
+    if (location.hash === '#archetypes') {
+      state.activeTab = 'archetypes';
+      setTab('archetypes');
+    } else {
+      render();
+    }
+    window.addEventListener('hashchange', () => {
+      if (location.hash === '#archetypes' && state.activeTab !== 'archetypes') setTab('archetypes');
+    });
   </script>
 </body>
 </html>

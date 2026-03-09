@@ -3,7 +3,7 @@ const personaData = {
     {
       id: "csp",
       name: "CSP",
-      fullName: "Client-Serving Professionals",
+      fullName: "Client Service Professionals",
       color: "#4338ca",
       colorLight: "#e0e7ff",
       description: "Professionals who directly serve clients across various seniority levels, from senior leadership to analyst roles.",
