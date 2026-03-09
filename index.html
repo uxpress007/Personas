@@ -563,182 +563,188 @@
       font-weight: 500;
     }
 
-    /* ========== PERSONA MODAL ========== */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(15, 23, 42, 0.5);
-      backdrop-filter: blur(4px);
-      z-index: 1000;
-      display: flex;
+    /* ========== DETAIL PAGE ========== */
+    .detail-page {
+      display: none;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 24px 40px 60px;
+    }
+
+    .detail-page.visible {
+      display: block;
+    }
+
+    .detail-back {
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
-      padding: 40px;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 300ms ease;
-    }
-
-    .modal-overlay.open {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .modal {
+      gap: 8px;
+      padding: 8px 18px;
       background: var(--surface);
-      border-radius: var(--radius-xl);
-      max-width: 680px;
-      width: 100%;
-      max-height: 80vh;
-      overflow-y: auto;
-      box-shadow: var(--shadow-xl);
-      transform: scale(0.95) translateY(10px);
-      transition: transform 300ms ease;
-    }
-
-    .modal-overlay.open .modal {
-      transform: scale(1) translateY(0);
-    }
-
-    .modal-top {
-      padding: 32px 32px 0;
-      position: relative;
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      border: none;
-      background: var(--border-light);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 500;
       color: var(--text-secondary);
-      font-size: 18px;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      font-family: inherit;
       transition: var(--transition);
+      margin-bottom: 24px;
     }
 
-    .modal-close:hover {
-      background: var(--border);
+    .detail-back:hover {
+      background: var(--border-light);
       color: var(--text);
+      border-color: var(--text-muted);
     }
 
-    .modal-avatar {
-      width: 80px;
-      height: 80px;
+    .detail-back .arrow { font-size: 16px; }
+
+    .detail-hero {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      padding: 28px 32px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      margin-bottom: 24px;
+    }
+
+    .detail-avatar {
+      width: 100px;
+      height: 100px;
       border-radius: var(--radius-lg);
       overflow: hidden;
-      margin-bottom: 16px;
+      flex-shrink: 0;
       box-shadow: 0 0 0 3px rgba(0,0,0,0.06);
     }
 
-    .modal-avatar img {
+    .detail-avatar img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
 
-    .modal-name {
-      font-size: 24px;
+    .detail-hero-info { flex: 1; min-width: 0; }
+
+    .detail-name {
+      font-size: 28px;
       font-weight: 700;
       color: var(--text);
       letter-spacing: -0.5px;
     }
 
-    .modal-role {
-      font-size: 14px;
+    .detail-role {
+      font-size: 15px;
       color: var(--text-secondary);
-      margin-top: 4px;
+      margin-top: 2px;
     }
 
-    .modal-badges {
+    .detail-badges {
       display: flex;
       gap: 8px;
       margin-top: 12px;
+      flex-wrap: wrap;
     }
 
-    .modal-badge {
+    .detail-badge {
       font-size: 12px;
-      padding: 4px 12px;
+      padding: 4px 14px;
       border-radius: 100px;
       font-weight: 500;
     }
 
-    .modal-body {
-      padding: 24px 32px 32px;
+    .detail-quote {
+      font-size: 15px;
+      font-style: italic;
+      color: var(--text);
+      padding: 14px 20px;
+      background: var(--border-light);
+      border-left: 3px solid #4338ca;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin-top: 16px;
+      line-height: 1.6;
     }
 
-    .modal-description {
+    .detail-description {
       font-size: 14px;
       line-height: 1.7;
       color: var(--text-secondary);
-      margin-bottom: 28px;
+      margin-top: 14px;
     }
 
-    .modal-section {
-      margin-bottom: 24px;
+    .detail-columns {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
     }
 
-    .modal-section-title {
+    .detail-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+    }
+
+    .detail-card-title {
       font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 1.5px;
       color: var(--text-muted);
       font-weight: 600;
-      margin-bottom: 10px;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--border-light);
     }
 
-    .modal-list {
+    .detail-list {
       list-style: none;
     }
 
-    .modal-list li {
-      padding: 8px 0;
+    .detail-list li {
+      padding: 7px 0;
       font-size: 13px;
       color: var(--text-secondary);
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 10px;
-      border-bottom: 1px solid var(--border-light);
+      line-height: 1.5;
     }
 
-    .modal-list li:last-child {
-      border-bottom: none;
-    }
-
-    .modal-list li .dot {
+    .detail-list li .dot {
       width: 6px;
       height: 6px;
       border-radius: 50%;
       flex-shrink: 0;
+      margin-top: 6px;
     }
 
-    /* ========== RICH PERSONA DETAILS ========== */
-    .modal-quote {
-      font-size: 15px;
-      font-style: italic;
-      color: var(--text);
-      padding: 16px 20px;
-      background: var(--border-light);
-      border-left: 3px solid #4338ca;
-      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-      margin-bottom: 24px;
-      line-height: 1.6;
+    .detail-office-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      padding: 4px 14px;
+      border-radius: 100px;
+      background: #f1f5f9;
+      color: #475569;
+      font-weight: 500;
     }
 
-    .modal-meta-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-bottom: 24px;
+    @media (max-width: 900px) {
+      .detail-columns { grid-template-columns: 1fr; }
+      .detail-hero { flex-direction: column; align-items: center; text-align: center; }
+      .detail-badges { justify-content: center; }
+      .detail-quote { text-align: left; }
     }
 
+    @media (max-width: 768px) {
+      .detail-page { padding: 16px 20px 40px; }
+    }
+
+    /* ========== RICH PERSONA META ========== */
     .meta-card {
       background: var(--border-light);
       border-radius: var(--radius-md);
@@ -864,20 +870,10 @@
       font-weight: 500;
     }
 
-    .modal-office-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 12px;
-      padding: 4px 12px;
-      border-radius: 100px;
-      background: #f1f5f9;
-      color: #475569;
-      font-weight: 500;
-    }
-
-    @media (max-width: 768px) {
-      .modal-meta-grid { grid-template-columns: 1fr; }
+    .meta-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
 
     /* ========== EMPTY STATE ========== */
@@ -912,8 +908,7 @@
       .breadcrumb-bar { padding: 12px 20px 0; }
       .main-content { padding: 20px 20px 40px; }
       .personas-grid { grid-template-columns: 1fr; }
-      .modal-overlay { padding: 20px; }
-      .modal-top, .modal-body { padding-left: 24px; padding-right: 24px; }
+      .detail-page { padding: 16px 20px 40px; }
     }
 
     /* ========== HIGHLIGHT ANIMATION ========== */
@@ -967,10 +962,8 @@
   <!-- MAIN CONTENT -->
   <main class="main-content" id="mainContent"></main>
 
-  <!-- MODAL -->
-  <div class="modal-overlay" id="modalOverlay">
-    <div class="modal" id="modalContent"></div>
-  </div>
+  <!-- DETAIL PAGE -->
+  <div class="detail-page" id="detailPage"></div>
 
   <script src="data.js"></script>
   <script>
@@ -1266,7 +1259,7 @@
       return text.replace(regex, '<span class="highlight">$1</span>');
     }
 
-    // ===== RENDER MODAL =====
+    // ===== DETAIL PAGE =====
     function renderSlider(value, labelLeft, labelRight) {
       return `
         <div class="slider-row">
@@ -1276,7 +1269,7 @@
         </div>`;
     }
 
-    function renderModal(personaId) {
+    function renderDetailPage(personaId) {
       const allPersonas = getAllPersonas();
       const persona = allPersonas.find(p => p.id === personaId);
       if (!persona) return;
@@ -1286,22 +1279,27 @@
 
       let quoteHtml = '';
       if (persona.quote) {
-        quoteHtml = `<div class="modal-quote">"${persona.quote}"</div>`;
+        quoteHtml = `<div class="detail-quote">&ldquo;${persona.quote}&rdquo;</div>`;
       }
 
       let officeBadge = '';
       if (persona.office) {
-        officeBadge = `<span class="modal-office-badge">&#x1F4CD; ${persona.office}</span>`;
+        officeBadge = `<span class="detail-office-badge">&#x1F4CD; ${persona.office}</span>`;
       }
 
-      let metaGridHtml = '';
-      if (persona.techProfile || persona.location || persona.devices || persona.inclusiveDesignLenses) {
-        let leftCol = '';
-        let rightCol = '';
+      let descriptionHtml = '';
+      if (persona.description) {
+        descriptionHtml = `<div class="detail-description">${persona.description}</div>`;
+      }
 
+      const columns = [];
+
+      // Column: Profile + Devices (if rich data)
+      if (persona.techProfile || persona.devices) {
+        let profileCol = '<div class="meta-stack">';
         if (persona.techProfile) {
           const tp = persona.techProfile;
-          leftCol += `
+          profileCol += `
             <div class="meta-card">
               <div class="meta-card-title">Profile</div>
               ${renderSlider(tp.techLiteracy, 'Tech Literacy', tp.techLiteracy > 50 ? 'High' : 'Low')}
@@ -1310,10 +1308,26 @@
               ${renderSlider(tp.meetingPreference === 'In Person' ? 90 : tp.meetingPreference === 'Hybrid' ? 50 : 10, 'Remote', 'In Person')}
             </div>`;
         }
+        if (persona.devices) {
+          const icons = { Laptop: '&#x1F4BB;', Mobile: '&#x1F4F1;', Tablet: '&#x1F4F2;' };
+          profileCol += `
+            <div class="meta-card">
+              <div class="meta-card-title">Devices &amp; Tools</div>
+              <div class="device-chips">
+                ${persona.devices.map(d => `<span class="device-chip">${icons[d] || '&#x1F5A5;'} ${d}</span>`).join('')}
+              </div>
+            </div>`;
+        }
+        profileCol += '</div>';
+        columns.push(`<div class="detail-card">${profileCol}</div>`);
+      }
 
+      // Column: Location + Inclusive Design Lenses
+      if (persona.location || persona.inclusiveDesignLenses) {
+        let contextCol = '<div class="meta-stack">';
         if (persona.location) {
           const loc = persona.location;
-          rightCol += `
+          contextCol += `
             <div class="meta-card">
               <div class="meta-card-title">Location Split</div>
               <div class="location-bars">
@@ -1335,20 +1349,8 @@
               </div>
             </div>`;
         }
-
-        if (persona.devices) {
-          const icons = { Laptop: '&#x1F4BB;', Mobile: '&#x1F4F1;', Tablet: '&#x1F4F2;' };
-          leftCol += `
-            <div class="meta-card">
-              <div class="meta-card-title">Devices &amp; Tools</div>
-              <div class="device-chips">
-                ${persona.devices.map(d => `<span class="device-chip">${icons[d] || '&#x1F5A5;'} ${d}</span>`).join('')}
-              </div>
-            </div>`;
-        }
-
         if (persona.inclusiveDesignLenses) {
-          rightCol += `
+          contextCol += `
             <div class="meta-card">
               <div class="meta-card-title">Inclusive Design Lenses</div>
               <div class="lens-chips">
@@ -1356,84 +1358,102 @@
               </div>
             </div>`;
         }
-
-        metaGridHtml = `<div class="modal-meta-grid">${leftCol}${rightCol}</div>`;
+        contextCol += '</div>';
+        columns.push(`<div class="detail-card">${contextCol}</div>`);
       }
 
-      let keyActivitiesHtml = '';
-      if (persona.keyActivities && persona.keyActivities.length > 0) {
-        keyActivitiesHtml = `
-          <div class="modal-section">
-            <div class="modal-section-title">Key Activities</div>
-            <ul class="modal-list">
-              ${persona.keyActivities.map(a => `<li><span class="dot" style="background:#0891b2"></span>${a}</li>`).join('')}
-            </ul>
-          </div>`;
-      }
-
-      let goalsHtml = '';
-      if (persona.goals && persona.goals.length > 0) {
-        goalsHtml = `
-          <div class="modal-section">
-            <div class="modal-section-title">Goals</div>
-            <ul class="modal-list">
-              ${persona.goals.map(g => `<li><span class="dot" style="background:#6366f1"></span>${g}</li>`).join('')}
-            </ul>
-          </div>`;
-      }
-
-      const modal = document.getElementById('modalContent');
-      modal.innerHTML = `
-        <div class="modal-top">
-          <button class="modal-close" data-action="close-modal">&times;</button>
-          <div class="modal-avatar"><img src="${avatarUrl}" alt="${persona.name}" /></div>
-          <div class="modal-name">${persona.name}</div>
-          <div class="modal-role">${persona.role}</div>
-          <div class="modal-badges">
-            <span class="modal-badge" style="background:${cat.colorLight};color:${cat.color}">${cat.name}</span>
-            <span class="modal-badge" style="background:${cat.colorLight};color:${cat.color}">${persona.group.name}</span>
-            <span class="modal-badge" style="background:#f1f5f9;color:#475569">${persona.tenure}</span>
-            ${officeBadge}
-          </div>
-        </div>
-        <div class="modal-body">
-          ${quoteHtml}
-          <div class="modal-description">${persona.description}</div>
-          ${metaGridHtml}
-          ${keyActivitiesHtml}
-
-          <div class="modal-section">
-            <div class="modal-section-title">Core Needs</div>
-            <ul class="modal-list">
+      // Column: Core Needs
+      if (persona.coreNeeds && persona.coreNeeds.length > 0) {
+        columns.push(`
+          <div class="detail-card">
+            <div class="detail-card-title">Core Needs</div>
+            <ul class="detail-list">
               ${persona.coreNeeds.map(n => `<li><span class="dot" style="background:#4338ca"></span>${n}</li>`).join('')}
             </ul>
-          </div>
+          </div>`);
+      }
 
-          ${goalsHtml}
+      // Column: Goals
+      if (persona.goals && persona.goals.length > 0) {
+        columns.push(`
+          <div class="detail-card">
+            <div class="detail-card-title">Goals</div>
+            <ul class="detail-list">
+              ${persona.goals.map(g => `<li><span class="dot" style="background:#6366f1"></span>${g}</li>`).join('')}
+            </ul>
+          </div>`);
+      }
 
-          <div class="modal-section">
-            <div class="modal-section-title">Motivations</div>
-            <ul class="modal-list">
+      // Column: Key Activities
+      if (persona.keyActivities && persona.keyActivities.length > 0) {
+        columns.push(`
+          <div class="detail-card">
+            <div class="detail-card-title">Key Activities</div>
+            <ul class="detail-list">
+              ${persona.keyActivities.map(a => `<li><span class="dot" style="background:#0891b2"></span>${a}</li>`).join('')}
+            </ul>
+          </div>`);
+      }
+
+      // Column: Motivations
+      if (persona.motivations && persona.motivations.length > 0) {
+        columns.push(`
+          <div class="detail-card">
+            <div class="detail-card-title">Motivations</div>
+            <ul class="detail-list">
               ${persona.motivations.map(m => `<li><span class="dot" style="background:#059669"></span>${m}</li>`).join('')}
             </ul>
-          </div>
+          </div>`);
+      }
 
-          <div class="modal-section">
-            <div class="modal-section-title">Frustrations</div>
-            <ul class="modal-list">
+      // Column: Frustrations
+      if (persona.frustrations && persona.frustrations.length > 0) {
+        columns.push(`
+          <div class="detail-card">
+            <div class="detail-card-title">Frustrations</div>
+            <ul class="detail-list">
               ${persona.frustrations.map(f => `<li><span class="dot" style="background:#dc2626"></span>${f}</li>`).join('')}
             </ul>
+          </div>`);
+      }
+
+      const detailPage = document.getElementById('detailPage');
+      detailPage.innerHTML = `
+        <button class="detail-back" data-action="close-detail">
+          <span class="arrow">&larr;</span> Back to Personas
+        </button>
+        <div class="detail-hero">
+          <div class="detail-avatar"><img src="${avatarUrl}" alt="${persona.name}" /></div>
+          <div class="detail-hero-info">
+            <div class="detail-name">${persona.name}</div>
+            <div class="detail-role">${persona.role}</div>
+            <div class="detail-badges">
+              <span class="detail-badge" style="background:${cat.colorLight};color:${cat.color}">${cat.name}</span>
+              <span class="detail-badge" style="background:${cat.colorLight};color:${cat.color}">${persona.group.name}</span>
+              <span class="detail-badge" style="background:#f1f5f9;color:#475569">${persona.tenure}</span>
+              ${officeBadge}
+            </div>
+            ${quoteHtml}
+            ${descriptionHtml}
           </div>
+        </div>
+        <div class="detail-columns">
+          ${columns.join('')}
         </div>
       `;
 
-      document.getElementById('modalOverlay').classList.add('open');
-      document.body.style.overflow = 'hidden';
+      document.querySelector('.search-section').style.display = 'none';
+      document.getElementById('breadcrumb').style.display = 'none';
+      document.getElementById('mainContent').style.display = 'none';
+      detailPage.classList.add('visible');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function closeModal() {
-      document.getElementById('modalOverlay').classList.remove('open');
-      document.body.style.overflow = '';
+    function closeDetail() {
+      document.getElementById('detailPage').classList.remove('visible');
+      document.querySelector('.search-section').style.display = '';
+      document.getElementById('breadcrumb').style.display = '';
+      document.getElementById('mainContent').style.display = '';
     }
 
     // ===== RENDER ALL =====
@@ -1515,21 +1535,17 @@
           break;
 
         case 'open-persona':
-          renderModal(target.dataset.personaId);
+          renderDetailPage(target.dataset.personaId);
           break;
 
-        case 'close-modal':
-          closeModal();
+        case 'close-detail':
+          closeDetail();
           break;
       }
     });
 
-    document.getElementById('modalOverlay').addEventListener('click', (e) => {
-      if (e.target === e.currentTarget) closeModal();
-    });
-
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeModal();
+      if (e.key === 'Escape') closeDetail();
     });
 
     let searchTimeout;

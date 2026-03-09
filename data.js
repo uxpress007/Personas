@@ -512,58 +512,155 @@ const personaData = {
           personas: [
             {
               id: "fsp-ffl-1",
-              name: "Visionary Legend",
-              avatar: "https://randomuser.me/api/portraits/men/34.jpg",
-              role: "Firm Functions Leader",
+              name: "Fiona",
+              fullName: "Fiona — Firm Leader",
+              avatar: "fiona-firm-leader.png",
+              role: "Firm Leader",
               tenure: "15+ years",
-              description: "A visionary leader who shapes the strategic direction of firm functions. Known for forward-thinking initiatives and transformational leadership across the organization.",
-              coreNeeds: ["Strategic planning tools", "Executive dashboards", "Change management"],
-              motivations: ["Organizational transformation", "Legacy impact", "Innovation leadership"],
-              frustrations: ["Resistance to change", "Budget constraints", "Slow adoption"]
+              office: "Large Office Location",
+              quote: "Technology empowers me to realize my vision for the future of the Firm",
+              description: "As the leader of one of our largest offices, Fiona divides her focus between defining the future of the office, coaching her team on crafting strategy and tactics to realize that vision, and serving her clients. Given the demands on her time, rapid access to accurate data about her office is absolutely critical — she needs to be able to make day-to-day decisions on her feet as well as to step back and look at the big picture when working to plan for the future. Since the beginning of the COVID-19 pandemic, much of her focus has been on attracting and retaining the key talent (especially EMs and APs) her offices needs to staff their increased engagement load, as well as on providing the transparency her current office members need to feel secure, productive, and connected.",
+              techProfile: {
+                techLiteracy: 70,
+                workingStyle: "Structured",
+                adaptabilityToChange: 65,
+                meetingPreference: "Hybrid"
+              },
+              location: {
+                clientSite: 20,
+                localOffice: 55,
+                remoteHomeOffice: 25
+              },
+              devices: ["Laptop", "Mobile"],
+              inclusiveDesignLenses: ["Loves data", "Aims for transparency", "Trend watcher", "Competitive", "Biased to action", "Champion for Firm values"],
+              keyActivities: [
+                "Defining vision and strategy for the future of her office location",
+                "Collaborating closely with fellow Firm leaders to navigate a complex external landscape",
+                "Serving as a responsible steward of the Firm's resources regardless of the economic climate",
+                "Working closely with her office leadership team to define and implement tactics that drive toward their shared vision"
+              ],
+              coreNeeds: [
+                "Rapid access to accurate data about her office",
+                "Day-to-day decision-making tools on the go",
+                "Big picture strategic planning dashboards",
+                "Talent attraction and retention insights"
+              ],
+              goals: [
+                "Plan and manage annual budgets",
+                "Sponsor a colleague",
+                "Find knowledge or expertise",
+                "Provide feedback to a colleague"
+              ],
+              motivations: [
+                "Uphold Firm values and preserve our culture, even as we scale in size",
+                "Ensure her office can attract and retain the very best talent",
+                "Make better, more data-informed decisions without losing time",
+                "Communicate transparently with her office about what's happening at every level of the Firm"
+              ],
+              frustrations: [
+                "Information about her office is stored in too many places and delivered via too many reports and systems",
+                "Cadence of her work is often governed by Firm committee meetings",
+                "Attrition is high for our most critical roles, making engagements difficult to staff"
+              ]
             },
             {
               id: "fsp-ffl-2",
-              name: "Supportive Suman",
-              avatar: "https://randomuser.me/api/portraits/men/14.jpg",
-              role: "Firm Functions Leader (T&D)",
-              tenure: "10+ years",
-              description: "A supportive Training & Development leader who champions talent growth and organizational learning. Focuses on building capabilities across the firm.",
-              coreNeeds: ["Learning platforms", "Talent analytics", "Program management"],
-              motivations: ["Talent development", "Organizational capability", "Employee satisfaction"],
-              frustrations: ["Budget limitations", "Measuring ROI", "Content relevance"]
+              name: "Visionary Legend",
+              fullName: "Visionary Legend",
+              avatar: "visionary-legend.png",
+              role: "Developer Experience Leader",
+              tenure: "15–20 years",
+              office: "Global",
+              quote: "I am working in the firm from 15 yr. My vision is to have world class products and good working ethics for the developers. I think a best practice is important to set a valuable Firm wide standard in collaboration and brings immediate value (less risk and cost).",
+              description: "A seasoned leader aged 40–55 with 15–20 years of experience and 8–15 years at the Firm. A vision setter and advocate for standardisation, known for long-term thinking, deep knowledge, and a drive for transparency. Builds networks across teams and is impact-driven in every initiative.",
+              techProfile: {
+                techLiteracy: 80,
+                workingStyle: "Structured",
+                adaptabilityToChange: 35,
+                meetingPreference: "Hybrid"
+              },
+              location: {
+                clientSite: 10,
+                localOffice: 50,
+                remoteHomeOffice: 40
+              },
+              devices: ["Laptop", "Mobile"],
+              inclusiveDesignLenses: ["Vision setter", "Advocate for standardisation", "Long term thinking", "Beacon of knowledge", "Aims for transparency", "Network builder", "Impact driven"],
+              coreNeeds: [
+                "I do my work on time, then I need my holidays",
+                "I am up for challenges if my manager tells me",
+                "My family is my motivation to work",
+                "I have good friends here in the company — they share with me all things",
+                "I follow all firm rules and apply them diligently",
+                "I like to read some good coding articles but I don't like to share"
+              ],
+              goals: [
+                "Set valuable Firm-wide standards in collaboration",
+                "Bring immediate value with less risk and cost",
+                "Have world-class products and good working ethics for developers"
+              ],
+              motivations: [
+                "Building world-class products with strong developer ethics",
+                "Setting Firm-wide best practices and standards",
+                "Reducing risk and cost through collaboration",
+                "Preserving good working culture"
+              ],
+              frustrations: [
+                "Firm is ever changing — tools come and go, we learn something and then it gets decommissioned",
+                "I know every 2 years leadership will change — I am used to it now",
+                "I sometimes feel my manager doesn't appreciate me with my work"
+              ]
             },
             {
               id: "fsp-ffl-3",
-              name: "Legendary Luke",
-              avatar: "https://randomuser.me/api/portraits/men/55.jpg",
-              role: "Firm Functions Leader",
+              name: "Peter",
+              fullName: "Peter — People Leader",
+              avatar: "peter-people-leader.png",
+              role: "People Leader",
               tenure: "12+ years",
-              description: "An experienced firm functions leader known for operational excellence and building high-performing teams. Drives efficiency and quality across functional areas.",
-              coreNeeds: ["Operational metrics", "Team performance tools", "Process automation"],
-              motivations: ["Operational excellence", "Team empowerment", "Continuous improvement"],
-              frustrations: ["Legacy systems", "Manual processes", "Cross-functional dependencies"]
-            },
-            {
-              id: "fsp-ffl-4",
-              name: "Group Lead",
-              avatar: "https://randomuser.me/api/portraits/men/60.jpg",
-              role: "Firm Functions Group Leader",
-              tenure: "8+ years",
-              description: "A group leader overseeing multiple functional teams and ensuring alignment with firm-wide initiatives. Balances strategic priorities with day-to-day operations.",
-              coreNeeds: ["Portfolio management", "Resource allocation", "Stakeholder alignment"],
-              motivations: ["Team alignment", "Strategic execution", "Cross-functional impact"],
-              frustrations: ["Competing priorities", "Resource scarcity", "Communication gaps"]
-            },
-            {
-              id: "fsp-ffl-5",
-              name: "High-Tenure Helen",
-              avatar: "https://randomuser.me/api/portraits/women/52.jpg",
-              role: "Firm Functions Leader",
-              tenure: "20+ years",
-              description: "A deeply experienced leader with institutional knowledge spanning decades. Serves as a cultural anchor and mentor for newer team members.",
-              coreNeeds: ["Knowledge transfer tools", "Succession planning", "Mentorship programs"],
-              motivations: ["Legacy preservation", "Knowledge sharing", "Mentoring next generation"],
-              frustrations: ["Rapid change", "Technology gaps", "Loss of institutional memory"]
+              office: "Multiple Offices",
+              quote: "Technology enables me to develop and staff exceptional and diverse talent",
+              description: "As a Partner of the Firm, Peter spends most of his time cultivating client relationships and delivering meaningful impact for clients through engagements and solution delivery. His deep commitment to creating an unrivaled environment for exceptional people informs his approach to client work. He believes client engagements are as much an opportunity for sponsorship and professional development as they are for client impact, and works hard to make sure the colleagues he coaches, mentors, and sponsors receive the feedback and opportunities they need to grow. He actively embraces and celebrates the diversity of his DGLees' contributions and backgrounds and strives to provide nonhierarchical and inclusive coaching.",
+              techProfile: {
+                techLiteracy: 60,
+                workingStyle: "Structured",
+                adaptabilityToChange: 70,
+                meetingPreference: "In Person"
+              },
+              location: {
+                clientSite: 40,
+                localOffice: 35,
+                remoteHomeOffice: 25
+              },
+              devices: ["Laptop", "Mobile", "Tablet"],
+              inclusiveDesignLenses: ["Focused on impact", "Embraces diversity", "Caring coach", "Committed ally", "Catalyst leader", "Champion for Firm values"],
+              keyActivities: [
+                "Ensuring his engagements are staffed with the right combination of skillsets, backgrounds, and perspectives",
+                "Ensuring his DGLees, mentees, and sponsorees receive the feedback and opportunities they need to grow",
+                "Gathering feedback on and evaluating his DGLees",
+                "Connecting colleagues in his care with Firm resources as needed (Mind Matters, HR, Immigration)"
+              ],
+              coreNeeds: [
+                "Ramp up an engagement quickly with the right talent",
+                "Evaluate a colleague fairly and comprehensively",
+                "Sponsor a colleague effectively",
+                "Mentor a colleague with care and impact"
+              ],
+              goals: [
+                "Build a great Firm that attracts, develops, excites, and retains exceptional people",
+                "Ensure DGLees receive unbiased and meaningful mid- and year-end evaluations",
+                "Increase the Firm's impact by developing and staffing exceptional talent"
+              ],
+              motivations: [
+                "Building a great Firm that attracts, develops, excites, and retains exceptional people",
+                "Ensuring unbiased and meaningful evaluations for DGLees",
+                "Increasing the Firm's impact through developing and staffing exceptional talent"
+              ],
+              frustrations: [
+                "Information about staffing opportunities outside of his own network is hard to come by",
+                "He has at least one other full-time job, which means he can't always spend as much time on apprenticeship as he would like",
+                "Diverse engagement staffing isn't as emphasized as he would like"
+              ]
             }
           ]
         },
