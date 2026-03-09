@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Persona Library</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #94a3b8;
+      --border: #e2e8f0;
+      --border-light: #f1f5f9;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -4px rgba(0,0,0,0.04);
+      --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.08), 0 8px 10px -6px rgba(0,0,0,0.04);
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ========== HEADER ========== */
+    .header {
+      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4338ca 100%);
+      padding: 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(30, 27, 75, 0.3);
+    }
+
+    .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 40px;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .logo-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(255,255,255,0.15);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      backdrop-filter: blur(10px);
+    }
+
+    .logo-text h1 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-text p {
+      font-size: 12px;
+      color: rgba(255,255,255,0.6);
+      font-weight: 400;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .header-stats {
+      display: flex;
+      gap: 32px;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* ========== NAVIGATION BAR ========== */
+    .nav-bar {
+      background: rgba(0,0,0,0.15);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-bar-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-item {
+      position: relative;
+      padding: 12px 20px;
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.7);
+      cursor: pointer;
+      transition: var(--transition);
+      border-bottom: 2px solid transparent;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-item:hover, .nav-item.active {
+      color: #fff;
+      border-bottom-color: rgba(255,255,255,0.5);
+    }
+
+    .nav-item.active {
+      border-bottom-color: #818cf8;
+    }
+
+    .nav-item .badge {
+      background: rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.8);
+      font-size: 10px;
+      padding: 2px 7px;
+      border-radius: 100px;
+      font-weight: 600;
+    }
+
+    .nav-item .chevron {
+      font-size: 10px;
+      transition: transform var(--transition);
+    }
+
+    .nav-item.open .chevron {
+      transform: rotate(180deg);
+    }
+
+    /* ========== DROPDOWN ========== */
+    .dropdown-panel {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: var(--surface);
+      border-radius: 0 0 var(--radius-md) var(--radius-md);
+      box-shadow: var(--shadow-xl);
+      min-width: 260px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-4px);
+      transition: all var(--transition);
+      z-index: 200;
+      border: 1px solid var(--border);
+      border-top: none;
+      overflow: hidden;
+    }
+
+    .nav-item.open .dropdown-panel {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-header {
+      padding: 14px 18px 10px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-muted);
+      font-weight: 600;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .dropdown-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 18px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .dropdown-item:hover {
+      background: var(--border-light);
+      color: var(--text);
+    }
+
+    .dropdown-item.selected {
+      background: #eef2ff;
+      color: #4338ca;
+      font-weight: 500;
+    }
+
+    .dropdown-item .count {
+      font-size: 11px;
+      color: var(--text-muted);
+      background: var(--border-light);
+      padding: 2px 8px;
+      border-radius: 100px;
+      font-weight: 500;
+    }
+
+    .dropdown-item.selected .count {
+      background: #c7d2fe;
+      color: #4338ca;
+    }
+
+    /* ========== SEARCH BAR ========== */
+    .search-section {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 28px 40px 0;
+    }
+
+    .search-container {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .search-box {
+      flex: 1;
+      position: relative;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 14px 20px 14px 48px;
+      font-size: 14px;
+      font-family: inherit;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--surface);
+      color: var(--text);
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .search-box input:focus {
+      outline: none;
+      border-color: #818cf8;
+      box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.15);
+    }
+
+    .search-box input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .search-box .search-icon {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 16px;
+    }
+
+    .active-filters {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .filter-chip {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      background: #eef2ff;
+      color: #4338ca;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .filter-chip:hover {
+      background: #c7d2fe;
+    }
+
+    .filter-chip .remove {
+      font-size: 14px;
+      line-height: 1;
+      opacity: 0.6;
+    }
+
+    .filter-chip .remove:hover {
+      opacity: 1;
+    }
+
+    .clear-all {
+      padding: 8px 14px;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-family: inherit;
+      transition: var(--transition);
+    }
+
+    .clear-all:hover {
+      background: var(--border-light);
+      color: var(--text);
+    }
+
+    /* ========== BREADCRUMB ========== */
+    .breadcrumb-bar {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 16px 40px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .breadcrumb-bar span {
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .breadcrumb-bar span:hover {
+      color: var(--text);
+    }
+
+    .breadcrumb-bar .sep {
+      cursor: default;
+    }
+
+    .breadcrumb-bar .current {
+      color: var(--text);
+      font-weight: 500;
+      cursor: default;
+    }
+
+    .results-count {
+      margin-left: auto;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* ========== MAIN CONTENT ========== */
+    .main-content {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 24px 40px 60px;
+    }
+
+    /* ========== CATEGORY SECTION ========== */
+    .category-section {
+      margin-bottom: 48px;
+    }
+
+    .category-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .category-badge {
+      font-size: 16px;
+      font-weight: 800;
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      letter-spacing: 1px;
+    }
+
+    .category-info h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.3px;
+    }
+
+    .category-info p {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-top: 2px;
+    }
+
+    /* ========== GROUP SECTION ========== */
+    .group-section {
+      margin-bottom: 32px;
+    }
+
+    .group-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .group-header h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .group-header .group-count {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--border-light);
+      padding: 3px 10px;
+      border-radius: 100px;
+    }
+
+    .group-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ========== PERSONA CARDS ========== */
+    .personas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 16px;
+    }
+
+    .persona-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      transition: all var(--transition);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .persona-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      transition: var(--transition);
+    }
+
+    .persona-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-2px);
+      border-color: transparent;
+    }
+
+    .persona-card-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .persona-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      flex-shrink: 0;
+      overflow: hidden;
+      box-shadow: 0 0 0 2px rgba(0,0,0,0.06);
+    }
+
+    .persona-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .persona-meta {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .persona-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .persona-role {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    .persona-tenure {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      padding: 2px 8px;
+      border-radius: 100px;
+      margin-top: 6px;
+    }
+
+    .persona-description {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 16px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .persona-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .persona-tag {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 100px;
+      font-weight: 500;
+    }
+
+    /* ========== DETAIL PAGE ========== */
+    .detail-page {
+      display: none;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 24px 40px 60px;
+    }
+
+    .detail-page.visible {
+      display: block;
+    }
+
+    .detail-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-family: inherit;
+      transition: var(--transition);
+      margin-bottom: 24px;
+    }
+
+    .detail-back:hover {
+      background: var(--border-light);
+      color: var(--text);
+      border-color: var(--text-muted);
+    }
+
+    .detail-back .arrow { font-size: 16px; }
+
+    .detail-hero {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      padding: 28px 32px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      margin-bottom: 24px;
+    }
+
+    .detail-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 3px rgba(0,0,0,0.06);
+    }
+
+    .detail-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .detail-hero-info { flex: 1; min-width: 0; }
+
+    .detail-name {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.5px;
+    }
+
+    .detail-role {
+      font-size: 15px;
+      color: var(--text-secondary);
+      margin-top: 2px;
+    }
+
+    .detail-badges {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    .detail-badge {
+      font-size: 12px;
+      padding: 4px 14px;
+      border-radius: 100px;
+      font-weight: 500;
+    }
+
+    .detail-quote {
+      font-size: 15px;
+      font-style: italic;
+      color: var(--text);
+      padding: 14px 20px;
+      background: var(--border-light);
+      border-left: 3px solid #4338ca;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin-top: 16px;
+      line-height: 1.6;
+    }
+
+    .detail-description {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      margin-top: 14px;
+    }
+
+    .detail-columns {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .detail-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+    }
+
+    .detail-card-title {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--border-light);
+    }
+
+    .detail-list {
+      list-style: none;
+    }
+
+    .detail-list li {
+      padding: 7px 0;
+      font-size: 13px;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.5;
+    }
+
+    .detail-list li .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+
+    .detail-office-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      padding: 4px 14px;
+      border-radius: 100px;
+      background: #f1f5f9;
+      color: #475569;
+      font-weight: 500;
+    }
+
+    @media (max-width: 900px) {
+      .detail-columns { grid-template-columns: 1fr; }
+      .detail-hero { flex-direction: column; align-items: center; text-align: center; }
+      .detail-badges { justify-content: center; }
+      .detail-quote { text-align: left; }
+    }
+
+    @media (max-width: 768px) {
+      .detail-page { padding: 16px 20px 40px; }
+    }
+
+    /* ========== RICH PERSONA META ========== */
+    .meta-card {
+      background: var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 16px;
+    }
+
+    .meta-card-title {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .slider-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-size: 11px;
+      color: var(--text-secondary);
+    }
+
+    .slider-row:last-child { margin-bottom: 0; }
+
+    .slider-label {
+      flex-shrink: 0;
+      width: 80px;
+      font-weight: 500;
+      font-size: 11px;
+    }
+
+    .slider-track {
+      flex: 1;
+      height: 6px;
+      background: #e2e8f0;
+      border-radius: 3px;
+      margin: 0 8px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slider-fill {
+      height: 100%;
+      border-radius: 3px;
+      background: #4338ca;
+    }
+
+    .slider-end {
+      flex-shrink: 0;
+      width: 70px;
+      text-align: right;
+      font-size: 10px;
+      color: var(--text-muted);
+    }
+
+    .location-bars {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .location-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    .location-row .loc-label {
+      width: 100px;
+      flex-shrink: 0;
+      font-size: 11px;
+    }
+
+    .location-bar {
+      flex: 1;
+      height: 8px;
+      background: #e2e8f0;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .location-bar-fill {
+      height: 100%;
+      border-radius: 4px;
+    }
+
+    .location-row .loc-pct {
+      width: 36px;
+      text-align: right;
+      font-weight: 600;
+      font-size: 12px;
+      color: var(--text);
+    }
+
+    .device-chips, .lens-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .device-chip {
+      font-size: 11px;
+      padding: 5px 12px;
+      border-radius: 100px;
+      background: #e0e7ff;
+      color: #4338ca;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .lens-chip {
+      font-size: 11px;
+      padding: 5px 12px;
+      border-radius: 100px;
+      background: #fef3c7;
+      color: #92400e;
+      font-weight: 500;
+    }
+
+    .meta-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* ========== EMPTY STATE ========== */
+    .empty-state {
+      text-align: center;
+      padding: 80px 40px;
+    }
+
+    .empty-state .icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+
+    .empty-state h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .empty-state p {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 768px) {
+      .header-top { padding: 16px 20px; }
+      .header-stats { display: none; }
+      .nav-bar-inner { padding: 0 20px; overflow-x: auto; }
+      .search-section { padding: 20px 20px 0; }
+      .breadcrumb-bar { padding: 12px 20px 0; }
+      .main-content { padding: 20px 20px 40px; }
+      .personas-grid { grid-template-columns: 1fr; }
+      .detail-page { padding: 16px 20px 40px; }
+    }
+
+    /* ========== HIGHLIGHT ANIMATION ========== */
+    .highlight {
+      background: #fef08a;
+      border-radius: 2px;
+      padding: 0 2px;
+    }
+
+    /* ========== SCROLLBAR ========== */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-top">
+      <div class="logo-area">
+        <div class="logo-icon">&#x1F465;</div>
+        <div class="logo-text">
+          <h1>Persona Library</h1>
+          <p>Design &amp; Strategy</p>
+        </div>
+      </div>
+      <div class="header-stats" id="headerStats"></div>
+      <a href="index.html" style="color:#c7d2fe;text-decoration:none;font-size:13px;font-weight:500;padding:8px 16px;border:1px solid rgba(199,210,254,0.3);border-radius:100px;transition:all 200ms ease;white-space:nowrap;" onmouseover="this.style.background='rgba(199,210,254,0.1)';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#c7d2fe'">&larr; Back to Guide</a>
+    </div>
+
+    <nav class="nav-bar">
+      <div class="nav-bar-inner" id="navBar"></div>
+    </nav>
+  </header>
+
+  <!-- SEARCH -->
+  <section class="search-section">
+    <div class="search-container">
+      <div class="search-box">
+        <span class="search-icon">&#x1F50D;</span>
+        <input type="text" id="searchInput" placeholder="Search personas by name, role, description, or keywords..." />
+      </div>
+    </div>
+    <div class="active-filters" id="activeFilters"></div>
+  </section>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb-bar" id="breadcrumb"></div>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content" id="mainContent"></main>
+
+  <!-- DETAIL PAGE -->
+  <div class="detail-page" id="detailPage"></div>
+
+  <script src="data.js"></script>
+  <script>
+    // ===== STATE =====
+    let state = {
+      selectedCategory: null,
+      selectedGroup: null,
+      searchQuery: '',
+      openNav: null
+    };
+
+    // ===== HELPERS =====
+    function getInitials(name) {
+      return name.split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase();
+    }
+
+    function getAllPersonas() {
+      const result = [];
+      personaData.categories.forEach(cat => {
+        cat.groups.forEach(group => {
+          group.personas.forEach(persona => {
+            result.push({ ...persona, category: cat, group });
+          });
+        });
+      });
+      return result;
+    }
+
+    function getFilteredPersonas() {
+      let personas = getAllPersonas();
+
+      if (state.selectedCategory) {
+        personas = personas.filter(p => p.category.id === state.selectedCategory);
+      }
+      if (state.selectedGroup) {
+        personas = personas.filter(p => p.group.id === state.selectedGroup);
+      }
+      if (state.searchQuery) {
+        const q = state.searchQuery.toLowerCase();
+        personas = personas.filter(p =>
+          p.name.toLowerCase().includes(q) ||
+          p.role.toLowerCase().includes(q) ||
+          p.description.toLowerCase().includes(q) ||
+          p.coreNeeds.some(n => n.toLowerCase().includes(q)) ||
+          p.motivations.some(m => m.toLowerCase().includes(q)) ||
+          p.frustrations.some(f => f.toLowerCase().includes(q)) ||
+          p.category.name.toLowerCase().includes(q) ||
+          p.category.fullName.toLowerCase().includes(q) ||
+          p.group.name.toLowerCase().includes(q) ||
+          (p.goals && p.goals.some(g => g.toLowerCase().includes(q))) ||
+          (p.keyActivities && p.keyActivities.some(a => a.toLowerCase().includes(q))) ||
+          (p.quote && p.quote.toLowerCase().includes(q)) ||
+          (p.office && p.office.toLowerCase().includes(q))
+        );
+      }
+
+      return personas;
+    }
+
+    function getTotalPersonaCount() {
+      return getAllPersonas().length;
+    }
+
+    function getCategoryCount(catId) {
+      return getAllPersonas().filter(p => p.category.id === catId).length;
+    }
+
+    function getGroupCount(groupId) {
+      return getAllPersonas().filter(p => p.group.id === groupId).length;
+    }
+
+    // ===== RENDER HEADER STATS =====
+    function renderHeaderStats() {
+      const stats = document.getElementById('headerStats');
+      const totalPersonas = getTotalPersonaCount();
+      const totalCategories = personaData.categories.length;
+      const totalGroups = personaData.categories.reduce((sum, c) => sum + c.groups.length, 0);
+
+      stats.innerHTML = `
+        <div class="stat">
+          <div class="stat-value">${totalPersonas}</div>
+          <div class="stat-label">Personas</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">${totalCategories}</div>
+          <div class="stat-label">Categories</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">${totalGroups}</div>
+          <div class="stat-label">Groups</div>
+        </div>
+      `;
+    }
+
+    // ===== RENDER NAV =====
+    function renderNav() {
+      const nav = document.getElementById('navBar');
+
+      const allItem = `
+        <div class="nav-item ${!state.selectedCategory ? 'active' : ''}" data-action="show-all">
+          All
+          <span class="badge">${getTotalPersonaCount()}</span>
+        </div>
+      `;
+
+      const catItems = personaData.categories.map(cat => {
+        const isActive = state.selectedCategory === cat.id;
+        const isOpen = state.openNav === cat.id;
+        const groups = cat.groups.map(group => {
+          const isGroupSelected = state.selectedGroup === group.id;
+          return `
+            <div class="dropdown-item ${isGroupSelected ? 'selected' : ''}" data-action="select-group" data-group-id="${group.id}" data-cat-id="${cat.id}">
+              ${group.name}
+              <span class="count">${getGroupCount(group.id)}</span>
+            </div>
+          `;
+        }).join('');
+
+        return `
+          <div class="nav-item ${isActive ? 'active' : ''} ${isOpen ? 'open' : ''}" data-action="toggle-nav" data-cat-id="${cat.id}">
+            ${cat.name}
+            <span class="badge">${getCategoryCount(cat.id)}</span>
+            <span class="chevron">&#x25BC;</span>
+            <div class="dropdown-panel">
+              <div class="dropdown-header">${cat.fullName}</div>
+              <div class="dropdown-item ${isActive && !state.selectedGroup ? 'selected' : ''}" data-action="select-category" data-cat-id="${cat.id}">
+                All ${cat.name} Personas
+                <span class="count">${getCategoryCount(cat.id)}</span>
+              </div>
+              ${groups}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      nav.innerHTML = allItem + catItems;
+    }
+
+    // ===== RENDER FILTERS =====
+    function renderFilters() {
+      const container = document.getElementById('activeFilters');
+      const chips = [];
+
+      if (state.selectedCategory) {
+        const cat = personaData.categories.find(c => c.id === state.selectedCategory);
+        chips.push(`
+          <div class="filter-chip" data-action="remove-category">
+            ${cat.name}: ${cat.fullName}
+            <span class="remove">&times;</span>
+          </div>
+        `);
+      }
+
+      if (state.selectedGroup) {
+        let groupName = '';
+        personaData.categories.forEach(c => {
+          c.groups.forEach(g => {
+            if (g.id === state.selectedGroup) groupName = g.name;
+          });
+        });
+        chips.push(`
+          <div class="filter-chip" data-action="remove-group">
+            ${groupName}
+            <span class="remove">&times;</span>
+          </div>
+        `);
+      }
+
+      if (chips.length > 0) {
+        chips.push(`<button class="clear-all" data-action="clear-all">Clear all</button>`);
+      }
+
+      container.innerHTML = chips.join('');
+      container.style.marginTop = chips.length > 0 ? '12px' : '0';
+    }
+
+    // ===== RENDER BREADCRUMB =====
+    function renderBreadcrumb() {
+      const bar = document.getElementById('breadcrumb');
+      const filtered = getFilteredPersonas();
+      const parts = [`<span data-action="show-all">All Personas</span>`];
+
+      if (state.selectedCategory) {
+        const cat = personaData.categories.find(c => c.id === state.selectedCategory);
+        parts.push(`<span class="sep">&#x203A;</span>`);
+        parts.push(`<span data-action="select-category-bc" data-cat-id="${cat.id}">${cat.fullName}</span>`);
+      }
+
+      if (state.selectedGroup) {
+        let groupName = '';
+        personaData.categories.forEach(c => {
+          c.groups.forEach(g => {
+            if (g.id === state.selectedGroup) groupName = g.name;
+          });
+        });
+        parts.push(`<span class="sep">&#x203A;</span>`);
+        parts.push(`<span class="current">${groupName}</span>`);
+      }
+
+      parts.push(`<span class="results-count">${filtered.length} persona${filtered.length !== 1 ? 's' : ''}</span>`);
+
+      bar.innerHTML = parts.join('');
+    }
+
+    // ===== RENDER CONTENT =====
+    function renderContent() {
+      const main = document.getElementById('mainContent');
+      const filtered = getFilteredPersonas();
+
+      if (filtered.length === 0) {
+        main.innerHTML = `
+          <div class="empty-state">
+            <div class="icon">&#x1F50E;</div>
+            <h3>No personas found</h3>
+            <p>Try adjusting your search or filters to find what you're looking for.</p>
+          </div>
+        `;
+        return;
+      }
+
+      const grouped = {};
+      filtered.forEach(p => {
+        const catKey = p.category.id;
+        const groupKey = p.group.id;
+        if (!grouped[catKey]) grouped[catKey] = { category: p.category, groups: {} };
+        if (!grouped[catKey].groups[groupKey]) grouped[catKey].groups[groupKey] = { group: p.group, personas: [] };
+        grouped[catKey].groups[groupKey].personas.push(p);
+      });
+
+      let html = '';
+
+      Object.values(grouped).forEach(catData => {
+        const cat = catData.category;
+        html += `
+          <section class="category-section">
+            <div class="category-header">
+              <div class="category-badge" style="background:${cat.color}">${cat.name}</div>
+              <div class="category-info">
+                <h2>${cat.fullName}</h2>
+                <p>${cat.description}</p>
+              </div>
+            </div>
+        `;
+
+        Object.values(catData.groups).forEach(groupData => {
+          const group = groupData.group;
+          html += `
+            <div class="group-section">
+              <div class="group-header">
+                <div class="group-dot" style="background:${cat.color}"></div>
+                <h3>${group.name}</h3>
+                <span class="group-count">${groupData.personas.length}</span>
+              </div>
+              <div class="personas-grid">
+          `;
+
+          groupData.personas.forEach(persona => {
+            const avatarUrl = persona.avatar || `https://api.dicebear.com/9.x/initials/svg?seed=${encodeURIComponent(persona.name)}`;
+            const needsTags = persona.coreNeeds.slice(0, 3).map(n =>
+              `<span class="persona-tag" style="background:${cat.colorLight};color:${cat.color}">${highlightText(n)}</span>`
+            ).join('');
+
+            html += `
+              <div class="persona-card" data-action="open-persona" data-persona-id="${persona.id}" style="--card-color:${cat.color}">
+                <div style="position:absolute;top:0;left:0;right:0;height:3px;background:${cat.color}"></div>
+                <div class="persona-card-header">
+                  <div class="persona-avatar"><img src="${avatarUrl}" alt="${persona.name}" loading="lazy" /></div>
+                  <div class="persona-meta">
+                    <div class="persona-name">${highlightText(persona.name)}</div>
+                    <div class="persona-role">${highlightText(persona.role)}</div>
+                    <span class="persona-tenure" style="background:${cat.colorLight};color:${cat.color}">${persona.tenure}</span>
+                  </div>
+                </div>
+                <div class="persona-description">${highlightText(persona.description)}</div>
+                <div class="persona-tags">${needsTags}</div>
+              </div>
+            `;
+          });
+
+          html += `</div></div>`;
+        });
+
+        html += `</section>`;
+      });
+
+      main.innerHTML = html;
+    }
+
+    function highlightText(text) {
+      if (!state.searchQuery) return text;
+      const q = state.searchQuery.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const regex = new RegExp(`(${q})`, 'gi');
+      return text.replace(regex, '<span class="highlight">$1</span>');
+    }
+
+    // ===== DETAIL PAGE =====
+    function renderSlider(value, labelLeft, labelRight) {
+      return `
+        <div class="slider-row">
+          <span class="slider-label">${labelLeft}</span>
+          <div class="slider-track"><div class="slider-fill" style="width:${value}%"></div></div>
+          <span class="slider-end">${labelRight}</span>
+        </div>`;
+    }
+
+    function renderDetailPage(personaId) {
+      const allPersonas = getAllPersonas();
+      const persona = allPersonas.find(p => p.id === personaId);
+      if (!persona) return;
+
+      const cat = persona.category;
+      const avatarUrl = persona.avatar || `https://api.dicebear.com/9.x/initials/svg?seed=${encodeURIComponent(persona.name)}`;
+
+      let quoteHtml = '';
+      if (persona.quote) {
+        quoteHtml = `<div class="detail-quote">&ldquo;${persona.quote}&rdquo;</div>`;
+      }
+
+      let officeBadge = '';
+      if (persona.office) {
+        officeBadge = `<span class="detail-office-badge">&#x1F4CD; ${persona.office}</span>`;
+      }
+
+      let descriptionHtml = '';
+      if (persona.description) {
+        descriptionHtml = `<div class="detail-description">${persona.description}</div>`;
+      }
+
+      const columns = [];
+
+      // Column: Profile + Devices (if rich data)
+      if (persona.techProfile || persona.devices) {
+        let profileCol = '<div class="meta-stack">';
+        if (persona.techProfile) {
+          const tp = persona.techProfile;
+          profileCol += `
+            <div class="meta-card">
+              <div class="meta-card-title">Profile</div>
+              ${renderSlider(tp.techLiteracy, 'Tech Literacy', tp.techLiteracy > 50 ? 'High' : 'Low')}
+              ${renderSlider(tp.workingStyle === 'Structured' ? 20 : 80, 'Structured', 'Spontaneous')}
+              ${renderSlider(tp.adaptabilityToChange, 'Adaptability', tp.adaptabilityToChange > 50 ? 'High' : 'Low')}
+              ${renderSlider(tp.meetingPreference === 'In Person' ? 90 : tp.meetingPreference === 'Hybrid' ? 50 : 10, 'Remote', 'In Person')}
+            </div>`;
+        }
+        if (persona.devices) {
+          const icons = { Laptop: '&#x1F4BB;', Mobile: '&#x1F4F1;', Tablet: '&#x1F4F2;' };
+          profileCol += `
+            <div class="meta-card">
+              <div class="meta-card-title">Devices &amp; Tools</div>
+              <div class="device-chips">
+                ${persona.devices.map(d => `<span class="device-chip">${icons[d] || '&#x1F5A5;'} ${d}</span>`).join('')}
+              </div>
+            </div>`;
+        }
+        profileCol += '</div>';
+        columns.push(`<div class="detail-card">${profileCol}</div>`);
+      }
+
+      // Column: Location + Inclusive Design Lenses
+      if (persona.location || persona.inclusiveDesignLenses) {
+        let contextCol = '<div class="meta-stack">';
+        if (persona.location) {
+          const loc = persona.location;
+          contextCol += `
+            <div class="meta-card">
+              <div class="meta-card-title">Location Split</div>
+              <div class="location-bars">
+                <div class="location-row">
+                  <span class="loc-label">Client site</span>
+                  <div class="location-bar"><div class="location-bar-fill" style="width:${loc.clientSite}%;background:#4338ca"></div></div>
+                  <span class="loc-pct">${loc.clientSite}%</span>
+                </div>
+                <div class="location-row">
+                  <span class="loc-label">Local office</span>
+                  <div class="location-bar"><div class="location-bar-fill" style="width:${loc.localOffice}%;background:#0891b2"></div></div>
+                  <span class="loc-pct">${loc.localOffice}%</span>
+                </div>
+                <div class="location-row">
+                  <span class="loc-label">Remote / Home</span>
+                  <div class="location-bar"><div class="location-bar-fill" style="width:${loc.remoteHomeOffice}%;background:#059669"></div></div>
+                  <span class="loc-pct">${loc.remoteHomeOffice}%</span>
+                </div>
+              </div>
+            </div>`;
+        }
+        if (persona.inclusiveDesignLenses) {
+          contextCol += `
+            <div class="meta-card">
+              <div class="meta-card-title">Inclusive Design Lenses</div>
+              <div class="lens-chips">
+                ${persona.inclusiveDesignLenses.map(l => `<span class="lens-chip">${l}</span>`).join('')}
+              </div>
+            </div>`;
+        }
+        contextCol += '</div>';
+        columns.push(`<div class="detail-card">${contextCol}</div>`);
+      }
+
+      // Column: Core Needs
+      if (persona.coreNeeds && persona.coreNeeds.length > 0) {
+        columns.push(`
+          <div class="detail-card">
+            <div class="detail-card-title">Core Needs</div>
+            <ul class="detail-list">
+              ${persona.coreNeeds.map(n => `<li><span class="dot" style="background:#4338ca"></span>${n}</li>`).join('')}
+            </ul>
+          </div>`);
+      }
+
+      // Column: Goals
+      if (persona.goals && persona.goals.length > 0) {
+        columns.push(`
+          <div class="detail-card">
+            <div class="detail-card-title">Goals</div>
+            <ul class="detail-list">
+              ${persona.goals.map(g => `<li><span class="dot" style="background:#6366f1"></span>${g}</li>`).join('')}
+            </ul>
+          </div>`);
+      }
+
+      // Column: Key Activities
+      if (persona.keyActivities && persona.keyActivities.length > 0) {
+        columns.push(`
+          <div class="detail-card">
+            <div class="detail-card-title">Key Activities</div>
+            <ul class="detail-list">
+              ${persona.keyActivities.map(a => `<li><span class="dot" style="background:#0891b2"></span>${a}</li>`).join('')}
+            </ul>
+          </div>`);
+      }
+
+      // Column: Motivations
+      if (persona.motivations && persona.motivations.length > 0) {
+        columns.push(`
+          <div class="detail-card">
+            <div class="detail-card-title">Motivations</div>
+            <ul class="detail-list">
+              ${persona.motivations.map(m => `<li><span class="dot" style="background:#059669"></span>${m}</li>`).join('')}
+            </ul>
+          </div>`);
+      }
+
+      // Column: Frustrations
+      if (persona.frustrations && persona.frustrations.length > 0) {
+        columns.push(`
+          <div class="detail-card">
+            <div class="detail-card-title">Frustrations</div>
+            <ul class="detail-list">
+              ${persona.frustrations.map(f => `<li><span class="dot" style="background:#dc2626"></span>${f}</li>`).join('')}
+            </ul>
+          </div>`);
+      }
+
+      const detailPage = document.getElementById('detailPage');
+      detailPage.innerHTML = `
+        <button class="detail-back" data-action="close-detail">
+          <span class="arrow">&larr;</span> Back to Personas
+        </button>
+        <div class="detail-hero">
+          <div class="detail-avatar"><img src="${avatarUrl}" alt="${persona.name}" /></div>
+          <div class="detail-hero-info">
+            <div class="detail-name">${persona.name}</div>
+            <div class="detail-role">${persona.role}</div>
+            <div class="detail-badges">
+              <span class="detail-badge" style="background:${cat.colorLight};color:${cat.color}">${cat.name}</span>
+              <span class="detail-badge" style="background:${cat.colorLight};color:${cat.color}">${persona.group.name}</span>
+              <span class="detail-badge" style="background:#f1f5f9;color:#475569">${persona.tenure}</span>
+              ${officeBadge}
+            </div>
+            ${quoteHtml}
+            ${descriptionHtml}
+          </div>
+        </div>
+        <div class="detail-columns">
+          ${columns.join('')}
+        </div>
+      `;
+
+      document.querySelector('.search-section').style.display = 'none';
+      document.getElementById('breadcrumb').style.display = 'none';
+      document.getElementById('mainContent').style.display = 'none';
+      detailPage.classList.add('visible');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function closeDetail() {
+      document.getElementById('detailPage').classList.remove('visible');
+      document.querySelector('.search-section').style.display = '';
+      document.getElementById('breadcrumb').style.display = '';
+      document.getElementById('mainContent').style.display = '';
+    }
+
+    // ===== RENDER ALL =====
+    function render() {
+      renderHeaderStats();
+      renderNav();
+      renderFilters();
+      renderBreadcrumb();
+      renderContent();
+    }
+
+    // ===== EVENT HANDLERS =====
+    document.addEventListener('click', (e) => {
+      const target = e.target.closest('[data-action]');
+      if (!target) {
+        if (!e.target.closest('.nav-item')) {
+          state.openNav = null;
+          renderNav();
+        }
+        return;
+      }
+
+      const action = target.dataset.action;
+
+      switch (action) {
+        case 'show-all':
+          state.selectedCategory = null;
+          state.selectedGroup = null;
+          state.openNav = null;
+          render();
+          break;
+
+        case 'toggle-nav':
+          e.stopPropagation();
+          const catId = target.dataset.catId;
+          state.openNav = state.openNav === catId ? null : catId;
+          renderNav();
+          break;
+
+        case 'select-category':
+          e.stopPropagation();
+          state.selectedCategory = target.dataset.catId;
+          state.selectedGroup = null;
+          state.openNav = null;
+          render();
+          break;
+
+        case 'select-group':
+          e.stopPropagation();
+          state.selectedCategory = target.dataset.catId;
+          state.selectedGroup = target.dataset.groupId;
+          state.openNav = null;
+          render();
+          break;
+
+        case 'select-category-bc':
+          state.selectedCategory = target.dataset.catId;
+          state.selectedGroup = null;
+          render();
+          break;
+
+        case 'remove-category':
+          state.selectedCategory = null;
+          state.selectedGroup = null;
+          render();
+          break;
+
+        case 'remove-group':
+          state.selectedGroup = null;
+          render();
+          break;
+
+        case 'clear-all':
+          state.selectedCategory = null;
+          state.selectedGroup = null;
+          state.searchQuery = '';
+          document.getElementById('searchInput').value = '';
+          render();
+          break;
+
+        case 'open-persona':
+          renderDetailPage(target.dataset.personaId);
+          break;
+
+        case 'close-detail':
+          closeDetail();
+          break;
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeDetail();
+    });
+
+    let searchTimeout;
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        state.searchQuery = e.target.value.trim();
+        renderBreadcrumb();
+        renderContent();
+      }, 200);
+    });
+
+    // ===== INIT =====
+    render();
+  </script>
+</body>
+</html>
