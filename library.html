@@ -876,6 +876,206 @@
       gap: 12px;
     }
 
+    /* ========== DATA PERSONA DETAIL ========== */
+    .dp-detail {
+      max-width: 1100px;
+      margin: 0 auto;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      background: #fff;
+      border: 1px solid var(--border);
+    }
+
+    .dp-header {
+      display: flex;
+      align-items: flex-end;
+      gap: 0;
+      min-height: 140px;
+    }
+
+    .dp-header-photo {
+      width: 260px;
+      min-height: 180px;
+      flex-shrink: 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .dp-header-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      position: absolute;
+      inset: 0;
+    }
+
+    .dp-header-info {
+      flex: 1;
+      padding: 28px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .dp-header-name {
+      font-size: 36px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.5px;
+    }
+
+    .dp-header-role {
+      font-size: 15px;
+      color: rgba(255,255,255,0.85);
+      margin-top: 4px;
+    }
+
+    .dp-header-badge {
+      padding: 8px 28px;
+      background: #fff;
+      border-radius: var(--radius-sm);
+      font-size: 16px;
+      font-weight: 700;
+      color: #333;
+      flex-shrink: 0;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .dp-body {
+      display: flex;
+      min-height: 400px;
+    }
+
+    .dp-sidebar {
+      width: 260px;
+      flex-shrink: 0;
+      background: #f0f4f8;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .dp-slider-group {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .dp-slider-item {}
+
+    .dp-slider-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #333;
+      margin-bottom: 8px;
+    }
+
+    .dp-slider-track {
+      width: 100%;
+      height: 4px;
+      background: #cdd5de;
+      border-radius: 2px;
+      position: relative;
+      margin-bottom: 6px;
+    }
+
+    .dp-slider-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #2196F3;
+      border: 2px solid #fff;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .dp-slider-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      color: #78909c;
+      font-weight: 500;
+    }
+
+    .dp-main {
+      flex: 1;
+      padding: 32px 36px;
+    }
+
+    .dp-section {
+      margin-bottom: 28px;
+    }
+
+    .dp-section:last-child { margin-bottom: 0; }
+
+    .dp-section-title {
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #333;
+      margin-bottom: 4px;
+    }
+
+    .dp-section-divider {
+      height: 3px;
+      border-radius: 2px;
+      margin-bottom: 14px;
+    }
+
+    .dp-profile-text {
+      font-size: 14px;
+      line-height: 1.8;
+      color: #455a64;
+    }
+
+    .dp-profile-text strong {
+      color: #263238;
+    }
+
+    .dp-list {
+      list-style: none;
+    }
+
+    .dp-list li {
+      padding: 5px 0;
+      font-size: 14px;
+      color: #455a64;
+      line-height: 1.7;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .dp-list li::before {
+      content: '•';
+      color: #90a4ae;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 0;
+    }
+
+    .dp-list li strong {
+      color: #263238;
+    }
+
+    @media (max-width: 900px) {
+      .dp-header { flex-direction: column; }
+      .dp-header-photo { width: 100%; min-height: 200px; }
+      .dp-body { flex-direction: column; }
+      .dp-sidebar { width: 100%; flex-direction: row; flex-wrap: wrap; }
+      .dp-slider-group { flex-direction: row; flex-wrap: wrap; gap: 16px; width: 100%; }
+      .dp-slider-item { flex: 1; min-width: 200px; }
+    }
+
     /* ========== EMPTY STATE ========== */
     .empty-state {
       text-align: center;
@@ -1224,7 +1424,7 @@
           groupData.personas.forEach(persona => {
             const avatarUrl = persona.avatar || `https://api.dicebear.com/9.x/initials/svg?seed=${encodeURIComponent(persona.name)}`;
             const needsTags = persona.coreNeeds.slice(0, 3).map(n =>
-              `<span class="persona-tag" style="background:${cat.colorLight};color:${cat.color}">${highlightText(n)}</span>`
+              `<span class="persona-tag" style="background:${cat.colorLight};color:${cat.color}">${highlightText(n.replace(/\*\*/g, ''))}</span>`
             ).join('');
 
             html += `
@@ -1270,10 +1470,95 @@
         </div>`;
     }
 
+    function parseBold(text) {
+      return text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    }
+
+    function renderDpSlider(value, label) {
+      return `
+        <div class="dp-slider-item">
+          <div class="dp-slider-label">${label}</div>
+          <div class="dp-slider-track"><div class="dp-slider-dot" style="left:${value}%"></div></div>
+          <div class="dp-slider-labels"><span>Low</span><span>High</span></div>
+        </div>`;
+    }
+
+    function renderDataPersonaDetail(persona) {
+      const avatarUrl = persona.avatar || `https://api.dicebear.com/9.x/initials/svg?seed=${encodeURIComponent(persona.name)}`;
+      const tagColor = persona.categoryTagColor || '#0277bd';
+      const tag = persona.categoryTag || 'Data';
+      const dp = persona.dataProfile;
+      const dividerColor = tagColor;
+
+      const detailPage = document.getElementById('detailPage');
+      detailPage.innerHTML = `
+        <button class="detail-back" data-action="close-detail">
+          <span class="arrow">&larr;</span> Back to Personas
+        </button>
+        <div class="dp-detail">
+          <div class="dp-header" style="background:${tagColor}">
+            <div class="dp-header-photo"><img src="${avatarUrl}" alt="${persona.name}" /></div>
+            <div class="dp-header-info">
+              <div>
+                <div class="dp-header-name">${persona.name}</div>
+                <div class="dp-header-role">${persona.role} | ${persona.office || ''}</div>
+              </div>
+              <div class="dp-header-badge">${tag}</div>
+            </div>
+          </div>
+          <div class="dp-body">
+            <div class="dp-sidebar">
+              <div class="dp-slider-group">
+                ${dp ? renderDpSlider(dp.dataLiteracy, 'Data Literacy') : ''}
+                ${dp ? renderDpSlider(dp.engagementCDB, 'Level of Engagement with CDB') : ''}
+                ${dp ? renderDpSlider(dp.riskAccountability, 'Risk Accountability') : ''}
+              </div>
+            </div>
+            <div class="dp-main">
+              <div class="dp-section">
+                <div class="dp-section-title">Profile</div>
+                <div class="dp-section-divider" style="background:${dividerColor}"></div>
+                <div class="dp-profile-text">${parseBold(persona.description || '')}</div>
+              </div>
+
+              ${persona.coreNeeds && persona.coreNeeds.length > 0 ? `
+              <div class="dp-section">
+                <div class="dp-section-title">Goals and Needs</div>
+                <div class="dp-section-divider" style="background:${dividerColor}"></div>
+                <ul class="dp-list">
+                  ${persona.coreNeeds.map(n => `<li>${parseBold(n)}</li>`).join('')}
+                </ul>
+              </div>` : ''}
+
+              ${persona.frustrations && persona.frustrations.length > 0 ? `
+              <div class="dp-section">
+                <div class="dp-section-title">Pain Points</div>
+                <div class="dp-section-divider" style="background:${dividerColor}"></div>
+                <ul class="dp-list">
+                  ${persona.frustrations.map(f => `<li>${parseBold(f)}</li>`).join('')}
+                </ul>
+              </div>` : ''}
+            </div>
+          </div>
+        </div>
+      `;
+
+      document.querySelector('.search-section').style.display = 'none';
+      document.getElementById('breadcrumb').style.display = 'none';
+      document.getElementById('mainContent').style.display = 'none';
+      detailPage.classList.add('visible');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
     function renderDetailPage(personaId) {
       const allPersonas = getAllPersonas();
       const persona = allPersonas.find(p => p.id === personaId);
       if (!persona) return;
+
+      if (persona.dataProfile) {
+        renderDataPersonaDetail(persona);
+        return;
+      }
 
       const cat = persona.category;
       const avatarUrl = persona.avatar || `https://api.dicebear.com/9.x/initials/svg?seed=${encodeURIComponent(persona.name)}`;
@@ -1295,7 +1580,6 @@
 
       const columns = [];
 
-      // Column: Profile + Devices (if rich data)
       if (persona.techProfile || persona.devices) {
         let profileCol = '<div class="meta-stack">';
         if (persona.techProfile) {
@@ -1323,7 +1607,6 @@
         columns.push(`<div class="detail-card">${profileCol}</div>`);
       }
 
-      // Column: Location + Inclusive Design Lenses
       if (persona.location || persona.inclusiveDesignLenses) {
         let contextCol = '<div class="meta-stack">';
         if (persona.location) {
@@ -1363,7 +1646,6 @@
         columns.push(`<div class="detail-card">${contextCol}</div>`);
       }
 
-      // Column: Core Needs
       if (persona.coreNeeds && persona.coreNeeds.length > 0) {
         columns.push(`
           <div class="detail-card">
@@ -1374,7 +1656,6 @@
           </div>`);
       }
 
-      // Column: Goals
       if (persona.goals && persona.goals.length > 0) {
         columns.push(`
           <div class="detail-card">
@@ -1385,7 +1666,6 @@
           </div>`);
       }
 
-      // Column: Key Activities
       if (persona.keyActivities && persona.keyActivities.length > 0) {
         columns.push(`
           <div class="detail-card">
@@ -1396,7 +1676,6 @@
           </div>`);
       }
 
-      // Column: Motivations
       if (persona.motivations && persona.motivations.length > 0) {
         columns.push(`
           <div class="detail-card">
@@ -1407,7 +1686,6 @@
           </div>`);
       }
 
-      // Column: Frustrations
       if (persona.frustrations && persona.frustrations.length > 0) {
         columns.push(`
           <div class="detail-card">

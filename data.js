@@ -904,5 +904,201 @@ const personaData = {
         }
       ]
     }
+    ,
+    {
+      id: "data",
+      name: "Data Persona",
+      fullName: "Data Personas",
+      color: "#0277bd",
+      colorLight: "#e1f5fe",
+      description: "Personas representing data practitioners and stakeholders across the firm — product managers, data engineers, data scientists, tech leads, and software engineers who work with data daily.",
+      groups: [
+        {
+          id: "data-td",
+          name: "T&D (Technology & Development)",
+          personas: [
+            {
+              id: "data-td-1",
+              name: "Sarah",
+              fullName: "Sarah — Product Manager",
+              avatar: "sarah-product-manager.png",
+              role: "Product Manager",
+              office: "New York 711",
+              tenure: "10+ years",
+              categoryTag: "T&D",
+              categoryTagColor: "#0277bd",
+              description: "I've been with the Firm for over 10 years. I joined the firm as a software engineer right after graduate school and is now the product manager that supports the firm's staffing needs. As part of the nature of my work, I often find myself making decisions on allocating resources to ensure we are on track of product roadmap while contributing to firm-wide initiatives. Sometimes with some specific tasks, I wish I have more support or resources I could use to help me better manage my team's work.",
+              dataProfile: {
+                dataLiteracy: 85,
+                engagementCDB: 55,
+                riskAccountability: 45
+              },
+              coreNeeds: [
+                "**Need to understand the quality of our data and how that can help prioritize work and make product decisions**",
+                "Being able to fix issues quickly",
+                "Identify product requirements and prioritize requirements"
+              ],
+              motivations: ["Data-driven product decisions", "Team resource optimization", "Firm-wide initiative alignment"],
+              frustrations: [
+                "**Not able to identify potential risks timely due to inadequate reports**",
+                "Resource and capability management, may not have the right person on the team to work on this — i.e. don't have the right talent available on team to work on data governance",
+                "No immediate output or reports available because coding and set up time is required",
+                "Lack of understanding of business functions",
+                "Lack of full understanding of data and therefore leads to issues"
+              ]
+            },
+            {
+              id: "data-td-2",
+              name: "Raina",
+              fullName: "Raina — Tech Lead",
+              avatar: "raina-tech-lead.png",
+              role: "Tech Lead",
+              office: "Waltham Office",
+              tenure: "8 years",
+              categoryTag: "T&D",
+              categoryTagColor: "#0277bd",
+              description: "I started at the Firm's Waltham office 8 years ago as a Technical Architect for Optimize team. Since I became the Tech Lead of my team, I took up more responsibilities at overseeing the team's work and collaborating with my business partners and other team leads to make sure my plan is agreed upon and executed properly. The next goal in my career is to be the Head of Engineers and overseeing multiple teams. I'm excited to take up more management skills and operate at a higher level to see bigger picture.",
+              dataProfile: {
+                dataLiteracy: 60,
+                engagementCDB: 50,
+                riskAccountability: 45
+              },
+              coreNeeds: [
+                "**Ensure the team has a clear direction for development**",
+                "Provide a smooth onboarding experience for CDB users",
+                "Get regular updates and review data reports",
+                "Provide solutions to achieving product requirements"
+              ],
+              motivations: ["Team leadership", "Technical excellence", "Career growth to Head of Engineers"],
+              frustrations: [
+                "Not getting insights to keep a pulse on data needs",
+                "**Stretched thin and constantly solving impediments and setting technical direction**",
+                "Lack of dedicated data engineer limits the bandwidth to support on additional data needs",
+                "I do not always know what firm data is available for me to use and how reliable it currently is"
+              ]
+            },
+            {
+              id: "data-td-3",
+              name: "Rahul",
+              fullName: "Rahul — Software Engineer",
+              avatar: "rahul-software-engineer.png",
+              role: "Software Engineer / Full-stack Developer",
+              office: "Gurgaon",
+              tenure: "4 years",
+              categoryTag: "T&D",
+              categoryTagColor: "#0277bd",
+              description: "I've been at the firm for about 4 years now, and primarily working on Drupal apps. I got into technology because I enjoy solving problems and creating solutions that make people's job easier. In recent years Cloud Migration has gained a lot of attention in enterprises big and small, so I started a learning journey to get AWS certification recently and my goal is to become an expert in cloud migration.",
+              dataProfile: {
+                dataLiteracy: 70,
+                engagementCDB: 65,
+                riskAccountability: 30
+              },
+              coreNeeds: [
+                "**Build features for the products as planned and prioritized by the team while collaborating with other team members**",
+                "Data quality is important to me, I need to have access to comprehensive and accurate data",
+                "Need to understand how the data is consumed internally in the application"
+              ],
+              motivations: ["Problem solving", "Cloud migration expertise", "AWS certification"],
+              frustrations: [
+                "**Have to stay up-to-date with latest technological developments while continuously delivering**",
+                "Do not always have the broader picture of what we are trying to solve for",
+                "Data engineer sometimes missing in the teams but more teams adding now eg. Engage",
+                "**My team does not have a full-time Data Engineer so sometimes I have to support that role, although often times I don't have the capacity or capability to provide full support**"
+              ]
+            },
+            {
+              id: "data-td-4",
+              name: "Amir",
+              fullName: "Amir — Data Engineer",
+              avatar: "amir-data-engineer.png",
+              role: "Data Engineer",
+              office: "New York 711",
+              tenure: "3 years",
+              categoryTag: "T&D",
+              categoryTagColor: "#0277bd",
+              description: "I've been with McKinsey for the last three years, primarily working with the recruitment team to support data needs. A lot of my work is about cleaning up and running data quality checks over unstructured data from different offices globally, and making sure the data meet the firm's compliance standards. I have learned a lot while supporting such a global effort, and want to broaden my expertise by supporting other product teams and become a Tech Lead in the data engineering space.",
+              dataProfile: {
+                dataLiteracy: 80,
+                engagementCDB: 55,
+                riskAccountability: 30
+              },
+              coreNeeds: [
+                "**Accelerate data management work efficiently and repeatably**",
+                "Ensure the process of handling data and the outcome are in compliance with firm requirements",
+                "Ability to fix issues quickly"
+              ],
+              motivations: ["Career growth to Tech Lead", "Data quality excellence", "Global data compliance"],
+              frustrations: [
+                "**Not sure how to select the best tool available within the firm to use for data needs — i.e. handle large-size dataset and apply various data quality check rules**",
+                "**Not sure how to handle confidential data sensitively and adhere to secure guidelines**",
+                "Challenging to identify and clean data issues especially for the ones not generating in our systems — unable to trace the source of the issue to fix it in the right place",
+                "No easy way to find the data stewards associated for each firm-wide system"
+              ]
+            }
+          ]
+        },
+        {
+          id: "data-csp",
+          name: "CSP (Client-Serving Professionals)",
+          personas: [
+            {
+              id: "data-csp-1",
+              name: "Joseph",
+              fullName: "Joseph — Data Engineer",
+              avatar: "joseph-data-engineer.png",
+              role: "Data Engineer",
+              office: "New York Office",
+              tenure: "5 years",
+              categoryTag: "CSP",
+              categoryTagColor: "#2e7d32",
+              description: "I've been with McKinsey for 5 years. I started out as a software engineer at a tech startup before moving into consulting, and am now an Expert at the firm. I have primarily worked with clients in the GEM sector, and I really enjoy working with data and analytics, drawing insights and setting up data pipelines that are sustainable. Throughout the years I have built really good relationships with our clients and I aspire to be a Partner one day be more engaged in managing client relationships.",
+              dataProfile: {
+                dataLiteracy: 90,
+                engagementCDB: 75,
+                riskAccountability: 35
+              },
+              coreNeeds: [
+                "Help client set up the pipeline and run data quality check",
+                "**Ensure the completeness and the comprehensiveness of data**"
+              ],
+              motivations: ["Client relationship building", "Data pipeline sustainability", "Career growth to Partner"],
+              frustrations: [
+                "**Need to build standardize Data Quality check on every client engagement from scratch**",
+                "No best-in-class industry tool to use",
+                "Sometimes license constraints come into play when choosing platforms",
+                "In some cases, coding from scratch might be required for every dataset"
+              ]
+            },
+            {
+              id: "data-csp-2",
+              name: "Vicky",
+              fullName: "Vicky — Data Scientist",
+              avatar: "vicky-data-scientist.png",
+              role: "Data Scientist",
+              office: "Seattle Office",
+              tenure: "3 years",
+              categoryTag: "CSP",
+              categoryTagColor: "#2e7d32",
+              description: "I have been with the firm for three years and served a lot of clients in the M&S sector. Most of my work involves building data science models to extract patterns and insights. I am truly passionate about the potential of data science and love seeing the impact of our team's work on client's business. I am planning to get a Ph.D degree in the data science field and join the Quantum Black team to do more advanced analytics work.",
+              dataProfile: {
+                dataLiteracy: 75,
+                engagementCDB: 50,
+                riskAccountability: 25
+              },
+              coreNeeds: [
+                "Explore and clean data to generate insight and build analytic models",
+                "**Deep-dive into certain sections of data to dig up insights**"
+              ],
+              motivations: ["Data science passion", "Client impact", "Ph.D and Quantum Black aspiration"],
+              frustrations: [
+                "**Worried about 'Garbage in garbage out'**",
+                "CST team waiting for answers from day 1 without appropriate time for set-up and data clean-up",
+                "No standard process or tool to check data quality and usability"
+              ]
+            }
+          ]
+        }
+      ]
+    }
   ]
 };
