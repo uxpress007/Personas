@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Journey Maps — Persona Library</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #94a3b8;
+      --border: #e2e8f0;
+      --cyan: #0891b2;
+      --cyan-light: #cffafe;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05);
+    }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    .top-nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 40px;
+    }
+    .top-nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+    .top-nav a { color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 500; }
+    .top-nav a:hover { color: var(--text); }
+    .top-nav-links { display: flex; gap: 24px; align-items: center; }
+    .wrap { max-width: 1000px; margin: 0 auto; padding: 40px 24px 60px; }
+    .page-title { font-size: 32px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 8px; }
+    .page-intro { font-size: 16px; color: var(--text-secondary); margin-bottom: 24px; line-height: 1.7; }
+    .source-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      margin-bottom: 32px;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+    .source-box a { color: var(--cyan); font-weight: 500; }
+    .source-box a:hover { text-decoration: underline; }
+    .maps-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+    .map-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    .map-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .map-card .category { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--cyan); margin-bottom: 8px; }
+    .map-card h2 { font-size: 18px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.3px; }
+    .map-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px; }
+    .map-card .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 18px;
+      background: var(--cyan);
+      color: #fff;
+      font-size: 13px; font-weight: 600;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+    .map-card .btn:hover { background: #0e7490; }
+    .empty-note {
+      background: var(--cyan-light);
+      border: 1px solid rgba(8, 145, 178, 0.3);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-top: 24px;
+    }
+    .empty-note strong { color: var(--text); }
+    @media (max-width: 768px) {
+      .top-nav { padding: 0 20px; }
+      .wrap { padding: 24px 20px 48px; }
+      .page-title { font-size: 26px; }
+      .maps-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="top-nav">
+    <div class="top-nav-inner">
+      <a href="index.html">Customer Insight Frameworks</a>
+      <div class="top-nav-links">
+        <a href="index.html">Guide</a>
+        <a href="library.html">Persona Library</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="wrap">
+    <h1 class="page-title">User Journey Maps</h1>
+    <p class="page-intro">Customer journey maps visualize end-to-end experience across touchpoints. The Miro boards linked below are maintained in the DSCC Confluence space.</p>
+
+    <div class="source-box">
+      <strong>Source:</strong> <a href="https://mckinsey.atlassian.net/wiki/spaces/DSCC/pages/1208880597/User+Journey+Maps" target="_blank" rel="noopener">User Journey Maps (DSCC Confluence) <span aria-hidden="true">↗</span></a>
+    </div>
+
+    <div class="maps-grid" id="mapsGrid"></div>
+
+    <div class="empty-note" id="emptyNote" style="display: none;">
+      <strong>No journey maps added yet.</strong> Open the Confluence page above (when logged in to Atlassian), copy the Miro board links, and add them to <code>journey-maps.js</code> in this project.
+    </div>
+  </div>
+
+  <script src="journey-maps.js"></script>
+  <script>
+    (function() {
+      var data = window.journeyMapsData || { maps: [] };
+      var maps = data.maps || [];
+      var grid = document.getElementById('mapsGrid');
+      var emptyNote = document.getElementById('emptyNote');
+
+      if (maps.length === 0) {
+        grid.innerHTML = '';
+        emptyNote.style.display = 'block';
+        return;
+      }
+
+      var html = maps.map(function(m) {
+        var desc = m.description ? '<p>' + m.description + '</p>' : '';
+        var cat = m.category ? '<div class="category">' + m.category + '</div>' : '';
+        var url = (m.miroUrl || '').trim();
+        var btn = url && url !== 'https://miro.com/app/board/'
+          ? '<a href="' + url + '" class="btn" target="_blank" rel="noopener">Open in Miro ↗</a>'
+          : '<span class="btn" style="background:#94a3b8;cursor:default;">Add Miro link in journey-maps.js</span>';
+        return '<div class="map-card">' + cat + '<h2>' + (m.title || 'Untitled') + '</h2>' + desc + btn + '</div>';
+      }).join('');
+
+      grid.innerHTML = html;
+    })();
+  </script>
+</body>
+</html>

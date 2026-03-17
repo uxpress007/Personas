@@ -1258,6 +1258,7 @@
 
   <script src="data.js"></script>
   <script src="archetype-data.js"></script>
+  <script src="archetypes.js"></script>
   <script>
     // ===== STATE =====
     let state = {
@@ -1393,7 +1394,22 @@
         `;
       }).join('');
 
-      nav.innerHTML = allItem + catItems;
+      const archetypeList = (window.archetypeData && window.archetypeData.list) ? window.archetypeData.list : [];
+      const archetypeNavItem = `
+        <div class="nav-item ${state.selectedCategory === 'archetype' ? 'active' : ''} ${state.openNav === 'archetype' ? 'open' : ''}" data-action="toggle-nav" data-cat-id="archetype">
+          Archetype
+          <span class="badge">${archetypeList.length}</span>
+          <span class="chevron">&#x25BC;</span>
+          <div class="dropdown-panel">
+            <div class="dropdown-header">Archetypes</div>
+            <div class="dropdown-item ${state.selectedCategory === 'archetype' ? 'selected' : ''}" data-action="select-group" data-group-id="archetype-all" data-cat-id="archetype">
+              All Archetypes
+              <span class="count">${archetypeList.length}</span>
+            </div>
+          </div>
+        </div>
+      `;
+      nav.innerHTML = allItem + catItems + archetypeNavItem;
     }
 
     // ===== RENDER FILTERS =====
@@ -1403,22 +1419,24 @@
 
       if (state.selectedCategory) {
         const cat = personaData.categories.find(c => c.id === state.selectedCategory);
+        const catName = cat ? cat.name : 'Archetype';
+        const catFullName = cat ? cat.fullName : 'Archetypes';
         chips.push(`
           <div class="filter-chip" data-action="remove-category">
-            ${cat.name}: ${cat.fullName}
+            ${catName}: ${catFullName}
             <span class="remove">&times;</span>
           </div>
         `);
       }
 
-      if (state.selectedGroup) {
+      if (state.selectedGroup && state.selectedGroup !== 'archetype-all') {
         let groupName = '';
         personaData.categories.forEach(c => {
           c.groups.forEach(g => {
             if (g.id === state.selectedGroup) groupName = g.name;
           });
         });
-        chips.push(`
+        if (groupName) chips.push(`
           <div class="filter-chip" data-action="remove-group">
             ${groupName}
             <span class="remove">&times;</span>
@@ -1437,16 +1455,24 @@
     // ===== RENDER BREADCRUMB =====
     function renderBreadcrumb() {
       const bar = document.getElementById('breadcrumb');
-      const filtered = getFilteredPersonas();
+      const isArchetype = state.selectedCategory === 'archetype';
+      const archetypeList = (window.archetypeData && window.archetypeData.list) ? window.archetypeData.list : [];
+      const archetypeFiltered = isArchetype && state.searchQuery
+        ? archetypeList.filter(a => (a.name + ' ' + (a.role || '')).toLowerCase().includes(state.searchQuery.toLowerCase()))
+        : archetypeList;
+      const filtered = isArchetype ? [] : getFilteredPersonas();
+      const count = isArchetype ? archetypeFiltered.length : filtered.length;
+      const label = isArchetype ? 'archetype' : 'persona';
       const parts = [`<span data-action="show-all">All Personas</span>`];
 
       if (state.selectedCategory) {
         const cat = personaData.categories.find(c => c.id === state.selectedCategory);
+        const fullName = cat ? cat.fullName : 'Archetypes';
         parts.push(`<span class="sep">&#x203A;</span>`);
-        parts.push(`<span data-action="select-category-bc" data-cat-id="${cat.id}">${cat.fullName}</span>`);
+        parts.push(`<span data-action="select-category-bc" data-cat-id="${state.selectedCategory}">${fullName}</span>`);
       }
 
-      if (state.selectedGroup) {
+      if (state.selectedGroup && state.selectedGroup !== 'archetype-all') {
         let groupName = '';
         personaData.categories.forEach(c => {
           c.groups.forEach(g => {
@@ -1456,8 +1482,12 @@
         parts.push(`<span class="sep">&#x203A;</span>`);
         parts.push(`<span class="current">${groupName}</span>`);
       }
+      if (state.selectedGroup === 'archetype-all') {
+        parts.push(`<span class="sep">&#x203A;</span>`);
+        parts.push(`<span class="current">All Archetypes</span>`);
+      }
 
-      parts.push(`<span class="results-count">${filtered.length} persona${filtered.length !== 1 ? 's' : ''}</span>`);
+      parts.push(`<span class="results-count">${count} ${label}${count !== 1 ? 's' : ''}</span>`);
 
       bar.innerHTML = parts.join('');
     }
@@ -1465,6 +1495,67 @@
     // ===== RENDER CONTENT =====
     function renderContent() {
       const main = document.getElementById('mainContent');
+
+      if (state.selectedCategory === 'archetype') {
+        const archetypeList = (window.archetypeData && window.archetypeData.list) ? window.archetypeData.list : [];
+        const q = (state.searchQuery || '').toLowerCase();
+        const archetypeFiltered = q
+          ? archetypeList.filter(a => (a.name + ' ' + (a.role || '') + ' ' + (a.tagline || '')).toLowerCase().includes(q))
+          : archetypeList;
+        if (archetypeFiltered.length === 0) {
+          main.innerHTML = `
+            <div class="empty-state">
+              <div class="icon">&#x1F50E;</div>
+              <h3>No archetypes found</h3>
+              <p>Try adjusting your search or filters.</p>
+            </div>
+          `;
+          return;
+        }
+        const archColor = '#1e3a5f';
+        const archColorLight = '#e3f2fd';
+        let cardsHtml = archetypeFiltered.map(a => {
+          const avatarUrl = a.avatar || '';
+          const desc = (a.description || a.tagline || '').substring(0, 120) + (a.description && a.description.length > 120 ? '...' : '');
+          const tags = (a.traitIcons && a.traitIcons.slice(0, 3).map(t => `<span class="persona-tag" style="background:${archColorLight};color:${archColor}">${t}</span>`).join('')) || '';
+          return `
+            <a href="archetype.html?id=${a.id}" class="persona-card archetype-card" style="--card-color:${archColor}; text-decoration:none; color:inherit;">
+              <div style="position:absolute;top:0;left:0;right:0;height:3px;background:${archColor}"></div>
+              <div class="persona-card-header">
+                <div class="persona-avatar"><img src="${avatarUrl}" alt="${a.name}" loading="lazy" /></div>
+                <div class="persona-meta">
+                  <div class="persona-name">${a.name}</div>
+                  <div class="persona-role">${a.role}</div>
+                  <span class="persona-tenure" style="background:${archColorLight};color:${archColor}">Archetype</span>
+                </div>
+              </div>
+              <div class="persona-description">${desc}</div>
+              <div class="persona-tags">${tags}</div>
+            </a>
+          `;
+        }).join('');
+        main.innerHTML = `
+          <section class="category-section">
+            <div class="category-header">
+              <div class="category-badge" style="background:${archColor}">Archetype</div>
+              <div class="category-info">
+                <h2>Archetypes</h2>
+                <p>Research-based archetype profiles with role, motivations, challenges, and toolkit. Open on a separate page for the full layout.</p>
+              </div>
+            </div>
+            <div class="group-section">
+              <div class="group-header">
+                <div class="group-dot" style="background:${archColor}"></div>
+                <h3>All Archetypes</h3>
+                <span class="group-count">${archetypeFiltered.length}</span>
+              </div>
+              <div class="personas-grid">${cardsHtml}</div>
+            </div>
+          </section>
+        `;
+        return;
+      }
+
       const filtered = getFilteredPersonas();
 
       if (filtered.length === 0) {

@@ -1097,6 +1097,258 @@ const personaData = {
               ]
             }
           ]
+        },
+        {
+          id: "data-discovery",
+          name: "Data Discovery & Usage",
+          personas: [
+            {
+              id: "data-disc-1",
+              name: "Helpful Georgiana",
+              role: "Product Manager, Panorama IT Team",
+              categoryTag: "Data",
+              categoryTagColor: "#0277bd",
+              description: "Manages and distributes the latest versions of model files to her team, ensuring data is centralized and not siloed on individual computers. Technically proficient; uses her team's dedicated space and clear naming conventions to manage data effectively. Works with specific, versioned model files for different countries (e.g., \"model dash Hungary\"). Finds data by searching directly within her team's dedicated space in Data World. Systems: Data World.",
+              coreNeeds: [
+                "**Specific, versioned model files for different countries**",
+                "Centralized data (not siloed on individual computers)",
+                "Find data by searching within team's dedicated space in Data World"
+              ],
+              motivations: ["Centralized versioning", "Clear naming conventions", "Team efficiency"],
+              frustrations: [
+                "The primary pain point, which she has solved, was data getting stuck on individual computers and the lack of a central versioning system."
+              ]
+            },
+            {
+              id: "data-disc-2",
+              name: "Curious Mariela",
+              role: "CCN, Global Consumer",
+              categoryTag: "Data",
+              categoryTagColor: "#0277bd",
+              description: "Fields questions about methodology, data definitions, and firm access to specific databases. Seeks out examples and subject matter experts. Technically moderate; comfortable using both data catalogs and community channels. Needs definitions, methodology catalogs, database subscription information, and contact information for experts. Consults Data World for formal definitions and catalogs and uses the \"Consumer Network\" Slack channel to ask for examples or find experts. Systems: Data World, Slack.",
+              coreNeeds: [
+                "**Definitions, methodology catalogs, database subscription information**",
+                "Contact information for experts",
+                "Data World for formal definitions; Consumer Network Slack for examples and experts"
+              ],
+              motivations: ["Methodology clarity", "Expert access", "Catalog usage"],
+              frustrations: [
+                "Not always having the answer immediately available and needing to consult external sources."
+              ]
+            },
+            {
+              id: "data-disc-3",
+              name: "Networker Ryan",
+              role: "Data Engineer / Tech Lead",
+              categoryTag: "Data",
+              categoryTagColor: "#0277bd",
+              description: "Day to day: locating, understanding, and gaining access to new datasets required by his team. Technically high; navigates social networks and formal systems. Needs new, domain-specific datasets (e.g., LMS dataset) and the context/nuances of data tables. Process starts with people—identifying and contacting domain experts; uses Slack channels (e.g., EDW channel) to find experts, then Data World to submit formal access requests. Systems: Slack, Data World.",
+              coreNeeds: [
+                "**New, domain-specific datasets and context/nuances of data tables**",
+                "Discovery via people and domain experts; Slack (EDW channel); Data World for access requests"
+              ],
+              motivations: ["Team data needs", "Domain expertise", "Structured access"],
+              frustrations: [
+                "Confusion between similarly named Slack channels.",
+                "Initial discovery relies heavily on organic networking, which can be inefficient."
+              ]
+            },
+            {
+              id: "data-disc-4",
+              name: "Self-reliant James",
+              role: "Strategy & Operations, Tech Ecosystem",
+              categoryTag: "Data",
+              categoryTagColor: "#0277bd",
+              description: "Primarily works with a known set of data; occasionally needs to find new data when his existing mental map is insufficient. Technically moderate; prefers direct communication and browsing catalogs over dedicated search tools. Needs new data tables relevant to his work. First step is to ask colleagues what tables they use; if that fails, browses the Snowflake catalog directly. Systems: Snowflake.",
+              coreNeeds: [
+                "**New data tables relevant to his work**",
+                "Asks colleagues first; browses Snowflake catalog directly"
+              ],
+              motivations: ["Known data set", "Colleague knowledge", "Direct catalog access"],
+              frustrations: [
+                "Has found Data World unhelpful.",
+                "Finds the table names in the Snowflake catalog to be confusing and untrustworthy (\"horrible\")."
+              ]
+            },
+            {
+              id: "data-disc-5",
+              name: "Pragmatic Ishika",
+              role: "Senior Capabilities & Insights Analyst, Private Capital",
+              categoryTag: "Data",
+              categoryTagColor: "#0277bd",
+              description: "Conducts research using a mix of internal knowledge bases, external web searches, and specialized portals. Technically high; efficiently navigates multiple platforms. Needs pre-DDP reports, AI-generated memos, and documents specific to the private capital sector. Primary sources: Know (internal knowledge platform), Press Search (web search), and the specialized Private Capital Portal; uses Data World mainly as a gateway to external sources like EMIS. Systems: Know, Press Search, Private Capital Portal, Data World.",
+              coreNeeds: [
+                "**Pre-DDP reports, AI-generated memos, private capital sector documents**",
+                "Know, Press Search, Private Capital Portal; Data World for external sources (e.g., EMIS)"
+              ],
+              motivations: ["Research efficiency", "Multi-source synthesis", "Sector-specific content"],
+              frustrations: [
+                "The need to use multiple, distinct systems to get a complete picture."
+              ]
+            },
+            {
+              id: "data-disc-6",
+              name: "Gatekeeper Nicolas",
+              role: "CCN, Capabilities & Insights",
+              categoryTag: "Data",
+              categoryTagColor: "#0277bd",
+              description: "Acts as a data search proxy for his busy CST colleagues; also discovers new data availability through his network. Technically moderate; uses the search tool on behalf of less technical or time-constrained colleagues. Needs specific data points and numbers for CST requests. Discovers data by asking colleagues; when a request comes in, he always searches Data World on their behalf. Systems: Data World.",
+              coreNeeds: [
+                "**Specific data points and numbers for CST requests**",
+                "Discovers by asking colleagues; searches Data World on behalf of CSTs"
+              ],
+              motivations: ["Supporting CSTs", "Proxy search", "Network discovery"],
+              frustrations: [
+                "His clients (CSTs) are too busy to search for data themselves and need the final answer, not just a pointer to the source."
+              ]
+            },
+            {
+              id: "data-disc-7",
+              name: "Resourceful Joanna",
+              role: "Analytics & Data Science",
+              categoryTag: "Data",
+              categoryTagColor: "#0277bd",
+              description: "Finds and requests access to data for analytics projects. Technically high; prefers community-driven channels for discovery and uses formal tools only when necessary. Needs data on specific topics (e.g., \"data on X, Y, Z\"). Primary discovery channel is the \"ADS Consult\" Slack channel, which she finds more helpful than data catalogs; also reaches out to product teams directly. Uses Data World only at the final step to request access once she knows the exact table name. Systems: Slack, Data World.",
+              coreNeeds: [
+                "**Data on specific topics for analytics projects**",
+                "ADS Consult Slack and product teams for discovery; Data World for access requests"
+              ],
+              motivations: ["Analytics delivery", "Community discovery", "Efficient access"],
+              frustrations: [
+                "Finds Data World not very helpful for the initial discovery phase of her work."
+              ]
+            },
+            {
+              id: "data-disc-8",
+              name: "Direct Gunjan",
+              role: "McKinsey (API / Partner Capital)",
+              categoryTag: "Data",
+              categoryTagColor: "#0277bd",
+              description: "Accessing and working with data directly in the data warehouse. Technically high; comfortable with data warehouses and search using conceptual keywords. Needs core business data. Goes directly to Snowflake; also uses Data World, searching with core concept keywords rather than technical names. Systems: Snowflake, Data World.",
+              coreNeeds: [
+                "**Core business data**",
+                "Direct use of Snowflake; Data World with conceptual keywords"
+              ],
+              motivations: ["Direct data access", "Concept-based search", "Warehouse fluency"],
+              frustrations: [
+                "Implied need for clear mapping between core concepts and technical data asset names."
+              ]
+            },
+            {
+              id: "data-disc-9",
+              name: "Collaborative Abhishek",
+              role: "Senior Software Engineer",
+              categoryTag: "Data",
+              categoryTagColor: "#0277bd",
+              description: "Explores and integrates with APIs. Technically high; comfortable with APIs and reaching out to technical support teams. Needs information about available APIs that fit his use case. Previously asked colleagues; now reaches out directly to the Gateway API team via Slack for support and exploration. Systems: Slack.",
+              coreNeeds: [
+                "**Information about available APIs that fit his use case**",
+                "Gateway API team via Slack for support and exploration"
+              ],
+              motivations: ["API integration", "Direct support", "Efficient discovery"],
+              frustrations: [
+                "Not knowing the correct, dedicated channel for support initially."
+              ]
+            },
+            {
+              id: "data-disc-10",
+              name: "Architect Adam",
+              role: "Engineering Manager, Platform McKinsey",
+              categoryTag: "Data",
+              categoryTagColor: "#0277bd",
+              description: "Finding available APIs on the Firm Gateway for his engineering work. Technically high; prefers structured documentation over search-based discovery tools. Needs a list of available APIs, with documentation and Swagger files. Primary source is a Confluence page that lists all available APIs on the Firm Gateway. Systems: Confluence.",
+              coreNeeds: [
+                "**List of available APIs with documentation and Swagger files**",
+                "Confluence page listing Firm Gateway APIs"
+              ],
+              motivations: ["Structured documentation", "Gateway APIs", "Engineering efficiency"],
+              frustrations: [
+                "Data World was not his discovery channel; he learned about data from other systems first and sees it only as a future option."
+              ]
+            },
+            {
+              id: "data-disc-11",
+              name: "Team-Player Danny",
+              role: "Internal Audit Team",
+              categoryTag: "Data",
+              categoryTagColor: "#0277bd",
+              description: "Sourcing specific operational data from different regions (e.g., China travel data). Technically low; relies entirely on his personal and team network, being unaware of formal data teams. Needs specific, regional operational data for audits. First step is to ask in his team's Slack channel; if that fails, goes through his personal network and regional contacts to find the right person. Systems: Slack.",
+              coreNeeds: [
+                "**Specific, regional operational data for audits**",
+                "Team Slack channel; then personal network and regional contacts"
+              ],
+              motivations: ["Audit compliance", "Regional data", "Network-based discovery"],
+              frustrations: [
+                "Was completely unaware that the EDW or data catalog teams existed, representing a significant gap in his knowledge of firm resources."
+              ]
+            },
+            {
+              id: "data-disc-12",
+              name: "Multichannel Lisa",
+              role: "Senior Compliance Manager, SHaPE",
+              categoryTag: "Data",
+              categoryTagColor: "#0277bd",
+              description: "Finding data for compliance purposes, navigating both technical and organizational systems. Technically low to moderate; describes a \"lack of the technology component\" on her part. Needs data for compliance checks. Layered approach: first checks her own Snowflake role, then searches Data World (with limited success), then uses a product-specific Slack channel or reaches out to a POC in the ROCKS team. Systems: Snowflake, Data World, Slack.",
+              coreNeeds: [
+                "**Data needed for compliance checks**",
+                "Snowflake role → Data World → product Slack or ROCKS POC"
+              ],
+              motivations: ["Compliance", "Layered discovery", "POC support"],
+              frustrations: [
+                "Has not been successful with Data World.",
+                "Was also unaware that an EDW team existed."
+              ]
+            },
+            {
+              id: "data-disc-13",
+              name: "Skeptical Sebastian",
+              role: "Manager, Cell Ops",
+              categoryTag: "Data",
+              categoryTagColor: "#0277bd",
+              description: "Finding answers to operational questions (e.g., firm member counts). Technically moderate; uses search tools but finds them inefficient for broad questions. Needs specific operational metrics. First asks his team; if they don't know, he checks Data World. Systems: Data World, Slack.",
+              coreNeeds: [
+                "**Specific operational metrics**",
+                "Asks team first; then Data World"
+              ],
+              motivations: ["Operational answers", "Team-first", "Targeted metrics"],
+              frustrations: [
+                "Finds that large, general Slack channels are inefficient and would prefer a more targeted way to reach the 2–3 people who actually know the answer.",
+                "Finds tools like Lily unhelpful."
+              ]
+            },
+            {
+              id: "data-disc-14",
+              name: "Methodical Sebastian",
+              role: "EC&I (CNI Analyst)",
+              categoryTag: "Data",
+              categoryTagColor: "#0277bd",
+              description: "Finding data on both familiar and unfamiliar topics, including details on external data subscriptions. Technically moderate; follows a clear, escalating path from local team to firm-wide tools. Needs data on building materials, usage rights for external data (e.g., Euromonitor), and subscription details. Starts by talking to teammates; for unfamiliar topics, Know and Data World are his top two tools; uses Data World to check subscriptions, definitions, and usage rights for known external sources. Systems: Know, Data World.",
+              coreNeeds: [
+                "**Data on building materials, usage rights (e.g., Euromonitor), subscription details**",
+                "Teammates → Know and Data World for unfamiliar topics; Data World for subscriptions and usage rights"
+              ],
+              motivations: ["Subscription clarity", "Escalating discovery", "Usage rights"],
+              frustrations: [
+                "The need to verify what data the firm has subscribed to and the specific usage rights associated with it."
+              ]
+            },
+            {
+              id: "data-disc-15",
+              name: "Portal-Driven Basia",
+              role: "Client Capabilities Risk / Technology Risk",
+              categoryTag: "Data",
+              categoryTagColor: "#0277bd",
+              description: "Gathers information to understand products and cross-check them against firm risk policies. Technically moderate; relies on structured information repositories and portals. Needs product information and firm policies. Uses three main channels: a product portal (to understand the product), shared SharePoint folders from other teams, and the Firm Risk Intranet portal (to check policies). Systems: Product Portals, SharePoint, Firm Risk Intranet.",
+              coreNeeds: [
+                "**Product information and firm policies**",
+                "Product portal, shared SharePoint folders, Firm Risk Intranet portal"
+              ],
+              motivations: ["Risk alignment", "Structured repositories", "Policy compliance"],
+              frustrations: [
+                "Data and information are scattered across different portals and shared folders."
+              ]
+            }
+          ]
         }
       ]
     }
