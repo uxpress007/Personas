@@ -203,3 +203,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+### This repo (local only) ###
+.cursor/
+humanizer/
