@@ -1,6 +1,6 @@
 module "lrah" {
   source  = "terraform.mckinsey.cloud/FIRM-TF-MODULES/lrah/aws"
-  version = "0.17.0"
+  version = "0.17.1"
 
   // PLATFORM CONFIGURATION **DO NOT EDIT**
   // The following variables are automatically populated by the platform
