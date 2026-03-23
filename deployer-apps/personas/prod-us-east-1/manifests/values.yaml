@@ -1,0 +1,36 @@
+# EDIT THIS FILE TO CUSTOMIZE YOUR APPLICATION DEPLOYMENT
+
+# Configuration for your workload instance on the deployer PaaS:
+# - EnvironmentID: personas-ff537
+# - ProductID: 23297
+# - AWSWorkloadAccountID: 649941507750
+# - AWSWorkloadRegion: us-east-1
+#
+#
+
+cloudflareZone: apps.mckinsey.com
+subdomainPrefix: personas
+ingressClass: nginx
+
+labels:
+  app.kubernetes.io/namespace-owner: "lrah-control-plane"
+  app.kubernetes.io/lrah-user-product-id: 23297
+  app.kubernetes.io/lrah-user-evironment-id: personas-ff537
+
+##  For all databases you define in terraform/main.tf
+#
+### On AWS RDS:
+# Database: personas-ff537-<dbname>
+### On Kubernetes (in your namespace):
+# ConfigMaps:
+# - postgresql-databases-personas-ff537-<dbname>
+# Secrets:
+# - postgresql-roles-personas-ff537-<dbname>
+#
+## For all S3 buckets you define in terraform/main.tf:
+#
+### On AWS:
+# S3 bucket: 649941507750-personas-ff537-<bucketname>
+# IAM roles:
+# - s3ReadWriteRoleARN: arn:aws:iam::649941507750:role/S3-649941507750-personas-ff537-<bucketname>-ReadWrite
+# - s3ReadRoleARN: arn:aws:iam::649941507750:role/S3-649941507750-personas-ff537-<bucketname>-Read
