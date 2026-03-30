@@ -1,13 +1,13 @@
 ---
-description: "Deployer K8s PaaS platform agent. Routes Deployer/LRAH AWS resource intents (storage, queue, messaging) to the appropriate skill."
+description: "Deployer K8s PaaS platform agent. Routes Deployer/LRAH intents (S3 storage, SQS messaging, secrets/Vault) to the appropriate skill."
 alwaysApply: false
 ---
 
-# Deployer Platform Agent — AWS Service Routing
+# Deployer Platform Agent — Service Routing
 
 This rule activates when a developer working in a Deployer/LRAH repository expresses
-intent to provision or integrate an AWS resource. It loads the governance rule
-as context and routes to the appropriate service skill.
+intent to provision an AWS resource or manage application secrets. It routes to the
+appropriate skill based on detected intent.
 
 ---
 
@@ -61,6 +61,28 @@ Activate SQS routing when the developer's prompt contains any of the following:
 
 ---
 
+## Secrets/Vault Routing
+
+### Secrets/Vault Trigger Terms
+
+Activate Secrets/Vault routing when the developer's prompt contains any of the following:
+
+1. `move secrets`
+2. `hardcoded secrets`
+3. `parameterize credentials`
+4. `api key`
+5. `vault`
+6. `external secret`
+7. `secretKeyRef`
+
+### On Secrets Intent Detected
+
+1. Inform the developer: "Activating **deployer-move-secrets-to-vault** skill."
+2. Invoke `@.cursor/skills/deployer-skills/deployer-move-secrets-to-vault/SKILL.md`, passing the developer's
+   original prompt as context.
+
+---
+
 ## Multi-Service and Ambiguous Intent Handling
 
 ### On Ambiguous Multi-Service Intent
@@ -84,9 +106,8 @@ clarifying question before routing. Example:
 
 ## Scope Guard
 
-Do **not** route to any Deployer skill if the prompt is exclusively about AWS
-services not listed in this rule's trigger terms. Respond normally without
-invoking a skill.
+Do **not** route to any Deployer skill if the prompt is not covered by the trigger
+terms defined in this rule. Respond normally without invoking a skill.
 
 ---
 

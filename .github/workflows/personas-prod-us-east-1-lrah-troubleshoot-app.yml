@@ -44,7 +44,7 @@ jobs:
   troubleshoot:
     name: Namespace diagnostics
     needs: [load-environment-vars]
-    uses: McK-Internal/lrah-control-plane/.github/workflows/lrah-reusable-diagnose-namespace.yaml@v1.38.0
+    uses: McK-Internal/lrah-control-plane/.github/workflows/lrah-reusable-diagnose-namespace.yaml@v1.39.1
     with:
       cluster_login_url: ${{ needs.load-environment-vars.outputs.CLUSTER_LOGIN_URL }}
       kubernetes_namespace_name: ${{ needs.load-environment-vars.outputs.KUBERNETES_NAMESPACE_NAME }}

@@ -5,13 +5,14 @@ it tells the agent where to find platform identity values and how to map them.
 
 ## Required Platform Identity Values
 
-Deployer skills need three platform identity values at runtime:
+Deployer skills need the following platform identity values at runtime:
 
 | Key | Description |
 |-----|-------------|
 | `account-id` | AWS workload account ID |
-| `env-id` | Deployer environment identifier |
+| `env-id` | Deployer environment identifier (also used as `namespace-id` in Vault paths) |
 | `region` | AWS region |
+| `product-id` | Numeric product identifier for this RP (used in Vault path prefix) |
 
 ## Source of Truth
 
@@ -32,14 +33,15 @@ Extract the values from the `values.yaml` header comment block using this mappin
 | `values.yaml` comment key | Maps to |
 |---------------------------|---------|
 | `AWSWorkloadAccountID` | `account-id` |
-| `EnvironmentID` | `env-id` |
+| `EnvironmentID` | `env-id` / `namespace-id` (used in vault path and secretPath) |
 | `AWSWorkloadRegion` | `region` |
+| `app.kubernetes.io/lrah-user-product-id` label | `product-id` (used in vault path) |
 
 ## Agent Instructions
 
 1. Read this steering file to learn the mapping above.
 2. Discover the instance path by scanning `deployer-apps/`.
-3. Read `values.yaml` and parse the header comments to extract the three values.
+3. Read `values.yaml` and parse the header comments to extract all platform identity values.
 4. Use those values for all naming formula substitutions throughout the skill session.
 5. Never hardcode these values in skill files, rules, or steering documents.
 
@@ -67,3 +69,10 @@ Extract the values from the `values.yaml` header comment block using this mappin
 | Terraform IaC | `deployer-apps/{instance}/{env}-{region}/iac/main.tf` |
 | Helm values | `deployer-apps/{instance}/{env}-{region}/manifests/values.yaml` |
 | IRSA key in values | `deployer.saReadWriteRoleARN` |
+| Vault secrets path | `kvv2/{product-id}/{mount-suffix}/deployer-k8s-paas/{env-id}/app-secrets` |
+| ExternalSecret name | `lrah-secret-generic` (constant — do not substitute) |
+
+> `product-id` is derived from the label `app.kubernetes.io/lrah-user-product-id` in `values.yaml`.
+> `mount-suffix` is the last segment of `VAULT_MOUNT_PATH` (from `gh variable list --env "$GH_ENVIRONMENT"`),
+> normalized to hyphens (replace `_` with `-`). It is NOT derived from the instance name — a single
+> mount may serve multiple RPs.

@@ -63,7 +63,7 @@ jobs:
   deploy-infra-secrets:
     name: Infrastructure secrets
     needs: [deploy-infra, load-environment-vars]
-    uses: McK-Internal/lrah-control-plane/.github/workflows/lrah-reusable-deploy-infra-secrets.yaml@v1.38.0
+    uses: McK-Internal/lrah-control-plane/.github/workflows/lrah-reusable-deploy-infra-secrets.yaml@v1.39.1
     with:
       environment: personas-prod-us-east-1
       cluster_login_url: ${{ needs.load-environment-vars.outputs.CLUSTER_LOGIN_URL }}
@@ -78,7 +78,7 @@ jobs:
   deploy-user-secrets:
     name: User's secrets
     needs: [load-environment-vars]
-    uses: McK-Internal/lrah-control-plane/.github/workflows/lrah-reusable-deploy-user-secrets.yaml@v1.38.0
+    uses: McK-Internal/lrah-control-plane/.github/workflows/lrah-reusable-deploy-user-secrets.yaml@v1.39.1
     with:
       environment: personas-prod-us-east-1
       cluster_login_url: ${{ needs.load-environment-vars.outputs.CLUSTER_LOGIN_URL }}
@@ -88,7 +88,7 @@ jobs:
   sync-argo-app:
     name: ArgoCD application
     needs: [load-environment-vars, deploy-infra-secrets, deploy-user-secrets]
-    uses: McK-Internal/lrah-control-plane/.github/workflows/lrah-reusable-sync-argo-app.yaml@v1.38.0
+    uses: McK-Internal/lrah-control-plane/.github/workflows/lrah-reusable-sync-argo-app.yaml@v1.39.1
     with:
       cluster_login_url: ${{ needs.load-environment-vars.outputs.CLUSTER_LOGIN_URL }}
       kubernetes_namespace_name: ${{ needs.load-environment-vars.outputs.KUBERNETES_NAMESPACE_NAME }}

@@ -57,7 +57,7 @@ jobs:
   deploy-infra-secrets:
     name: Infrastructure secrets
     needs: [deploy-infra, load-environment-vars]
-    uses: McK-Internal/lrah-control-plane/.github/workflows/lrah-reusable-deploy-infra-secrets.yaml@v1.38.0
+    uses: McK-Internal/lrah-control-plane/.github/workflows/lrah-reusable-deploy-infra-secrets.yaml@v1.39.1
     with:
       environment: personas-prod-us-east-1
       cluster_login_url: ${{ needs.load-environment-vars.outputs.CLUSTER_LOGIN_URL }}
