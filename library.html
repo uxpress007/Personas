@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>try{var k="cif-theme";var t=localStorage.getItem(k);if(t!=="light"&&t!=="dark")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","light");}</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Persona Library</title>
+  <title>Persona Library — User Intelligence Platform</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="uip-nav.css">
+  <link rel="stylesheet" href="uip-page.css">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -41,8 +44,8 @@
       background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4338ca 100%);
       padding: 0;
       position: sticky;
-      top: 0;
-      z-index: 100;
+      top: 56px;
+      z-index: 99;
       box-shadow: 0 4px 20px rgba(30, 27, 75, 0.3);
     }
 
@@ -1210,6 +1213,39 @@
 </head>
 <body>
 
+  <header class="uip-topbar" id="uip-global-nav">
+    <div class="uip-topbar-inner">
+      <a href="homepage.html" class="uip-brand">User Intelligence Platform</a>
+      <nav class="uip-nav-main" aria-label="Primary">
+        <a class="uip-nav-link" href="homepage.html#persona-simulation">Persona Simulation</a>
+        <div class="uip-nav-item has-dropdown">
+          <button type="button" class="uip-nav-dd-trigger" aria-expanded="false" aria-haspopup="true">Persona Library <span class="uip-caret" aria-hidden="true"></span></button>
+          <div class="uip-dropdown" role="menu">
+            <a href="onedata-personas.html" role="menuitem">One Data</a>
+            <a href="persona-library-tech-ecosystem.html" role="menuitem">Tech Ecosystem</a>
+          </div>
+        </div>
+        <a class="uip-nav-link" href="archetypes.html">Archetypes</a>
+        <div class="uip-nav-item has-dropdown">
+          <button type="button" class="uip-nav-dd-trigger" aria-expanded="false" aria-haspopup="true">User Journey <span class="uip-caret" aria-hidden="true"></span></button>
+          <div class="uip-dropdown" role="menu">
+            <a href="onedata-journey-maps.html" role="menuitem">One Data</a>
+            <a href="user-journey-tech-ecosystem.html" role="menuitem">Tech Ecosystem</a>
+          </div>
+        </div>
+        <a class="uip-nav-link" href="knowledgebase.html">Knowledgebase</a>
+      </nav>
+      <div class="uip-trailing">
+        <button type="button" class="theme-toggle uip-theme-btn" id="theme-toggle" title="Toggle light / dark theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section class="uip-page-hero uip-page-hero--blank" aria-hidden="true"></section>
+
   <!-- HEADER -->
   <header class="header">
     <div class="header-top">
@@ -1221,8 +1257,6 @@
         </div>
       </div>
       <div class="header-stats" id="headerStats"></div>
-      <a href="index.html" style="color:#c7d2fe;text-decoration:none;font-size:13px;font-weight:500;padding:8px 16px;border:1px solid rgba(199,210,254,0.3);border-radius:100px;transition:all 200ms ease;white-space:nowrap;margin-right:8px;" onmouseover="this.style.background='rgba(199,210,254,0.1)';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#c7d2fe'">&larr; Back to Guide</a>
-      <a href="library.html#archetypes" style="color:#c7d2fe;text-decoration:none;font-size:13px;font-weight:500;padding:8px 16px;border:1px solid rgba(199,210,254,0.3);border-radius:100px;transition:all 200ms ease;white-space:nowrap;" onmouseover="this.style.background='rgba(199,210,254,0.1)';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#c7d2fe'">Archetypes</a>
     </div>
 
     <nav class="nav-bar" id="navBarWrap">
@@ -1275,9 +1309,12 @@
       return name.split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase();
     }
 
+    const SCOPE = window.__PERSONA_SCOPE || 'general';
+    const scopedCategories = personaData.categories.filter(c => c.scope === SCOPE);
+
     function getAllPersonas() {
       const result = [];
-      personaData.categories.forEach(cat => {
+      scopedCategories.forEach(cat => {
         cat.groups.forEach(group => {
           group.personas.forEach(persona => {
             result.push({ ...persona, category: cat, group });
@@ -1334,8 +1371,8 @@
     function renderHeaderStats() {
       const stats = document.getElementById('headerStats');
       const totalPersonas = getTotalPersonaCount();
-      const totalCategories = personaData.categories.length;
-      const totalGroups = personaData.categories.reduce((sum, c) => sum + c.groups.length, 0);
+      const totalCategories = scopedCategories.length;
+      const totalGroups = scopedCategories.reduce((sum, c) => sum + c.groups.length, 0);
 
       stats.innerHTML = `
         <div class="stat">
@@ -1364,7 +1401,7 @@
         </div>
       `;
 
-      const catItems = personaData.categories.map(cat => {
+      const catItems = scopedCategories.map(cat => {
         const isActive = state.selectedCategory === cat.id;
         const isOpen = state.openNav === cat.id;
         const groups = cat.groups.map(group => {
@@ -1418,7 +1455,7 @@
       const chips = [];
 
       if (state.selectedCategory) {
-        const cat = personaData.categories.find(c => c.id === state.selectedCategory);
+        const cat = scopedCategories.find(c => c.id === state.selectedCategory);
         const catName = cat ? cat.name : 'Archetype';
         const catFullName = cat ? cat.fullName : 'Archetypes';
         chips.push(`
@@ -1431,7 +1468,7 @@
 
       if (state.selectedGroup && state.selectedGroup !== 'archetype-all') {
         let groupName = '';
-        personaData.categories.forEach(c => {
+        scopedCategories.forEach(c => {
           c.groups.forEach(g => {
             if (g.id === state.selectedGroup) groupName = g.name;
           });
@@ -1466,7 +1503,7 @@
       const parts = [`<span data-action="show-all">All Personas</span>`];
 
       if (state.selectedCategory) {
-        const cat = personaData.categories.find(c => c.id === state.selectedCategory);
+        const cat = scopedCategories.find(c => c.id === state.selectedCategory);
         const fullName = cat ? cat.fullName : 'Archetypes';
         parts.push(`<span class="sep">&#x203A;</span>`);
         parts.push(`<span data-action="select-category-bc" data-cat-id="${state.selectedCategory}">${fullName}</span>`);
@@ -1474,7 +1511,7 @@
 
       if (state.selectedGroup && state.selectedGroup !== 'archetype-all') {
         let groupName = '';
-        personaData.categories.forEach(c => {
+        scopedCategories.forEach(c => {
           c.groups.forEach(g => {
             if (g.id === state.selectedGroup) groupName = g.name;
           });
@@ -2170,5 +2207,7 @@
       if (location.hash === '#archetypes' && state.activeTab !== 'archetypes') setTab('archetypes');
     });
   </script>
+  <script src="site-theme.js"></script>
+  <script src="uip-nav.js"></script>
 </body>
 </html>

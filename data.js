@@ -2,6 +2,7 @@ const personaData = {
   categories: [
     {
       id: "csp",
+      scope: "general",
       name: "CSP",
       fullName: "Client Service Professionals",
       color: "#4338ca",
@@ -406,6 +407,7 @@ const personaData = {
     },
     {
       id: "esp",
+      scope: "general",
       name: "ESP",
       fullName: "Expert Service Professionals",
       color: "#4338ca",
@@ -500,6 +502,7 @@ const personaData = {
     },
     {
       id: "fsp",
+      scope: "general",
       name: "FSP",
       fullName: "Firm Service Professionals",
       color: "#0891b2",
@@ -830,6 +833,7 @@ const personaData = {
     },
     {
       id: "ew",
+      scope: "general",
       name: "EW",
       fullName: "Everyday Wins",
       color: "#059669",
@@ -868,6 +872,7 @@ const personaData = {
     },
     {
       id: "firm-alumni",
+      scope: "general",
       name: "Firm Alumni",
       fullName: "Firm Alumni",
       color: "#7c3aed",
@@ -907,8 +912,9 @@ const personaData = {
     ,
     {
       id: "data",
+      scope: "onedata",
       name: "Data Persona",
-      fullName: "Data Personas",
+      fullName: "One Data Personas",
       color: "#0277bd",
       colorLight: "#e1f5fe",
       description: "Personas representing data practitioners and stakeholders across the firm — product managers, data engineers, data scientists, tech leads, and software engineers who work with data daily.",

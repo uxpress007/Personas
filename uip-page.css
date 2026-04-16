@@ -1,0 +1,99 @@
+/* User Intelligence Platform — shared page chrome (brand hero band) */
+
+:root {
+  --uip-brand: #3f3d99;
+  --uip-brand-deep: #2f2d72;
+  --uip-brand-light: #5350b8;
+  --uip-hero-min-h: 200px;
+  --uip-hero-gradient: linear-gradient(
+    135deg,
+    var(--uip-brand-deep) 0%,
+    var(--uip-brand) 48%,
+    var(--uip-brand-light) 100%
+  );
+}
+
+[data-theme="dark"] {
+  --uip-brand-deep: #1c1a3d;
+  --uip-brand: #353370;
+  --uip-brand-light: #4a47a3;
+}
+
+.uip-page-hero {
+  position: relative;
+  min-height: var(--uip-hero-min-h);
+  padding: 2.25rem 1.5rem;
+  background: var(--uip-hero-gradient);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.uip-page-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 85% 70% at 15% 0%, rgba(255, 255, 255, 0.14) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 60% at 100% 100%, rgba(0, 0, 0, 0.18) 0%, transparent 52%);
+  pointer-events: none;
+}
+
+[data-theme="dark"] .uip-page-hero {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.uip-page-hero__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 52rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.uip-page-hero__eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.78);
+  margin-bottom: 0.35rem;
+}
+
+.uip-page-hero__title {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+.uip-page-hero__lede {
+  margin-top: 0.5rem;
+  font-size: 0.9375rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.55;
+  max-width: 38rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.uip-page-hero__badge {
+  display: inline-block;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.12);
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  margin-bottom: 0.65rem;
+}
+
+/* Decorative band only — keeps height aligned with other pages */
+.uip-page-hero--blank {
+  min-height: var(--uip-hero-min-h);
+  padding: 0;
+}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>try{var k="cif-theme";var t=localStorage.getItem(k);if(t!=="light"&&t!=="dark")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","light");}</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Persona Library — Tech Ecosystem | User Intelligence Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="uip-nav.css">
+  <link rel="stylesheet" href="uip-page.css">
+  <style>
+    :root { --bg: #f8fafc; --text: #0f172a; --muted: #64748b; --border: #e2e8f0; --card: #fff; --accent: #4338ca; }
+    [data-theme="dark"] { color-scheme: dark; --bg: #0b1120; --text: #e2e8f0; --muted: #94a3b8; --border: #2d3d56; --card: #141c2b; --accent: #a5b4fc; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Inter, system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 40px 24px 64px; }
+    h1 { font-size: 28px; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 12px; }
+    .lede { font-size: 16px; color: var(--muted); margin-bottom: 32px; max-width: 720px; }
+    .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 22px; }
+    .card h2 { font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--accent); }
+    .card p { font-size: 14px; color: var(--muted); line-height: 1.55; }
+    .links { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 12px; }
+    .links a { font-size: 14px; font-weight: 600; color: #0891b2; text-decoration: none; }
+    .links a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <header class="uip-topbar" id="uip-global-nav">
+    <div class="uip-topbar-inner">
+      <a href="homepage.html" class="uip-brand">User Intelligence Platform</a>
+      <nav class="uip-nav-main" aria-label="Primary">
+        <a class="uip-nav-link" href="homepage.html#persona-simulation">Persona Simulation</a>
+        <div class="uip-nav-item has-dropdown">
+          <button type="button" class="uip-nav-dd-trigger" aria-expanded="false" aria-haspopup="true">Persona Library <span class="uip-caret" aria-hidden="true"></span></button>
+          <div class="uip-dropdown" role="menu">
+            <a href="onedata-personas.html" role="menuitem">One Data</a>
+            <a href="persona-library-tech-ecosystem.html" role="menuitem" aria-current="page">Tech Ecosystem</a>
+          </div>
+        </div>
+        <a class="uip-nav-link" href="archetypes.html">Archetypes</a>
+        <div class="uip-nav-item has-dropdown">
+          <button type="button" class="uip-nav-dd-trigger" aria-expanded="false" aria-haspopup="true">User Journey <span class="uip-caret" aria-hidden="true"></span></button>
+          <div class="uip-dropdown" role="menu">
+            <a href="onedata-journey-maps.html" role="menuitem">One Data</a>
+            <a href="user-journey-tech-ecosystem.html" role="menuitem">Tech Ecosystem</a>
+          </div>
+        </div>
+        <a class="uip-nav-link" href="knowledgebase.html">Knowledgebase</a>
+      </nav>
+      <div class="uip-trailing">
+        <button type="button" class="theme-toggle uip-theme-btn" id="theme-toggle" title="Toggle theme" style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid var(--border);border-radius:999px;background:var(--card);cursor:pointer;">
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section class="uip-page-hero uip-page-hero--blank" aria-hidden="true"></section>
+
+  <div class="wrap">
+    <h1>Persona Library — Tech Ecosystem</h1>
+    <p class="lede">Personas in this lane describe people who build, integrate, secure, and scale technology: platform teams, engineering leadership, and cross-functional partners who experience change through APIs, tooling, and operational guardrails rather than only through business process workshops.</p>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Platform &amp; integration lead</h2>
+        <p>Owns reference architectures and paved roads. Cares about deprecation policy, observability defaults, and how product teams consume internal platforms without creating toil.</p>
+      </div>
+      <div class="card">
+        <h2>Security &amp; risk partner</h2>
+        <p>Translates control objectives into workable patterns for squads. Friction shows up when exceptions are opaque or when security reviews arrive late in the cycle.</p>
+      </div>
+      <div class="card">
+        <h2>Developer experience champion</h2>
+        <p>Focused on inner source, docs, and golden paths. Success is measured in reduced time-to-first-successful-build and fewer escalations to infrastructure on-call.</p>
+      </div>
+    </div>
+
+    <div class="links">
+      <a href="library.html">Browse full Persona Library (all segments)</a>
+      <a href="onedata-personas.html">One Data practitioner personas</a>
+    </div>
+  </div>
+
+  <script src="site-theme.js"></script>
+  <script src="uip-nav.js"></script>
+</body>
+</html>

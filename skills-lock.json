@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "skills": {
+    "user-research": {
+      "source": "rsmdt/the-startup",
+      "sourceType": "github",
+      "computedHash": "4a8a4b6c13f623d39f163f41de1a82362f7aff50db44635ab0afe9f2d64267ea"
+    }
+  }
+}

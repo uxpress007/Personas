@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>try{var k="cif-theme";var t=localStorage.getItem(k);if(t!=="light"&&t!=="dark")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","light");}</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>One Data Personas — User Intelligence Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="uip-nav.css">
+  <link rel="stylesheet" href="uip-page.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f0f9ff;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #94a3b8;
+      --border: #e2e8f0;
+      --border-light: #f1f5f9;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -4px rgba(0,0,0,0.04);
+      --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.08), 0 8px 10px -6px rgba(0,0,0,0.04);
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+      --primary: #0277bd;
+      --primary-light: #e1f5fe;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #01579b 0%, #0277bd 50%, #0891b2 100%);
+      padding: 0;
+      position: sticky;
+      top: 56px;
+      z-index: 99;
+      box-shadow: 0 4px 20px rgba(1, 87, 155, 0.3);
+    }
+
+    .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 40px;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .logo-area { display: flex; align-items: center; gap: 16px; }
+
+    .logo-icon {
+      width: 44px; height: 44px;
+      background: rgba(255,255,255,0.15);
+      border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      backdrop-filter: blur(10px);
+    }
+
+    .logo-text h1 { font-size: 22px; font-weight: 700; color: #fff; letter-spacing: -0.5px; }
+    .logo-text p { font-size: 12px; color: rgba(255,255,255,0.6); font-weight: 400; letter-spacing: 1px; text-transform: uppercase; }
+
+    .header-stats { display: flex; gap: 32px; }
+    .stat { text-align: center; }
+    .stat-value { font-size: 24px; font-weight: 700; color: #fff; }
+    .stat-label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px; }
+
+    .nav-bar { background: rgba(0,0,0,0.15); backdrop-filter: blur(10px); }
+    .nav-bar-inner { max-width: 1440px; margin: 0 auto; padding: 0 40px; display: flex; align-items: center; gap: 12px; }
+
+    .nav-item {
+      position: relative; padding: 12px 20px; font-size: 13px; font-weight: 500;
+      color: rgba(255,255,255,0.7); cursor: pointer; transition: var(--transition);
+      border-bottom: 2px solid transparent; user-select: none;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .nav-item:hover, .nav-item.active { color: #fff; border-bottom-color: rgba(255,255,255,0.5); }
+    .nav-item.active { border-bottom-color: #67e8f9; }
+    .nav-item .badge { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.8); font-size: 10px; padding: 2px 7px; border-radius: 100px; font-weight: 600; }
+    .nav-item .chevron { font-size: 10px; transition: transform var(--transition); }
+    .nav-item.open .chevron { transform: rotate(180deg); }
+
+    .dropdown-panel {
+      position: absolute; top: 100%; left: 0; background: var(--surface);
+      border-radius: 0 0 var(--radius-md) var(--radius-md);
+      box-shadow: var(--shadow-xl); min-width: 260px;
+      opacity: 0; visibility: hidden; transform: translateY(-4px);
+      transition: all var(--transition); z-index: 200;
+      border: 1px solid var(--border); border-top: none; overflow: hidden;
+    }
+    .nav-item.open .dropdown-panel { opacity: 1; visibility: visible; transform: translateY(0); }
+    .dropdown-header { padding: 14px 18px 10px; font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); font-weight: 600; border-bottom: 1px solid var(--border-light); }
+    .dropdown-item { display: flex; align-items: center; justify-content: space-between; padding: 10px 18px; font-size: 13px; color: var(--text-secondary); cursor: pointer; transition: var(--transition); }
+    .dropdown-item:hover { background: var(--border-light); color: var(--text); }
+    .dropdown-item.selected { background: #e1f5fe; color: #0277bd; font-weight: 500; }
+    .dropdown-item .count { font-size: 11px; color: var(--text-muted); background: var(--border-light); padding: 2px 8px; border-radius: 100px; font-weight: 500; }
+    .dropdown-item.selected .count { background: #b3e5fc; color: #0277bd; }
+
+    .search-section { max-width: 1440px; margin: 0 auto; padding: 28px 40px 0; }
+    .search-container { display: flex; align-items: center; gap: 16px; }
+    .search-box { flex: 1; position: relative; }
+    .search-box input {
+      width: 100%; padding: 14px 20px 14px 48px; font-size: 14px; font-family: inherit;
+      border: 1px solid var(--border); border-radius: var(--radius-lg);
+      background: var(--surface); color: var(--text); transition: var(--transition); box-shadow: var(--shadow-sm);
+    }
+    .search-box input:focus { outline: none; border-color: #4dd0e1; box-shadow: 0 0 0 3px rgba(77,208,225,0.15); }
+    .search-box input::placeholder { color: var(--text-muted); }
+    .search-box .search-icon { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 16px; }
+
+    .active-filters { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .filter-chip { display: flex; align-items: center; gap: 6px; padding: 8px 14px; background: #e1f5fe; color: #0277bd; border-radius: 100px; font-size: 12px; font-weight: 500; cursor: pointer; transition: var(--transition); white-space: nowrap; }
+    .filter-chip:hover { background: #b3e5fc; }
+    .filter-chip .remove { font-size: 14px; line-height: 1; opacity: 0.6; }
+    .filter-chip .remove:hover { opacity: 1; }
+    .clear-all { padding: 8px 14px; background: none; border: 1px solid var(--border); border-radius: 100px; font-size: 12px; font-weight: 500; color: var(--text-secondary); cursor: pointer; font-family: inherit; transition: var(--transition); }
+    .clear-all:hover { background: var(--border-light); color: var(--text); }
+
+    .breadcrumb-bar { max-width: 1440px; margin: 0 auto; padding: 16px 40px 0; display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-muted); }
+    .breadcrumb-bar span { cursor: pointer; transition: var(--transition); }
+    .breadcrumb-bar span:hover { color: var(--text); }
+    .breadcrumb-bar .sep { cursor: default; }
+    .breadcrumb-bar .current { color: var(--text); font-weight: 500; cursor: default; }
+    .results-count { margin-left: auto; font-size: 13px; color: var(--text-muted); }
+
+    .main-content { max-width: 1440px; margin: 0 auto; padding: 24px 40px 60px; }
+
+    .category-section { margin-bottom: 48px; }
+    .category-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 2px solid var(--border); }
+    .category-badge { font-size: 16px; font-weight: 800; color: #fff; padding: 8px 16px; border-radius: var(--radius-sm); letter-spacing: 1px; }
+    .category-info h2 { font-size: 20px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
+    .category-info p { font-size: 13px; color: var(--text-secondary); margin-top: 2px; }
+
+    .group-section { margin-bottom: 32px; }
+    .group-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+    .group-header h3 { font-size: 15px; font-weight: 600; color: var(--text); }
+    .group-header .group-count { font-size: 11px; font-weight: 600; color: var(--text-muted); background: var(--border-light); padding: 3px 10px; border-radius: 100px; }
+    .group-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+    .personas-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; }
+
+    .persona-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: 24px; transition: all var(--transition); cursor: pointer; position: relative; overflow: hidden;
+    }
+    .persona-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; transition: var(--transition); }
+    .persona-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); border-color: transparent; }
+
+    .persona-card-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px; }
+    .persona-avatar { width: 48px; height: 48px; border-radius: var(--radius-md); flex-shrink: 0; overflow: hidden; box-shadow: 0 0 0 2px rgba(0,0,0,0.06); }
+    .persona-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .persona-meta { flex: 1; min-width: 0; }
+    .persona-name { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+    .persona-role { font-size: 12px; color: var(--text-secondary); }
+    .persona-tenure { display: inline-block; font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 100px; margin-top: 6px; }
+    .persona-description { font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .persona-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .persona-tag { font-size: 11px; padding: 4px 10px; border-radius: 100px; font-weight: 500; }
+
+    .detail-page { display: none; max-width: 1440px; margin: 0 auto; padding: 24px 40px 60px; }
+    .detail-page.visible { display: block; }
+
+    .detail-back { display: inline-flex; align-items: center; gap: 8px; padding: 8px 18px; background: var(--surface); border: 1px solid var(--border); border-radius: 100px; font-size: 13px; font-weight: 500; color: var(--text-secondary); cursor: pointer; font-family: inherit; transition: var(--transition); margin-bottom: 24px; }
+    .detail-back:hover { background: var(--border-light); color: var(--text); border-color: var(--text-muted); }
+    .detail-back .arrow { font-size: 16px; }
+
+    .dp-detail { max-width: 1100px; margin: 0 auto; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); background: #fff; border: 1px solid var(--border); }
+    .dp-header { display: flex; align-items: flex-end; gap: 0; min-height: 140px; }
+    .dp-header-photo { width: 260px; min-height: 180px; flex-shrink: 0; overflow: hidden; position: relative; }
+    .dp-header-photo img { width: 100%; height: 100%; object-fit: cover; display: block; position: absolute; inset: 0; }
+    .dp-header-info { flex: 1; padding: 28px 32px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .dp-header-name { font-size: 36px; font-weight: 700; color: #fff; letter-spacing: -0.5px; }
+    .dp-header-role { font-size: 15px; color: rgba(255,255,255,0.85); margin-top: 4px; }
+    .dp-header-badge { padding: 8px 28px; background: #fff; border-radius: var(--radius-sm); font-size: 16px; font-weight: 700; color: #333; flex-shrink: 0; box-shadow: var(--shadow-sm); }
+
+    .dp-body { display: flex; min-height: 400px; }
+    .dp-sidebar { width: 260px; flex-shrink: 0; background: #f0f4f8; padding: 28px 24px; display: flex; flex-direction: column; gap: 28px; }
+    .dp-slider-group { display: flex; flex-direction: column; gap: 24px; }
+    .dp-slider-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #333; margin-bottom: 8px; }
+    .dp-slider-track { width: 100%; height: 4px; background: #cdd5de; border-radius: 2px; position: relative; margin-bottom: 6px; }
+    .dp-slider-dot { width: 12px; height: 12px; border-radius: 50%; background: #0277bd; border: 2px solid #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.3); position: absolute; top: 50%; transform: translate(-50%, -50%); }
+    .dp-slider-labels { display: flex; justify-content: space-between; font-size: 10px; color: #78909c; font-weight: 500; }
+
+    .dp-main { flex: 1; padding: 32px 36px; }
+    .dp-section { margin-bottom: 28px; }
+    .dp-section:last-child { margin-bottom: 0; }
+    .dp-section-title { font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: #333; margin-bottom: 4px; }
+    .dp-section-divider { height: 3px; border-radius: 2px; margin-bottom: 14px; }
+    .dp-profile-text { font-size: 14px; line-height: 1.8; color: #455a64; }
+    .dp-profile-text strong { color: #263238; }
+    .dp-list { list-style: none; }
+    .dp-list li { padding: 5px 0; font-size: 14px; color: #455a64; line-height: 1.7; display: flex; align-items: flex-start; gap: 10px; }
+    .dp-list li::before { content: '•'; color: #90a4ae; font-weight: 700; flex-shrink: 0; }
+    .dp-list li strong { color: #263238; }
+
+    @media (max-width: 900px) {
+      .dp-header { flex-direction: column; }
+      .dp-header-photo { width: 100%; min-height: 200px; }
+      .dp-body { flex-direction: column; }
+      .dp-sidebar { width: 100%; flex-direction: row; flex-wrap: wrap; }
+      .dp-slider-group { flex-direction: row; flex-wrap: wrap; gap: 16px; width: 100%; }
+    }
+
+    .empty-state { text-align: center; padding: 80px 40px; }
+    .empty-state .icon { font-size: 48px; margin-bottom: 16px; }
+    .empty-state h3 { font-size: 18px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+    .empty-state p { font-size: 14px; color: var(--text-secondary); }
+
+    @media (max-width: 768px) {
+      .header-top { padding: 16px 20px; }
+      .header-stats { display: none; }
+      .nav-bar-inner { padding: 0 20px; overflow-x: auto; }
+      .search-section { padding: 20px 20px 0; }
+      .breadcrumb-bar { padding: 12px 20px 0; }
+      .main-content { padding: 20px 20px 40px; }
+      .personas-grid { grid-template-columns: 1fr; }
+    }
+
+    .highlight { background: #fef08a; border-radius: 2px; padding: 0 2px; }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+  </style>
+</head>
+<body>
+
+  <header class="uip-topbar" id="uip-global-nav">
+    <div class="uip-topbar-inner">
+      <a href="homepage.html" class="uip-brand">User Intelligence Platform</a>
+      <nav class="uip-nav-main" aria-label="Primary">
+        <a class="uip-nav-link" href="homepage.html#persona-simulation">Persona Simulation</a>
+        <div class="uip-nav-item has-dropdown">
+          <button type="button" class="uip-nav-dd-trigger" aria-expanded="false" aria-haspopup="true">Persona Library <span class="uip-caret" aria-hidden="true"></span></button>
+          <div class="uip-dropdown" role="menu">
+            <a href="onedata-personas.html" role="menuitem" aria-current="page">One Data</a>
+            <a href="persona-library-tech-ecosystem.html" role="menuitem">Tech Ecosystem</a>
+          </div>
+        </div>
+        <a class="uip-nav-link" href="archetypes.html">Archetypes</a>
+        <div class="uip-nav-item has-dropdown">
+          <button type="button" class="uip-nav-dd-trigger" aria-expanded="false" aria-haspopup="true">User Journey <span class="uip-caret" aria-hidden="true"></span></button>
+          <div class="uip-dropdown" role="menu">
+            <a href="onedata-journey-maps.html" role="menuitem">One Data</a>
+            <a href="user-journey-tech-ecosystem.html" role="menuitem">Tech Ecosystem</a>
+          </div>
+        </div>
+        <a class="uip-nav-link" href="knowledgebase.html">Knowledgebase</a>
+      </nav>
+      <div class="uip-trailing">
+        <button type="button" class="theme-toggle uip-theme-btn" id="theme-toggle" title="Toggle light / dark theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section class="uip-page-hero uip-page-hero--blank" aria-hidden="true"></section>
+
+  <header class="header">
+    <div class="header-top">
+      <div class="logo-area">
+        <div class="logo-icon">&#x25C6;</div>
+        <div class="logo-text">
+          <h1>One Data Personas</h1>
+          <p>Data Practitioner Profiles</p>
+        </div>
+      </div>
+      <div class="header-stats" id="headerStats"></div>
+    </div>
+
+    <nav class="nav-bar" id="navBarWrap">
+      <div class="nav-bar-inner" id="navBar"></div>
+    </nav>
+  </header>
+
+  <section class="search-section" id="searchSection">
+    <div class="search-container">
+      <div class="search-box">
+        <span class="search-icon">&#x1F50D;</span>
+        <input type="text" id="searchInput" placeholder="Search One Data personas by name, role, description, or keywords..." />
+      </div>
+    </div>
+    <div class="active-filters" id="activeFilters"></div>
+  </section>
+
+  <div class="breadcrumb-bar" id="breadcrumb"></div>
+
+  <main class="main-content" id="mainContent"></main>
+
+  <div class="detail-page" id="detailPage"></div>
+
+  <script>window.__PERSONA_SCOPE = 'onedata';</script>
+  <script src="data.js"></script>
+  <script>
+    const SCOPE = window.__PERSONA_SCOPE;
+    const scopedCategories = personaData.categories.filter(c => c.scope === SCOPE);
+
+    let state = {
+      selectedCategory: null,
+      selectedGroup: null,
+      searchQuery: '',
+      openNav: null
+    };
+
+    function getInitials(name) {
+      return name.split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase();
+    }
+
+    function getAllPersonas() {
+      const result = [];
+      scopedCategories.forEach(cat => {
+        cat.groups.forEach(group => {
+          group.personas.forEach(persona => {
+            result.push({ ...persona, category: cat, group });
+          });
+        });
+      });
+      return result;
+    }
+
+    function getFilteredPersonas() {
+      let personas = getAllPersonas();
+      if (state.selectedCategory) personas = personas.filter(p => p.category.id === state.selectedCategory);
+      if (state.selectedGroup) personas = personas.filter(p => p.group.id === state.selectedGroup);
+      if (state.searchQuery) {
+        const q = state.searchQuery.toLowerCase();
+        personas = personas.filter(p =>
+          p.name.toLowerCase().includes(q) ||
+          p.role.toLowerCase().includes(q) ||
+          p.description.toLowerCase().includes(q) ||
+          p.coreNeeds.some(n => n.toLowerCase().includes(q)) ||
+          p.motivations.some(m => m.toLowerCase().includes(q)) ||
+          p.frustrations.some(f => f.toLowerCase().includes(q)) ||
+          p.category.name.toLowerCase().includes(q) ||
+          p.category.fullName.toLowerCase().includes(q) ||
+          p.group.name.toLowerCase().includes(q) ||
+          (p.office && p.office.toLowerCase().includes(q))
+        );
+      }
+      return personas;
+    }
+
+    function getTotalPersonaCount() { return getAllPersonas().length; }
+    function getCategoryCount(catId) { return getAllPersonas().filter(p => p.category.id === catId).length; }
+    function getGroupCount(groupId) { return getAllPersonas().filter(p => p.group.id === groupId).length; }
+
+    function renderHeaderStats() {
+      const stats = document.getElementById('headerStats');
+      const totalPersonas = getTotalPersonaCount();
+      const totalCategories = scopedCategories.length;
+      const totalGroups = scopedCategories.reduce((sum, c) => sum + c.groups.length, 0);
+      stats.innerHTML = `
+        <div class="stat"><div class="stat-value">${totalPersonas}</div><div class="stat-label">Personas</div></div>
+        <div class="stat"><div class="stat-value">${totalCategories}</div><div class="stat-label">Categories</div></div>
+        <div class="stat"><div class="stat-value">${totalGroups}</div><div class="stat-label">Groups</div></div>
+      `;
+    }
+
+    function renderNav() {
+      const nav = document.getElementById('navBar');
+      const allItem = `<div class="nav-item ${!state.selectedCategory ? 'active' : ''}" data-action="show-all">All <span class="badge">${getTotalPersonaCount()}</span></div>`;
+      const catItems = scopedCategories.map(cat => {
+        const isActive = state.selectedCategory === cat.id;
+        const isOpen = state.openNav === cat.id;
+        const groups = cat.groups.map(g =>
+          `<div class="dropdown-item ${state.selectedGroup === g.id ? 'selected' : ''}" data-action="select-group" data-group-id="${g.id}" data-cat-id="${cat.id}">${g.name}<span class="count">${getGroupCount(g.id)}</span></div>`
+        ).join('');
+        return `
+          <div class="nav-item ${isActive ? 'active' : ''} ${isOpen ? 'open' : ''}" data-action="toggle-nav" data-cat-id="${cat.id}">
+            ${cat.name}
+            <span class="badge">${getCategoryCount(cat.id)}</span>
+            <span class="chevron">&#x25BC;</span>
+            <div class="dropdown-panel">
+              <div class="dropdown-header">${cat.fullName}</div>
+              <div class="dropdown-item ${isActive && !state.selectedGroup ? 'selected' : ''}" data-action="select-category" data-cat-id="${cat.id}">
+                All ${cat.name} Personas <span class="count">${getCategoryCount(cat.id)}</span>
+              </div>
+              ${groups}
+            </div>
+          </div>
+        `;
+      }).join('');
+      nav.innerHTML = allItem + catItems;
+    }
+
+    function renderFilters() {
+      const container = document.getElementById('activeFilters');
+      const chips = [];
+      if (state.selectedCategory) {
+        const cat = scopedCategories.find(c => c.id === state.selectedCategory);
+        const catName = cat ? cat.name : '';
+        const catFullName = cat ? cat.fullName : '';
+        chips.push(`<div class="filter-chip" data-action="remove-category">${catName}: ${catFullName}<span class="remove">&times;</span></div>`);
+      }
+      if (state.selectedGroup) {
+        let groupName = '';
+        scopedCategories.forEach(c => { c.groups.forEach(g => { if (g.id === state.selectedGroup) groupName = g.name; }); });
+        if (groupName) chips.push(`<div class="filter-chip" data-action="remove-group">${groupName}<span class="remove">&times;</span></div>`);
+      }
+      if (chips.length > 0) chips.push(`<button class="clear-all" data-action="clear-all">Clear all</button>`);
+      container.innerHTML = chips.join('');
+      container.style.marginTop = chips.length > 0 ? '12px' : '0';
+    }
+
+    function renderBreadcrumb() {
+      const bar = document.getElementById('breadcrumb');
+      const filtered = getFilteredPersonas();
+      const count = filtered.length;
+      const parts = [`<span data-action="show-all">All One Data Personas</span>`];
+      if (state.selectedCategory) {
+        const cat = scopedCategories.find(c => c.id === state.selectedCategory);
+        const fullName = cat ? cat.fullName : '';
+        parts.push(`<span class="sep">&#x203A;</span>`);
+        parts.push(`<span data-action="select-category-bc" data-cat-id="${state.selectedCategory}">${fullName}</span>`);
+      }
+      if (state.selectedGroup) {
+        let groupName = '';
+        scopedCategories.forEach(c => { c.groups.forEach(g => { if (g.id === state.selectedGroup) groupName = g.name; }); });
+        parts.push(`<span class="sep">&#x203A;</span>`);
+        parts.push(`<span class="current">${groupName}</span>`);
+      }
+      parts.push(`<span class="results-count">${count} persona${count !== 1 ? 's' : ''}</span>`);
+      bar.innerHTML = parts.join('');
+    }
+
+    function highlightText(text) {
+      if (!state.searchQuery) return text;
+      const q = state.searchQuery.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      return text.replace(new RegExp(`(${q})`, 'gi'), '<span class="highlight">$1</span>');
+    }
+
+    function renderContent() {
+      const main = document.getElementById('mainContent');
+      const filtered = getFilteredPersonas();
+      if (filtered.length === 0) {
+        main.innerHTML = `<div class="empty-state"><div class="icon">&#x1F50E;</div><h3>No personas found</h3><p>Try adjusting your search or filters.</p></div>`;
+        return;
+      }
+      const grouped = {};
+      filtered.forEach(p => {
+        const catKey = p.category.id;
+        const groupKey = p.group.id;
+        if (!grouped[catKey]) grouped[catKey] = { category: p.category, groups: {} };
+        if (!grouped[catKey].groups[groupKey]) grouped[catKey].groups[groupKey] = { group: p.group, personas: [] };
+        grouped[catKey].groups[groupKey].personas.push(p);
+      });
+
+      let html = '';
+      Object.values(grouped).forEach(catData => {
+        const cat = catData.category;
+        html += `<section class="category-section"><div class="category-header"><div class="category-badge" style="background:${cat.color}">${cat.name}</div><div class="category-info"><h2>${cat.fullName}</h2><p>${cat.description}</p></div></div>`;
+        Object.values(catData.groups).forEach(groupData => {
+          const group = groupData.group;
+          html += `<div class="group-section"><div class="group-header"><div class="group-dot" style="background:${cat.color}"></div><h3>${group.name}</h3><span class="group-count">${groupData.personas.length}</span></div><div class="personas-grid">`;
+          groupData.personas.forEach(persona => {
+            const avatarUrl = persona.avatar || `https://api.dicebear.com/9.x/initials/svg?seed=${encodeURIComponent(persona.name)}`;
+            const needsTags = persona.coreNeeds.slice(0, 3).map(n =>
+              `<span class="persona-tag" style="background:${cat.colorLight};color:${cat.color}">${highlightText(n.replace(/\*\*/g, ''))}</span>`
+            ).join('');
+            html += `
+              <div class="persona-card" data-action="open-persona" data-persona-id="${persona.id}" style="--card-color:${cat.color}">
+                <div style="position:absolute;top:0;left:0;right:0;height:3px;background:${cat.color}"></div>
+                <div class="persona-card-header">
+                  <div class="persona-avatar"><img src="${avatarUrl}" alt="${persona.name}" loading="lazy" /></div>
+                  <div class="persona-meta">
+                    <div class="persona-name">${highlightText(persona.name)}</div>
+                    <div class="persona-role">${highlightText(persona.role)}</div>
+                    <span class="persona-tenure" style="background:${cat.colorLight};color:${cat.color}">${persona.tenure}</span>
+                  </div>
+                </div>
+                <div class="persona-description">${highlightText(persona.description)}</div>
+                <div class="persona-tags">${needsTags}</div>
+              </div>`;
+          });
+          html += `</div></div>`;
+        });
+        html += `</section>`;
+      });
+      main.innerHTML = html;
+    }
+
+    function renderDpSlider(value, label) {
+      return `<div class="dp-slider-item"><div class="dp-slider-label">${label}</div><div class="dp-slider-track"><div class="dp-slider-dot" style="left:${value}%"></div></div><div class="dp-slider-labels"><span>Low</span><span>High</span></div></div>`;
+    }
+
+    function parseBold(text) { return text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'); }
+
+    function renderDetailPage(personaId) {
+      const allPersonas = getAllPersonas();
+      const persona = allPersonas.find(p => p.id === personaId);
+      if (!persona) return;
+
+      const avatarUrl = persona.avatar || `https://api.dicebear.com/9.x/initials/svg?seed=${encodeURIComponent(persona.name)}`;
+      const tagColor = persona.categoryTagColor || '#0277bd';
+      const tag = persona.categoryTag || 'One Data';
+      const dp = persona.dataProfile;
+      const dividerColor = tagColor;
+
+      const detailPage = document.getElementById('detailPage');
+      detailPage.innerHTML = `
+        <button class="detail-back" data-action="close-detail"><span class="arrow">&larr;</span> Back to Personas</button>
+        <div class="dp-detail">
+          <div class="dp-header" style="background:${tagColor}">
+            <div class="dp-header-photo"><img src="${avatarUrl}" alt="${persona.name}" /></div>
+            <div class="dp-header-info">
+              <div>
+                <div class="dp-header-name">${persona.name}</div>
+                <div class="dp-header-role">${persona.role} | ${persona.office || ''}</div>
+              </div>
+              <div class="dp-header-badge">${tag}</div>
+            </div>
+          </div>
+          <div class="dp-body">
+            <div class="dp-sidebar">
+              <div class="dp-slider-group">
+                ${dp ? renderDpSlider(dp.dataLiteracy, 'Data Literacy') : ''}
+                ${dp ? renderDpSlider(dp.engagementCDB, 'Level of Engagement with CDB') : ''}
+                ${dp ? renderDpSlider(dp.riskAccountability, 'Risk Accountability') : ''}
+              </div>
+            </div>
+            <div class="dp-main">
+              <div class="dp-section">
+                <div class="dp-section-title">Profile</div>
+                <div class="dp-section-divider" style="background:${dividerColor}"></div>
+                <div class="dp-profile-text">${parseBold(persona.description || '')}</div>
+              </div>
+              ${persona.coreNeeds && persona.coreNeeds.length > 0 ? `
+              <div class="dp-section">
+                <div class="dp-section-title">Goals and Needs</div>
+                <div class="dp-section-divider" style="background:${dividerColor}"></div>
+                <ul class="dp-list">${persona.coreNeeds.map(n => `<li>${parseBold(n)}</li>`).join('')}</ul>
+              </div>` : ''}
+              ${persona.frustrations && persona.frustrations.length > 0 ? `
+              <div class="dp-section">
+                <div class="dp-section-title">Pain Points</div>
+                <div class="dp-section-divider" style="background:${dividerColor}"></div>
+                <ul class="dp-list">${persona.frustrations.map(f => `<li>${parseBold(f)}</li>`).join('')}</ul>
+              </div>` : ''}
+            </div>
+          </div>
+        </div>
+      `;
+      document.querySelector('.search-section').style.display = 'none';
+      document.getElementById('breadcrumb').style.display = 'none';
+      document.getElementById('mainContent').style.display = 'none';
+      detailPage.classList.add('visible');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function closeDetail() {
+      document.getElementById('detailPage').classList.remove('visible');
+      document.querySelector('.search-section').style.display = '';
+      document.getElementById('breadcrumb').style.display = '';
+      document.getElementById('mainContent').style.display = '';
+    }
+
+    function render() {
+      renderHeaderStats();
+      renderNav();
+      renderFilters();
+      renderBreadcrumb();
+      renderContent();
+    }
+
+    document.addEventListener('click', (e) => {
+      const target = e.target.closest('[data-action]');
+      if (!target) {
+        if (!e.target.closest('.nav-item')) { state.openNav = null; renderNav(); }
+        return;
+      }
+      const action = target.dataset.action;
+      switch (action) {
+        case 'show-all': state.selectedCategory = null; state.selectedGroup = null; state.openNav = null; render(); break;
+        case 'toggle-nav': e.stopPropagation(); const catId = target.dataset.catId; state.openNav = state.openNav === catId ? null : catId; renderNav(); break;
+        case 'select-category': e.stopPropagation(); state.selectedCategory = target.dataset.catId; state.selectedGroup = null; state.openNav = null; render(); break;
+        case 'select-group': e.stopPropagation(); state.selectedCategory = target.dataset.catId; state.selectedGroup = target.dataset.groupId; state.openNav = null; render(); break;
+        case 'select-category-bc': state.selectedCategory = target.dataset.catId; state.selectedGroup = null; render(); break;
+        case 'remove-category': state.selectedCategory = null; state.selectedGroup = null; render(); break;
+        case 'remove-group': state.selectedGroup = null; render(); break;
+        case 'clear-all': state.selectedCategory = null; state.selectedGroup = null; state.searchQuery = ''; document.getElementById('searchInput').value = ''; render(); break;
+        case 'open-persona': renderDetailPage(target.dataset.personaId); break;
+        case 'close-detail': closeDetail(); break;
+      }
+    });
+
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDetail(); });
+
+    let searchTimeout;
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => { state.searchQuery = e.target.value.trim(); renderBreadcrumb(); renderContent(); }, 200);
+    });
+
+    render();
+  </script>
+  <script src="site-theme.js"></script>
+  <script src="uip-nav.js"></script>
+</body>
+</html>

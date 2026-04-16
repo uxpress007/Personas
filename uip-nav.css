@@ -1,0 +1,249 @@
+/* User Intelligence Platform — shared top navigation */
+
+.uip-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: rgba(255, 255, 255, 0.97);
+  border-bottom: 1px solid #e2e8f0;
+  backdrop-filter: blur(12px);
+}
+
+[data-theme="dark"] .uip-topbar {
+  background: rgba(15, 23, 42, 0.96);
+  border-bottom-color: #2d3d56;
+}
+
+.uip-topbar-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.uip-brand {
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: -0.02em;
+  color: #0f172a;
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+[data-theme="dark"] .uip-brand {
+  color: #f1f5f9;
+}
+
+.uip-nav-main {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+  flex-wrap: nowrap;
+}
+
+.uip-nav-link {
+  font-size: 13px;
+  font-weight: 500;
+  color: #475569;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+[data-theme="dark"] .uip-nav-link {
+  color: #94a3b8;
+}
+
+.uip-nav-link:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+[data-theme="dark"] .uip-nav-link:hover {
+  background: #1e293b;
+  color: #e2e8f0;
+}
+
+.uip-nav-link[aria-current="page"] {
+  background: rgba(63, 61, 153, 0.14);
+  color: #3f3d99;
+  font-weight: 600;
+}
+
+[data-theme="dark"] .uip-nav-link[aria-current="page"] {
+  background: rgba(129, 140, 248, 0.18);
+  color: #c7d2fe;
+}
+
+.uip-nav-item {
+  position: relative;
+}
+
+.uip-nav-dd-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  color: #475569;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+[data-theme="dark"] .uip-nav-dd-trigger {
+  color: #94a3b8;
+}
+
+.uip-nav-dd-trigger:hover,
+.uip-nav-item.is-open .uip-nav-dd-trigger {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+[data-theme="dark"] .uip-nav-dd-trigger:hover,
+[data-theme="dark"] .uip-nav-item.is-open .uip-nav-dd-trigger {
+  background: #1e293b;
+  color: #e2e8f0;
+}
+
+.uip-caret {
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid currentColor;
+  margin-top: 2px;
+  opacity: 0.85;
+}
+
+.uip-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  min-width: 220px;
+  padding: 8px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(15, 23, 42, 0.12);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+}
+
+[data-theme="dark"] .uip-dropdown {
+  background: #141c2b;
+  border-color: #2d3d56;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+}
+
+.uip-nav-item.has-dropdown:hover .uip-dropdown,
+.uip-nav-item.has-dropdown:focus-within .uip-dropdown,
+.uip-nav-item.has-dropdown.is-open .uip-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.uip-dropdown a {
+  display: block;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #0f172a;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.12s ease;
+}
+
+[data-theme="dark"] .uip-dropdown a {
+  color: #e2e8f0;
+}
+
+.uip-dropdown a:hover {
+  background: #f1f5f9;
+}
+
+[data-theme="dark"] .uip-dropdown a:hover {
+  background: #1e293b;
+}
+
+.uip-trailing {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.uip-trailing .theme-toggle {
+  color: #475569;
+  border-color: #e2e8f0;
+}
+
+[data-theme="dark"] .uip-trailing .theme-toggle {
+  color: #94a3b8;
+  border-color: #334155;
+}
+
+.uip-theme-btn.theme-toggle {
+  margin-left: 0;
+}
+
+.uip-theme-btn.theme-toggle svg {
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.uip-theme-btn .icon-sun {
+  display: none;
+}
+
+[data-theme="dark"] .uip-theme-btn .icon-moon {
+  display: none;
+}
+
+[data-theme="dark"] .uip-theme-btn .icon-sun {
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .uip-topbar-inner {
+    flex-wrap: wrap;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .uip-nav-main {
+    order: 3;
+    width: 100%;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .uip-trailing {
+    order: 2;
+    margin-left: auto;
+  }
+}

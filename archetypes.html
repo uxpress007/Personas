@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>try{var k="cif-theme";var t=localStorage.getItem(k);if(t!=="light"&&t!=="dark")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","light");}</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Archetypes — Customer Insight Frameworks</title>
+  <title>Archetypes — User Intelligence Platform</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="uip-nav.css">
+  <link rel="stylesheet" href="uip-page.css">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -14,33 +17,22 @@
       --text: #0f172a;
       --text-secondary: #475569;
       --border: #e2e8f0;
-      --navy: #1a2c42;
-      --navy-light: #2d3e52;
-      --accent: #2196F3;
+      --accent: #3f3d99;
       --radius: 10px;
       --shadow: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05);
     }
-    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
 
-    .header {
-      background: var(--navy);
-      padding: 16px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
+    [data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #0b1120;
+      --surface: #141c2b;
+      --text: #e2e8f0;
+      --text-secondary: #94a3b8;
+      --border: #334155;
+      --shadow: 0 4px 6px -1px rgba(0,0,0,0.4), 0 2px 4px -2px rgba(0,0,0,0.3);
     }
-    .header-left { display: flex; align-items: center; gap: 24px; }
-    .header a {
-      color: rgba(255,255,255,0.9);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-    }
-    .header a:hover { color: #fff; }
-    .header .brand { font-weight: 700; font-size: 18px; }
-    .header .back { opacity: 0.9; }
+
+    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
 
     .page-title {
       max-width: 1200px;
@@ -50,88 +42,1000 @@
     .page-title h1 { font-size: 32px; font-weight: 800; letter-spacing: -0.5px; color: var(--text); }
     .page-title p { font-size: 16px; color: var(--text-secondary); margin-top: 8px; }
 
-    .content {
+    .role-compare {
       max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 40px 60px;
+      margin: 0 auto 60px;
+      padding: 0 40px;
     }
-    .archetypes-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 24px;
-    }
-    .archetype-card {
+    .role-compare-inner {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 24px;
-      text-decoration: none;
-      color: inherit;
-      display: block;
-      transition: box-shadow 200ms ease, transform 200ms ease;
-    }
-    .archetype-card:hover {
+      padding: 24px 28px;
       box-shadow: var(--shadow);
-      transform: translateY(-2px);
     }
-    .archetype-card-top { display: flex; align-items: flex-start; gap: 16px; }
-    .archetype-card-avatar {
+    .role-compare h2 {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+    .role-compare .role-compare-lede {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+      line-height: 1.55;
+    }
+
+    .role-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .role-card {
+      display: block;
+      width: 100%;
+      text-align: left;
+      font: inherit;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 22px 22px;
+      background: var(--surface);
+      color: inherit;
+      box-shadow: var(--shadow);
+      transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .role-card:hover {
+      box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.12), 0 4px 10px -4px rgba(15, 23, 42, 0.08);
+      transform: translateY(-2px);
+      border-color: #cbd5e1;
+    }
+
+    .role-card:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .role-card-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .role-card-avatar {
+      position: relative;
       width: 64px;
       height: 64px;
       border-radius: 50%;
       overflow: hidden;
       flex-shrink: 0;
-      background: var(--navy);
+      background: #e2e8f0;
+      border: 1px solid var(--border);
     }
-    .archetype-card-avatar img { width: 100%; height: 100%; object-fit: cover; }
-    .archetype-card-name { font-size: 20px; font-weight: 700; color: var(--text); }
-    .archetype-card-role { font-size: 13px; color: var(--text-secondary); margin-top: 2px; }
-    .archetype-card-tagline { font-size: 13px; color: var(--text-secondary); font-style: italic; margin-top: 12px; line-height: 1.5; }
+
+    .role-card-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    .role-card-avatar img.avatar-open-peeps {
+      filter: grayscale(100%) contrast(1.12);
+    }
+
+    [data-theme="dark"] .role-card-avatar img.avatar-open-peeps {
+      filter: grayscale(100%) contrast(1.05) brightness(0.95);
+    }
+
+    .role-card-avatar-fallback {
+      display: none;
+      position: absolute;
+      inset: 0;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--text-secondary);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      text-align: center;
+      pointer-events: none;
+    }
+
+    .role-card-avatar.has-img-fallback img.avatar-open-peeps {
+      display: none;
+    }
+
+    .role-card-avatar.has-img-fallback .role-card-avatar-fallback {
+      display: flex;
+    }
+
+    .role-card-head-text { min-width: 0; }
+
+    .role-card-title {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      line-height: 1.2;
+    }
+
+    .role-card-role {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-top: 4px;
+      line-height: 1.35;
+    }
+
+    .role-card-quote {
+      font-size: 13px;
+      color: var(--text-secondary);
+      font-style: italic;
+      margin-top: 14px;
+      line-height: 1.55;
+    }
+
+    .role-card-hint {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-top: 12px;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      opacity: 0.85;
+    }
+
+    [data-theme="dark"] .role-card {
+      border-color: #334155;
+      box-shadow: var(--shadow);
+    }
+
+    [data-theme="dark"] .role-card:hover {
+      border-color: #475569;
+    }
+
+    [data-theme="dark"] .role-card-title { color: #f1f5f9; }
+
+    [data-theme="dark"] .role-card-avatar {
+      background: #1e293b;
+      border-color: #334155;
+    }
+
+    .role-lightbox-body .lb-tools-row {
+      margin-bottom: 10px;
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--text-secondary);
+    }
+
+    .role-lightbox-body .lb-tools-row strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .role-lightbox[hidden] {
+      display: none !important;
+    }
+
+    .role-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 400;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .role-lightbox-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.55);
+      backdrop-filter: blur(4px);
+    }
+
+    .role-lightbox-panel {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 760px;
+      max-height: min(90vh, 900px);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      background: var(--surface);
+      color: var(--text);
+      border-radius: 16px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--border);
+    }
+
+    .role-lightbox-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 22px 24px 16px;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .role-lightbox-head h3 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+    }
+
+    .role-lightbox-head .sub {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-top: 4px;
+    }
+
+    .role-lightbox-close {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--bg);
+      color: var(--text-secondary);
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+
+    .role-lightbox-close:hover {
+      background: #f1f5f9;
+      color: var(--text);
+    }
+
+    [data-theme="dark"] .role-lightbox-close {
+      background: #1e293b;
+      border-color: #334155;
+      color: #94a3b8;
+    }
+
+    [data-theme="dark"] .role-lightbox-close:hover {
+      background: #334155;
+      color: #f1f5f9;
+    }
+
+    .role-lightbox-body {
+      padding: 20px 24px 28px;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--text-secondary);
+    }
+
+    .role-lightbox-body .tagline {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text);
+      font-style: italic;
+      margin-bottom: 18px;
+      line-height: 1.5;
+    }
+
+    .role-lightbox-body .lb-section {
+      margin-top: 20px;
+    }
+
+    .role-lightbox-body .lb-section:first-of-type { margin-top: 0; }
+
+    .role-lightbox-body h4 {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    [data-theme="dark"] .role-lightbox-panel {
+      border-color: #2d3d56;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.65);
+    }
+
+    [data-theme="dark"] .role-lightbox-body .lb-section p {
+      color: #cbd5e1;
+    }
+
+    .role-lightbox-body ul {
+      margin: 0;
+      padding-left: 1.15rem;
+    }
+
+    .role-lightbox-body li { margin-bottom: 6px; }
+
+    .role-lightbox-body .tool-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .role-lightbox-body .tool-chip {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #f1f5f9;
+      color: #475569;
+    }
+
+    [data-theme="dark"] .role-lightbox-body .tool-chip {
+      background: #1e293b;
+      color: #cbd5e1;
+    }
+
+    .role-lightbox-footer {
+      margin-top: 22px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+    }
+
+    .role-lightbox-footer a {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .role-lightbox-footer a:hover { text-decoration: underline; }
+
     @media (max-width: 768px) {
-      .header { padding: 16px 20px; }
-      .page-title, .content { padding-left: 20px; padding-right: 20px; }
-      .archetypes-grid { grid-template-columns: 1fr; }
+      .page-title, .role-compare { padding-left: 20px; padding-right: 20px; }
+      .role-cards { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-  <header class="header">
-    <div class="header-left">
-      <a href="index.html" class="brand">Customer Insight Frameworks</a>
-      <a href="index.html" class="back">&larr; Guide</a>
-      <a href="library.html">Persona Library</a>
+  <header class="uip-topbar" id="uip-global-nav">
+    <div class="uip-topbar-inner">
+      <a href="homepage.html" class="uip-brand">User Intelligence Platform</a>
+      <nav class="uip-nav-main" aria-label="Primary">
+        <a class="uip-nav-link" href="homepage.html#persona-simulation">Persona Simulation</a>
+        <div class="uip-nav-item has-dropdown">
+          <button type="button" class="uip-nav-dd-trigger" aria-expanded="false" aria-haspopup="true">Persona Library <span class="uip-caret" aria-hidden="true"></span></button>
+          <div class="uip-dropdown" role="menu">
+            <a href="onedata-personas.html" role="menuitem">One Data</a>
+            <a href="persona-library-tech-ecosystem.html" role="menuitem">Tech Ecosystem</a>
+          </div>
+        </div>
+        <a class="uip-nav-link" href="archetypes.html" aria-current="page">Archetypes</a>
+        <div class="uip-nav-item has-dropdown">
+          <button type="button" class="uip-nav-dd-trigger" aria-expanded="false" aria-haspopup="true">User Journey <span class="uip-caret" aria-hidden="true"></span></button>
+          <div class="uip-dropdown" role="menu">
+            <a href="onedata-journey-maps.html" role="menuitem">One Data</a>
+            <a href="user-journey-tech-ecosystem.html" role="menuitem">Tech Ecosystem</a>
+          </div>
+        </div>
+        <a class="uip-nav-link" href="knowledgebase.html">Knowledgebase</a>
+      </nav>
+      <div class="uip-trailing">
+        <button type="button" class="theme-toggle uip-theme-btn" id="theme-toggle" title="Toggle light / dark theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+      </div>
     </div>
-    <a href="library.html">Personas</a>
   </header>
+
+  <section class="uip-page-hero uip-page-hero--blank" aria-hidden="true"></section>
 
   <div class="page-title">
     <h1>Archetypes</h1>
-    <p>Broader psychological and role-based patterns that represent how people work, collaborate, and use technology across the organization. Open each archetype on its own page for the full profile.</p>
+    <p>Role patterns for how teams turn data, platforms, knowledge, and client leadership into impact. The cards below use Open Peeps&ndash;style illustrations (via Dicebear). Open any card for mission, tenure, responsibilities, tools, and value.</p>
   </div>
 
-  <div class="content">
-    <div class="archetypes-grid" id="archetypesGrid"></div>
+  <section class="role-compare" aria-labelledby="role-compare-title">
+    <div class="role-compare-inner">
+      <h2 id="role-compare-title">Priority roles at a glance</h2>
+      <p class="role-compare-lede">Twelve role cards: specialist and knowledge roles, a Knowledge Professional exemplar (Domain Senior Manager), governance-focused roles (Data Consumer, Data Steward, Data Owner), plus Business Analyst through Senior Partner. Click any card for the full detail view; use the lightbox footer to open the printable profile page where a matching archetype exists.</p>
+      <div class="role-cards" id="roleCards" role="list"></div>
+    </div>
+  </section>
+
+  <div class="role-lightbox" id="roleLightbox" hidden role="dialog" aria-modal="true" aria-labelledby="roleLightboxTitle">
+    <div class="role-lightbox-backdrop" data-lightbox-dismiss="true" aria-hidden="true"></div>
+    <div class="role-lightbox-panel">
+      <div class="role-lightbox-head">
+        <div>
+          <h3 id="roleLightboxTitle"></h3>
+          <div class="sub" id="roleLightboxSub"></div>
+        </div>
+        <button type="button" class="role-lightbox-close" id="roleLightboxClose" aria-label="Close details">&times;</button>
+      </div>
+      <div class="role-lightbox-body" id="roleLightboxBody"></div>
+    </div>
   </div>
 
-  <script src="archetype-data.js"></script>
   <script>
-    const grid = document.getElementById('archetypesGrid');
-    archetypeData.archetypes.forEach(a => {
-      const imgSrc = a.avatar;
-      const initials = a.name.split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase();
-      grid.innerHTML += `
-        <a class="archetype-card" href="archetype.html?id=${a.id}">
-          <div class="archetype-card-top">
-            <div class="archetype-card-avatar"><img src="${imgSrc}" alt="${a.name}" loading="lazy" data-initials="${initials}" onerror="var d=document.createElement('div');d.className='archetype-card-avatar';d.style.cssText='display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:20px';d.textContent=this.getAttribute('data-initials')||'?';this.parentNode.replaceChild(d,this)"/></div>
-            <div>
-              <div class="archetype-card-name">${a.name}</div>
-              <div class="archetype-card-role">${a.role}</div>
-            </div>
-          </div>
-          <div class="archetype-card-tagline">${a.tagline}</div>
-        </a>
-      `;
-    });
+    (function () {
+      function escapeHtml(str) {
+        if (str == null || str === '') return '';
+        var d = document.createElement('div');
+        d.textContent = String(str);
+        return d.innerHTML;
+      }
+
+      function openPeepsAvatarUrl(seed) {
+        var q =
+          'seed=' +
+          encodeURIComponent(seed || 'role') +
+          '&size=128&backgroundColor=f1f5f9&backgroundType=solid&randomizeIds=true';
+        return 'https://api.dicebear.com/9.x/open-peeps/svg?' + q;
+      }
+
+      function cardInitials(d) {
+        var n = String(d.cardName || '');
+        var m = n.match(/\(([A-Za-z]{1,4})\)/);
+        if (m) return m[1].toUpperCase();
+        var words = n
+          .replace(/[^\w\s]/g, '')
+          .trim()
+          .split(/\s+/)
+          .filter(Boolean);
+        if (words.length >= 2) return (words[0][0] + words[1][0]).toUpperCase();
+        if (words.length === 1 && words[0].length >= 2) return words[0].substring(0, 2).toUpperCase();
+        return words[0] ? words[0][0].toUpperCase() : '?';
+      }
+
+      function cardAvatarUrl(d, roleId) {
+        var seed = d.openPeepsSeed != null ? d.openPeepsSeed : roleId;
+        return openPeepsAvatarUrl(seed);
+      }
+
+      function listSection(title, items) {
+        if (!items || !items.length) return '';
+        return (
+          '<div class="lb-section"><h4>' + escapeHtml(title) + '</h4><ul>' +
+          items.map(function (x) { return '<li>' + escapeHtml(x) + '</li>'; }).join('') +
+          '</ul></div>'
+        );
+      }
+
+      var PRIORITY_ORDER = [
+        'data-scientist',
+        'data-engineer',
+        'principal-architect',
+        'knowledge-professional',
+        'karol-kp',
+        'data-consumer-dashboard',
+        'data-steward',
+        'data-owner-people',
+        'business-analyst',
+        'engagement-manager',
+        'partner',
+        'senior-partner'
+      ];
+
+      var PRIORITY_DETAILS = {
+        'data-scientist': {
+          linkedArchetypeId: 'data-scientist',
+          cardName: 'Data Scientist',
+          cardRole: 'Insights & modeling',
+          cardQuote: 'Turn data into actionable insight that drives client impact.',
+          mission: 'Turn data into actionable insight that drives client impact.',
+          tenure: '~2–5 years (general range; includes junior to experienced practitioners)',
+          whatTheyDo: [
+            'Frame ambiguous business problems into analytical questions',
+            'Build statistical / ML models (forecasting, segmentation, optimization)',
+            'Translate results into clear, decision-ready narratives',
+            'Partner with consultants and clients to embed insights'
+          ],
+          coreTools: [
+            { label: 'Programming', text: 'Python, R, SQL' },
+            { label: 'ML/Stats', text: 'scikit-learn, TensorFlow, PyTorch, XGBoost' },
+            { label: 'Data handling', text: 'Pandas, NumPy' },
+            { label: 'Visualization', text: 'Tableau, Power BI, matplotlib, seaborn' },
+            { label: 'Experimentation', text: 'A/B testing frameworks' },
+            { label: 'Cloud/Platforms', text: 'Databricks, AWS SageMaker, GCP Vertex AI' }
+          ],
+          value: [
+            'Identify non-obvious drivers of performance',
+            'Improve decision quality with evidence-based insights',
+            'Enable predictive and prescriptive analytics'
+          ],
+          topPerformer: 'Drives decision impact, not just model accuracy—bridging analytics and business storytelling seamlessly.'
+        },
+        'data-engineer': {
+          linkedArchetypeId: 'data-engineer',
+          cardName: 'Data Engineer',
+          cardRole: 'Data platforms & pipelines',
+          cardQuote: 'Build scalable, reliable data foundations that power analytics and AI.',
+          mission: 'Build scalable, reliable data foundations that power analytics and AI.',
+          tenure: '~2–5 years (can extend higher for specialized senior engineers)',
+          whatTheyDo: [
+            'Design and build data pipelines (ETL/ELT)',
+            'Integrate multiple data sources (structured/unstructured)',
+            'Ensure data quality, governance, and accessibility',
+            'Optimize infrastructure for performance and cost'
+          ],
+          coreTools: [
+            { label: 'Programming', text: 'Python, SQL, Scala, Java' },
+            { label: 'Big Data', text: 'Apache Spark, Hadoop' },
+            { label: 'Pipeline orchestration', text: 'Airflow, Prefect, Dagster' },
+            { label: 'Data warehousing', text: 'Snowflake, BigQuery, Redshift' },
+            { label: 'Streaming', text: 'Kafka, Kinesis' },
+            { label: 'Cloud', text: 'AWS, Azure, GCP' },
+            { label: 'Data modeling', text: 'dbt' }
+          ],
+          value: [
+            'Provide clean, reliable, and timely data',
+            'Enable scalable analytics and AI deployment',
+            'Reduce friction across teams'
+          ],
+          topPerformer: 'Builds reusable, production-grade data platforms that support multiple use cases across clients.'
+        },
+        'principal-architect': {
+          linkedArchetypeId: 'principal-architect',
+          cardName: 'Principal Architect',
+          cardRole: 'Enterprise & solution architecture',
+          cardQuote: 'Design end-to-end technology architecture enabling scalable digital and AI transformation.',
+          mission: 'Design end-to-end technology architecture enabling scalable digital and AI transformation.',
+          tenure: '~8–15+ years (often includes prior industry experience; more senior profile)',
+          whatTheyDo: [
+            'Define architecture across applications, data, and infrastructure',
+            'Select platforms, define integration patterns, and ensure scalability',
+            'Balance trade-offs (cost, performance, security, maintainability)',
+            'Guide engineering teams and engage senior client stakeholders'
+          ],
+          coreTools: [
+            { label: 'Cloud', text: 'AWS, Azure, GCP (multi-cloud architectures)' },
+            { label: 'Architecture patterns', text: 'Microservices, event-driven, serverless' },
+            { label: 'APIs & Integration', text: 'REST, GraphQL, MuleSoft, Apigee' },
+            { label: 'Containers', text: 'Docker, Kubernetes' },
+            { label: 'DevOps', text: 'CI/CD pipelines (Jenkins, GitHub Actions, GitLab CI)' },
+            { label: 'Data platforms', text: 'Lakehouse (Databricks, Delta Lake), Snowflake' },
+            { label: 'Security', text: 'IAM, zero-trust architectures' }
+          ],
+          value: [
+            'Ensure long-term scalability and flexibility',
+            'Prevent costly rework through sound architecture decisions',
+            'Align technology with business strategy'
+          ],
+          topPerformer: 'Acts as a C-level trusted advisor, shaping architecture that is future-proof, scalable, and aligned to transformation goals.'
+        },
+        'knowledge-professional': {
+          linkedArchetypeId: 'knowledge-professional',
+          cardName: 'Knowledge Professional (KP)',
+          cardRole: 'Research & domain synthesis (KP)',
+          cardQuote: 'Bring the best of McKinsey’s knowledge to every client problem.',
+          mission: 'Bring the best of McKinsey’s knowledge to every client problem.',
+          tenure: '~2–5 years (can extend longer for deep domain experts)',
+          whatTheyDo: [
+            'Curate and synthesize firm knowledge and benchmarks',
+            'Support teams with targeted research and insights',
+            'Develop thought leadership and IP',
+            'Provide domain expertise in industry/function'
+          ],
+          coreTools: [
+            { label: 'Research platforms', text: 'AlphaSense, Factiva, PitchBook, Capital IQ' },
+            { label: 'Data analysis', text: 'Excel (advanced), Python (light), Alteryx' },
+            { label: 'Visualization', text: 'PowerPoint (advanced storytelling), Tableau' },
+            { label: 'Knowledge systems', text: 'Internal knowledge repositories, taxonomy tools' },
+            { label: 'Collaboration', text: 'Miro, Teams, SharePoint' }
+          ],
+          value: [
+            'Accelerate problem solving with proven insights',
+            'Improve recommendation quality and depth',
+            'Provide specialized expertise'
+          ],
+          topPerformer: 'A thought partner, not just a researcher—shaping hypotheses, not just answering questions.'
+        },
+        'karol-kp': {
+          linkedArchetypeId: 'knowledge-professional',
+          openPeepsSeed: 'Karol',
+          cardName: 'Knowledge Professional',
+          cardRole: 'Domain Senior Manager',
+          cardQuote: 'Technology frees me to expand my expertise and deliver insight that propels our clients toward their goals',
+          personaQuote: 'Technology frees me to expand my expertise and deliver insight that propels our clients toward their goals',
+          personaIntro: 'Representative profile for this role; the sections below describe the Knowledge Professional in depth.',
+          mission: 'Bring the best of McKinsey’s knowledge to every client problem.',
+          tenure: '~2–5 years (can extend longer for deep domain experts)',
+          whatTheyDo: [
+            'Curate and synthesize firm knowledge and benchmarks',
+            'Support teams with targeted research and insights',
+            'Develop thought leadership and IP',
+            'Provide domain expertise in industry/function'
+          ],
+          coreTools: [
+            { label: 'Research platforms', text: 'AlphaSense, Factiva, PitchBook, Capital IQ' },
+            { label: 'Data analysis', text: 'Excel (advanced), Python (light), Alteryx' },
+            { label: 'Visualization', text: 'PowerPoint (advanced storytelling), Tableau' },
+            { label: 'Knowledge systems', text: 'Internal knowledge repositories, taxonomy tools' },
+            { label: 'Collaboration', text: 'Miro, Teams, SharePoint' }
+          ],
+          value: [
+            'Accelerate problem solving with proven insights',
+            'Improve recommendation quality and depth',
+            'Provide specialized expertise'
+          ],
+          topPerformer: 'A thought partner, not just a researcher—shaping hypotheses, not just answering questions.'
+        },
+        'data-consumer-dashboard': {
+          cardName: 'Data Consumer',
+          cardRole: 'Data Engineer – Dashboard Builder',
+          cardQuote: 'Transform business data into usable products that enable decision-making.',
+          mission: 'Transform business data into usable products (e.g., dashboards) that enable decision-making.',
+          tenureTitle: 'Typical Profile / Tenure',
+          tenure:
+            '~2–6 years experience. Technical role (Data Engineer / Analytics Engineer) embedded in a team or platform.',
+          contextScenario:
+            'Requesting people absence data to build a dashboard for HR or leadership reporting.',
+          whatTheyDo: [
+            'Define data requirements for use cases (e.g., absence trends, attrition signals)',
+            'Submit data access requests via data catalog or governance workflows',
+            'Integrate approved datasets into pipelines and dashboards',
+            'Ensure transformation logic aligns with business definitions',
+            'Iterate based on stakeholder feedback'
+          ],
+          coreTools: [
+            { label: 'Data engineering', text: 'Python, SQL, Spark' },
+            { label: 'Data platforms', text: 'Snowflake, BigQuery, Databricks' },
+            { label: 'Orchestration', text: 'Airflow, dbt' },
+            { label: 'BI tools', text: 'Tableau, Power BI' },
+            { label: 'Data catalog / governance', text: 'Collibra, Alation' }
+          ],
+          value: [
+            'Convert raw data into decision-ready dashboards',
+            'Enable self-service analytics for business users',
+            'Improve visibility into workforce metrics (e.g., absence patterns)'
+          ],
+          governance: [
+            'Clearly articulate purpose and scope of data usage',
+            'Request only necessary data (principle of least privilege)',
+            'Comply with data privacy and usage policies',
+            'Implement secure handling in downstream systems'
+          ],
+          topPerformer:
+            'Proactively anticipates governance requirements, frames precise data requests, and builds scalable, compliant data products—not just dashboards.'
+        },
+        'data-steward': {
+          cardName: 'Data Steward',
+          cardRole: 'Governance & controlled access',
+          cardQuote: 'Ensure data is used responsibly, consistently, and in compliance with governance standards.',
+          mission: 'Ensure data is used responsibly, consistently, and in compliance with governance standards.',
+          tenureTitle: 'Typical Profile / Tenure',
+          tenure:
+            '~5–10 years experience. Often sits in a data governance, risk, or domain-aligned role.',
+          contextScenario:
+            'Reviews request for people absence data, validates legitimacy, and governs access via data catalog.',
+          whatTheyDo: [
+            'Review incoming data access requests via catalog workflows',
+            'Validate business purpose, scope, and data minimization',
+            'Ask clarifying questions (e.g., level of granularity, PII exposure, retention)',
+            'Check compliance with policies (privacy, security, regulatory)',
+            'Approve, reject, or escalate requests to Data Owner'
+          ],
+          coreTools: [
+            { label: 'Data catalog', text: 'Collibra, Alation, Informatica' },
+            { label: 'Governance workflows', text: 'ServiceNow, Jira' },
+            { label: 'Metadata & lineage', text: 'Metadata management and lineage tools' },
+            { label: 'Classification', text: 'Data classification tools (PII tagging, sensitivity labels)' }
+          ],
+          value: [
+            'Protect sensitive data (e.g., employee absence records)',
+            'Ensure consistent definitions and usage',
+            'Reduce risk of misuse or regulatory violations'
+          ],
+          governance: [
+            'Enforce data policies and standards',
+            'Maintain metadata quality (definitions, lineage, ownership)',
+            'Act as gatekeeper for controlled data access',
+            'Balance accessibility with compliance'
+          ],
+          typicalQuestions: [
+            'What is the exact use case for absence data?',
+            'Do you need identifiable employee-level data or aggregated data?',
+            'What time range and granularity are required?',
+            'How will the data be stored, processed, and secured?',
+            'Who will have access to the final dashboard?'
+          ],
+          topPerformer:
+            'Acts as a trusted advisor, not a blocker—enabling access while ensuring strong governance and risk mitigation.'
+        },
+        'data-owner-people': {
+          cardName: 'Data Owner',
+          cardRole: 'People Domain – Senior Manager',
+          cardQuote: 'Accountable for the quality, security, and appropriate use of domain data.',
+          mission: 'Accountable for the quality, security, and appropriate use of domain data.',
+          tenureTitle: 'Typical Profile / Tenure',
+          tenure:
+            '~10–15+ years experience. Senior manager or leader in HR / People function.',
+          contextScenario:
+            'Owns people/HR data (including absence data) and provides final approval for access.',
+          whatTheyDo: [
+            'Define data ownership and accountability for people data',
+            'Set policies on how sensitive data (e.g., absence, health-related info) can be used',
+            'Approve or deny high-impact or sensitive data access requests',
+            'Align data usage with business priorities and risk tolerance',
+            'Ensure data quality and integrity within their domain'
+          ],
+          coreTools: [
+            { label: 'Note', text: 'Limited direct tooling; interacts via:' },
+            { label: 'Data catalog approvals', text: 'Collibra, Alation' },
+            { label: 'Dashboards', text: 'Power BI, Tableau – consumption level' },
+            { label: 'Governance', text: 'Governance workflows and reports' },
+            { label: 'Support', text: 'Relies on stewards and engineers for technical implementation' }
+          ],
+          value: [
+            'Ensure data is used to drive business value without compromising trust',
+            'Protect employee privacy and organizational reputation',
+            'Enable strategic insights (e.g., workforce planning, absenteeism trends)'
+          ],
+          governance: [
+            'Final decision rights on sensitive data access',
+            'Define acceptable use policies for domain data',
+            'Ensure compliance with legal/regulatory requirements (e.g., GDPR, labor laws)',
+            'Sponsor data quality improvements'
+          ]
+        },
+        'business-analyst': {
+          cardName: 'Business Analyst (BA)',
+          cardRole: 'Structured problem solving & analytics',
+          cardQuote: 'Drive structured problem solving and analytics to support team insights and client impact.',
+          mission: 'Drive structured problem solving and analytics to support team insights and client impact.',
+          tenure: '~0–3 years (entry-level, early career)',
+          whatTheyDo: [
+            'Break down problems into analyzable components',
+            'Conduct data analysis, research, and modeling',
+            'Build slides and synthesize findings into clear insights',
+            'Support team hypothesis testing and storyline development'
+          ],
+          coreTools: [
+            { label: 'Core', text: 'Excel (advanced), PowerPoint' },
+            { label: 'Basic analytics', text: 'Python, SQL, Alteryx (increasingly common)' },
+            { label: 'Research', text: 'Internal knowledge portals, external databases' },
+            { label: 'Collaboration', text: 'Teams, Miro' }
+          ],
+          value: [
+            'Deliver high-quality analysis quickly',
+            'Bring structure and rigor to ambiguous problems',
+            'Support development of fact-based insights'
+          ],
+          topPerformer:
+            'Moves beyond execution to owning pieces of the problem, showing strong judgment and early client readiness.'
+        },
+        'engagement-manager': {
+          cardName: 'Engagement Manager (EM)',
+          cardRole: 'Engagement leadership & delivery',
+          cardQuote: 'Lead teams to deliver end-to-end client impact while managing day-to-day problem solving.',
+          mission: 'Lead teams to deliver end-to-end client impact while managing day-to-day problem solving.',
+          tenure: '~4–8 years',
+          whatTheyDo: [
+            'Own workstream or full engagement delivery',
+            'Structure problems and define team approach',
+            'Manage team members (BAs, Associates, specialists)',
+            'Engage clients regularly and ensure alignment',
+            'Drive synthesis into clear recommendations'
+          ],
+          coreTools: [
+            { label: 'Core', text: 'Excel, PowerPoint (advanced storytelling)' },
+            { label: 'Project management', text: 'MS Project, Smartsheet (varies)' },
+            { label: 'Analytics tools (working knowledge)', text: 'Python, Tableau, Power BI' },
+            { label: 'Collaboration', text: 'Teams, Miro' }
+          ],
+          value: [
+            'Ensure teams focus on the right problem and solution',
+            'Translate analysis into actionable recommendations',
+            'Deliver projects on time with high quality'
+          ],
+          topPerformer:
+            'Balances team leadership, client management, and problem solving—anticipating issues and steering engagements proactively.'
+        },
+        'partner': {
+          cardName: 'Partner',
+          cardRole: 'Client relationships & impact',
+          cardQuote: 'Own client relationships and drive measurable, sustainable impact.',
+          mission: 'Own client relationships and drive measurable, sustainable impact.',
+          tenure: '~10–15 years',
+          whatTheyDo: [
+            'Lead client engagements and shape problem definition',
+            'Own senior client relationships (CxO level)',
+            'Provide strategic direction and quality assurance',
+            'Drive business development and proposal efforts',
+            'Mentor and develop teams'
+          ],
+          coreTools: [
+            { label: 'Note', text: 'Less tool-centric, but strong command of:' },
+            { label: 'Communication', text: 'PowerPoint (executive communication)' },
+            { label: 'Analysis', text: 'Excel (for directional insights)' },
+            { label: 'Dashboards', text: 'Tableau, Power BI – interpretive use' },
+            { label: 'CRM / internal', text: 'CRM / internal systems for pipeline management' }
+          ],
+          value: [
+            'Ensure recommendations are relevant, actionable, and adopted',
+            'Build long-term client trust',
+            'Convert insights into tangible business outcomes'
+          ],
+          topPerformer: 'A trusted advisor who shapes client strategy and drives change—not just delivers projects.'
+        },
+        'senior-partner': {
+          cardName: 'Senior Partner',
+          cardRole: 'Firm & industry leadership',
+          cardQuote:
+            'Shape industries, build enduring client relationships, and define the Firm’s strategic direction.',
+          mission: 'Shape industries, build enduring client relationships, and define the Firm’s strategic direction.',
+          tenure: '~15–25+ years',
+          whatTheyDo: [
+            'Own and deepen relationships with top executives and boards',
+            'Lead major transformations and multi-year programs',
+            'Set thought leadership agendas for sectors/functions',
+            'Drive significant business development and firm growth',
+            'Coach Partners and senior leaders'
+          ],
+          coreTools: [
+            { label: 'Focus', text: 'Minimal direct tool usage; focus is on:' },
+            { label: 'Strategic narratives', text: 'Strategic narratives and board-level communication' },
+            { label: 'Insights', text: 'High-level dashboards and synthesized insights' },
+            { label: 'Teams', text: 'Relies on teams for detailed analytics and materials' }
+          ],
+          value: [
+            'Influence enterprise-level decisions and transformations',
+            'Shape industry perspectives and trends',
+            'Drive long-term, high-impact engagements'
+          ]
+        }
+      };
+
+      function toolsSection(rows) {
+        if (!rows || !rows.length) return '';
+        var inner = rows
+          .map(function (r) {
+            return '<div class="lb-tools-row"><strong>' + escapeHtml(r.label) + ':</strong> ' + escapeHtml(r.text) + '</div>';
+          })
+          .join('');
+        return '<div class="lb-section"><h4>Core Tools & Technologies</h4>' + inner + '</div>';
+      }
+
+      function buildPriorityLightboxHtml(d) {
+        var parts = [];
+        if (d.personaQuote) {
+          parts.push('<p class="tagline" style="font-style:italic">' + escapeHtml(d.personaQuote) + '</p>');
+          parts.push(
+            '<p style="font-size:14px;color:var(--text-secondary);margin-top:0">' +
+            escapeHtml(d.personaIntro || 'The sections below describe this role in depth.') +
+            '</p>'
+          );
+        }
+        parts.push('<div class="lb-section"><h4>Mission</h4><p>' + escapeHtml(d.mission) + '</p></div>');
+        parts.push(
+          '<div class="lb-section"><h4>' +
+            escapeHtml(d.tenureTitle || 'Typical Firm Tenure') +
+            '</h4><p>' +
+            escapeHtml(d.tenure) +
+            '</p></div>'
+        );
+        if (d.contextScenario) {
+          parts.push(
+            '<div class="lb-section"><h4>Context in This Scenario</h4><p>' +
+              escapeHtml(d.contextScenario) +
+              '</p></div>'
+          );
+        }
+        parts.push(listSection('What they do', d.whatTheyDo));
+        parts.push(toolsSection(d.coreTools));
+        parts.push(listSection('How they create value', d.value));
+        parts.push(listSection('Key Responsibilities in Governance', d.governance));
+        parts.push(listSection('Typical Questions They Ask (in this scenario)', d.typicalQuestions));
+        if (d.topPerformer) {
+          parts.push(
+            '<div class="lb-section"><h4>Top performer looks like</h4><p>' + escapeHtml(d.topPerformer) + '</p></div>'
+          );
+        }
+        var footerId = d.linkedArchetypeId || '';
+        if (footerId) {
+          parts.push(
+            '<div class="role-lightbox-footer">' +
+            '<a href="archetype.html?id=' + encodeURIComponent(footerId) + '">Open full profile page</a> (printable layout with charts)</div>'
+          );
+        }
+        return parts.join('');
+      }
+
+      var lightbox = document.getElementById('roleLightbox');
+      var lightboxTitle = document.getElementById('roleLightboxTitle');
+      var lightboxSub = document.getElementById('roleLightboxSub');
+      var lightboxBody = document.getElementById('roleLightboxBody');
+      var closeBtn = document.getElementById('roleLightboxClose');
+
+      function openLightbox(d) {
+        var title = d.lightboxTitle || d.cardName || '';
+        var sub = d.lightboxSub != null ? d.lightboxSub : d.cardRole || '';
+        lightboxTitle.textContent = title;
+        lightboxSub.textContent = sub;
+        lightboxBody.innerHTML = buildPriorityLightboxHtml(d);
+        lightbox.hidden = false;
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        closeBtn.focus();
+      }
+
+      function closeLightbox() {
+        lightbox.hidden = true;
+        lightbox.setAttribute('aria-hidden', 'true');
+        lightboxBody.innerHTML = '';
+        document.body.style.overflow = '';
+      }
+
+      closeBtn.addEventListener('click', closeLightbox);
+      lightbox.querySelector('[data-lightbox-dismiss]').addEventListener('click', closeLightbox);
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !lightbox.hidden) closeLightbox();
+      });
+
+      var roleCardsEl = document.getElementById('roleCards');
+
+      PRIORITY_ORDER.forEach(function (id) {
+        var d = PRIORITY_DETAILS[id];
+        if (!d) return;
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'role-card';
+        btn.setAttribute('role', 'listitem');
+        btn.setAttribute('aria-haspopup', 'dialog');
+        var imgAlt = (d.cardName || '') + (d.cardRole ? ', ' + d.cardRole : '');
+        var av = cardAvatarUrl(d, id);
+        var init = cardInitials(d);
+        btn.innerHTML =
+          '<div class="role-card-top">' +
+          '<div class="role-card-avatar">' +
+          '<img class="avatar-open-peeps" src="' +
+          escapeHtml(av) +
+          '" alt="' +
+          escapeHtml(imgAlt) +
+          '" loading="lazy" />' +
+          '<span class="role-card-avatar-fallback" aria-hidden="true">' +
+          escapeHtml(init) +
+          '</span>' +
+          '</div>' +
+          '<div class="role-card-head-text">' +
+          '<div class="role-card-title">' +
+          escapeHtml(d.cardName) +
+          '</div>' +
+          '<div class="role-card-role">' +
+          escapeHtml(d.cardRole) +
+          '</div>' +
+          '</div></div>' +
+          '<div class="role-card-quote">' +
+          escapeHtml(d.cardQuote) +
+          '</div>' +
+          '<div class="role-card-hint">Click for full details</div>';
+        var wrap = btn.querySelector('.role-card-avatar');
+        var imgEl = wrap && wrap.querySelector('img');
+        if (imgEl) {
+          imgEl.addEventListener('error', function () {
+            wrap.classList.add('has-img-fallback');
+          });
+        }
+        btn.addEventListener('click', function () {
+          var detail = Object.assign({}, PRIORITY_DETAILS[id]);
+          detail.lightboxTitle = d.cardName;
+          detail.lightboxSub = d.cardRole;
+          openLightbox(detail);
+        });
+        roleCardsEl.appendChild(btn);
+      });
+    })();
   </script>
+  <script src="site-theme.js"></script>
+  <script src="uip-nav.js"></script>
 </body>
 </html>

@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>try{var k="cif-theme";var t=localStorage.getItem(k);if(t!=="light"&&t!=="dark")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","light");}</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Archetype — Persona Library</title>
+  <title>Archetype — User Intelligence Platform</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="uip-nav.css">
+  <link rel="stylesheet" href="uip-page.css">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -80,13 +83,46 @@
   </style>
 </head>
 <body>
+  <header class="uip-topbar" id="uip-global-nav">
+    <div class="uip-topbar-inner">
+      <a href="homepage.html" class="uip-brand">User Intelligence Platform</a>
+      <nav class="uip-nav-main" aria-label="Primary">
+        <a class="uip-nav-link" href="homepage.html#persona-simulation">Persona Simulation</a>
+        <div class="uip-nav-item has-dropdown">
+          <button type="button" class="uip-nav-dd-trigger" aria-expanded="false" aria-haspopup="true">Persona Library <span class="uip-caret" aria-hidden="true"></span></button>
+          <div class="uip-dropdown" role="menu">
+            <a href="onedata-personas.html" role="menuitem">One Data</a>
+            <a href="persona-library-tech-ecosystem.html" role="menuitem">Tech Ecosystem</a>
+          </div>
+        </div>
+        <a class="uip-nav-link" href="archetypes.html">Archetypes</a>
+        <div class="uip-nav-item has-dropdown">
+          <button type="button" class="uip-nav-dd-trigger" aria-expanded="false" aria-haspopup="true">User Journey <span class="uip-caret" aria-hidden="true"></span></button>
+          <div class="uip-dropdown" role="menu">
+            <a href="onedata-journey-maps.html" role="menuitem">One Data</a>
+            <a href="user-journey-tech-ecosystem.html" role="menuitem">Tech Ecosystem</a>
+          </div>
+        </div>
+        <a class="uip-nav-link" href="knowledgebase.html">Knowledgebase</a>
+      </nav>
+      <div class="uip-trailing">
+        <button type="button" class="theme-toggle uip-theme-btn" id="theme-toggle" title="Toggle light / dark theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section class="uip-page-hero uip-page-hero--blank" aria-hidden="true"></section>
+
   <div class="back-bar">
-    <a href="library.html">&larr; Back to Persona Library</a>
+    <a href="archetypes.html">&larr; Back to Archetypes</a>
   </div>
   <div class="page" id="page">
     <div class="not-found" id="notFound" style="display:none;">
       <h1>Archetype not found</h1>
-      <p><a href="library.html">Return to Persona Library</a></p>
+      <p><a href="archetypes.html">Return to Archetypes</a></p>
     </div>
     <div id="content" style="display:none; flex:1; width:100%;"></div>
   </div>
@@ -105,7 +141,7 @@
         document.getElementById('notFound').style.display = 'block';
         return;
       }
-      document.title = a.name + ' — ' + a.role + ' | Persona Library';
+      document.title = a.name + ' — ' + a.role + ' | User Intelligence Platform';
       const du = a.deviceUsage || { laptop: 50, desktop: 30, mobile: 20 };
       const total = (du.laptop || 0) + (du.desktop || 0) + (du.mobile || 0) || 100;
       const laptopPct = Math.round(((du.laptop || 0) / total) * 100);
@@ -192,5 +228,7 @@
       wrap.style.display = 'flex';
     })();
   </script>
+  <script src="site-theme.js"></script>
+  <script src="uip-nav.js"></script>
 </body>
 </html>

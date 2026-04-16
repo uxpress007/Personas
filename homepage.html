@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>try{var k="cif-theme";var t=localStorage.getItem(k);if(t!=="light"&&t!=="dark")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","light");}</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Persona simulation — User Intelligence Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="uip-nav.css">
+  <link rel="stylesheet" href="uip-page.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      color-scheme: light;
+      --bg: #f4f7fb;
+      --surface: #ffffff;
+      --surface-2: #f8fafc;
+      --text: hsl(217, 71%, 18%);
+      --text-secondary: hsl(215, 16%, 42%);
+      --text-muted: hsl(215, 14%, 55%);
+      --border: hsl(214, 32%, 88%);
+      --border-light: #eef2f7;
+      --primary: hsl(217, 91%, 48%);
+      --primary-soft: rgba(37, 99, 235, 0.12);
+      --accent: hsl(217, 91%, 48%);
+      --health-excellent: hsl(160, 84%, 36%);
+      --health-excellent-bg: rgba(16, 185, 129, 0.12);
+      --health-good: hsl(142, 76%, 34%);
+      --health-warning: hsl(38, 92%, 48%);
+      --health-warning-bg: rgba(245, 158, 11, 0.14);
+      --health-critical: hsl(0, 72%, 52%);
+      --health-critical-bg: rgba(239, 68, 68, 0.12);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --shadow-sm: 0 1px 2px hsl(217 71% 35% / 0.04);
+      --shadow-md: 0 4px 12px hsl(217 71% 35% / 0.08);
+      --shadow-lg: 0 12px 40px hsl(217 71% 35% / 0.1);
+      --nav-bg: rgba(255, 255, 255, 0.92);
+      --hero-grad: linear-gradient(135deg, hsl(217, 91%, 42%) 0%, hsl(230, 85%, 48%) 55%, hsl(200, 90%, 42%) 100%);
+      --indigo: #4338ca;
+      --cyan: #0891b2;
+    }
+
+    [data-theme="dark"] {
+      color-scheme: dark;
+      --bg: hsl(224, 50%, 6%);
+      --surface: hsl(224, 50%, 10%);
+      --surface-2: hsl(224, 50%, 8%);
+      --text: hsl(213, 31%, 92%);
+      --text-secondary: hsl(215, 20%, 68%);
+      --text-muted: hsl(215, 20%, 48%);
+      --border: hsl(224, 50%, 18%);
+      --border-light: hsl(224, 50%, 14%);
+      --primary: hsl(173, 80%, 45%);
+      --primary-soft: rgba(45, 212, 191, 0.15);
+      --accent: hsl(173, 80%, 45%);
+      --health-excellent: hsl(160, 84%, 45%);
+      --health-excellent-bg: rgba(52, 211, 153, 0.15);
+      --health-warning: hsl(38, 92%, 55%);
+      --health-warning-bg: rgba(251, 191, 36, 0.12);
+      --health-critical: hsl(0, 84%, 60%);
+      --health-critical-bg: rgba(248, 113, 113, 0.12);
+      --nav-bg: rgba(15, 23, 42, 0.94);
+      --shadow-sm: 0 1px 2px hsl(0 0% 0% / 0.25);
+      --shadow-md: 0 4px 16px hsl(0 0% 0% / 0.35);
+      --shadow-lg: 0 16px 48px hsl(0 0% 0% / 0.45);
+      --hero-grad: linear-gradient(135deg, hsl(224, 55%, 12%) 0%, hsl(200, 40%, 18%) 45%, hsl(173, 35%, 22%) 100%);
+    }
+
+    body {
+      font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      margin-left: 4px;
+      padding: 0;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--surface);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+
+    .theme-toggle:hover {
+      background: var(--border-light);
+      color: var(--text);
+    }
+
+    .theme-toggle svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+    [data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+    .theme-toggle .icon-moon { display: block; }
+    .theme-toggle .icon-sun { display: none; }
+
+    .main {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 32px 24px 64px;
+    }
+
+    .page-head {
+      margin-bottom: 28px;
+    }
+
+    .page-head h1 {
+      font-size: 2rem;
+      font-weight: 300;
+      letter-spacing: -0.03em;
+      margin-bottom: 6px;
+    }
+
+    .page-head p {
+      color: var(--text-secondary);
+      font-size: 15px;
+      max-width: 640px;
+    }
+
+    .search-row {
+      margin-bottom: 28px;
+    }
+
+    .search-input-wrap {
+      position: relative;
+      max-width: 420px;
+    }
+
+    .search-input-wrap input {
+      width: 100%;
+      height: 44px;
+      padding: 0 16px 0 42px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 14px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .search-input-wrap input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .search-input-wrap input:focus {
+      outline: 2px solid var(--primary);
+      outline-offset: 0;
+      border-color: transparent;
+    }
+
+    .search-input-wrap .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 18px;
+      height: 18px;
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    @media (max-width: 720px) {
+      .stats { grid-template-columns: 1fr; }
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 20px 22px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .stat-card .label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .stat-card .value {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+
+    .stat-card .hint {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-top: 6px;
+    }
+
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 300;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 16px;
+    }
+
+    .exp-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow 0.2s, border-color 0.2s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      text-align: left;
+      cursor: pointer;
+      font: inherit;
+    }
+
+    .exp-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary);
+    }
+
+    .exp-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .exp-card h3 {
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .badge {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      white-space: nowrap;
+    }
+
+    .badge-healthy { background: var(--health-excellent-bg); color: var(--health-excellent); border-color: rgba(16, 185, 129, 0.25); }
+    .badge-risk { background: var(--health-warning-bg); color: var(--health-warning); border-color: rgba(245, 158, 11, 0.25); }
+    .badge-critical { background: var(--health-critical-bg); color: var(--health-critical); border-color: rgba(239, 68, 68, 0.25); }
+
+    .exp-card .desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      margin-bottom: 14px;
+    }
+
+    .metric-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .metric {
+      background: var(--surface-2);
+      border-radius: var(--radius-sm);
+      padding: 8px 10px;
+      font-size: 11px;
+    }
+
+    .metric .m-label { color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; font-weight: 600; }
+    .metric .m-val { font-weight: 700; margin-top: 2px; font-size: 13px; }
+
+    .persona-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 14px;
+    }
+
+    .persona-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 18px 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      box-shadow: var(--shadow-sm);
+      text-decoration: none;
+      color: inherit;
+      transition: box-shadow 0.2s;
+    }
+
+    .persona-card:hover {
+      box-shadow: var(--shadow-md);
+    }
+
+    .persona-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--primary-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .persona-card h4 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .persona-card .role {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    .tools-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+    }
+
+    .tool-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 20px 22px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .tool-card h3 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .tool-card p {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 14px;
+      line-height: 1.55;
+    }
+
+    .tool-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.15s, filter 0.15s;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .btn-primary:hover { filter: brightness(1.06); }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .btn-outline:hover {
+      background: var(--border-light);
+    }
+
+    .btn-muted {
+      opacity: 0.55;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .chat-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .chat-header {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .chat-body {
+      padding: 18px;
+      min-height: 200px;
+      max-height: 280px;
+      overflow-y: auto;
+      font-size: 13px;
+    }
+
+    .bubble {
+      max-width: 85%;
+      padding: 10px 14px;
+      border-radius: 12px;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+
+    .bubble-ai {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+    }
+
+    .bubble-user {
+      background: var(--primary-soft);
+      color: var(--text);
+      margin-left: auto;
+    }
+
+    .chat-footer {
+      padding: 12px 14px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 8px;
+    }
+
+    .chat-footer input {
+      flex: 1;
+      height: 40px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0 12px;
+      font-size: 13px;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .footer-note {
+      text-align: center;
+      padding: 32px 16px;
+      font-size: 12px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      margin-top: 24px;
+    }
+
+    @media (max-width: 600px) {
+      .page-head h1 { font-size: 1.5rem; }
+    }
+
+    /* Conditional persona / role archetype dropdowns (under nav) */
+    .archetype-panel {
+      background: linear-gradient(180deg, var(--uip-brand-deep) 0%, #1a1838 100%);
+      color: #f1f5f9;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .archetype-panel-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 28px 24px 32px;
+    }
+
+    .archetype-panel h2 {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      margin-bottom: 20px;
+      color: #e2e8f0;
+    }
+
+    .archetype-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      gap: 16px 20px;
+      margin-bottom: 16px;
+    }
+
+    .archetype-row .archetype-field {
+      flex: 1 1 200px;
+      min-width: 0;
+    }
+
+    .archetype-row .archetype-field-wrap[hidden] {
+      display: none !important;
+    }
+
+    .archetype-row .btn-select-persona {
+      flex: 0 0 auto;
+      margin-left: auto;
+      align-self: flex-end;
+    }
+
+    @media (max-width: 960px) {
+      .archetype-row .btn-select-persona {
+        margin-left: 0;
+        width: 100%;
+      }
+    }
+
+    .archetype-field {
+      margin-bottom: 0;
+      min-width: 0;
+    }
+
+    .archetype-field label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: #f8fafc;
+      margin-bottom: 10px;
+      line-height: 1.45;
+    }
+
+    .archetype-field select {
+      width: 100%;
+      height: 46px;
+      padding: 0 14px;
+      font-size: 14px;
+      font-family: inherit;
+      color: #f1f5f9;
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      padding-right: 40px;
+    }
+
+    .archetype-field select:hover:not(:disabled) {
+      border-color: rgba(148, 163, 184, 0.55);
+    }
+
+    .archetype-field select:focus {
+      outline: 2px solid rgba(56, 189, 248, 0.5);
+      outline-offset: 2px;
+    }
+
+    .archetype-field select:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    .archetype-field select option {
+      background: #0f172a;
+      color: #f1f5f9;
+    }
+
+    .archetype-field-wrap[hidden] {
+      display: none !important;
+    }
+
+    .btn-select-persona {
+      padding: 12px 28px;
+      font-size: 14px;
+      font-weight: 700;
+      font-family: inherit;
+      color: #0b0e14;
+      background: linear-gradient(180deg, #2dd4bf 0%, #14b8a6 100%);
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(20, 184, 166, 0.35);
+      transition: transform 0.15s ease, filter 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .btn-select-persona:hover:not(:disabled) {
+      filter: brightness(1.06);
+      transform: translateY(-1px);
+    }
+
+    .btn-select-persona:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    .archetype-summary {
+      margin-top: 0;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 13px;
+      color: #94a3b8;
+      max-width: 960px;
+      line-height: 1.55;
+    }
+
+    .archetype-summary strong {
+      color: #e2e8f0;
+    }
+
+    /* Persona hub results (post–Select Persona) */
+    .persona-hub-results {
+      margin-top: 28px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .persona-hub-results[hidden] {
+      display: none !important;
+    }
+
+    .persona-hub-hint {
+      font-size: 13px;
+      color: #94a3b8;
+      margin-bottom: 18px;
+      max-width: 720px;
+      line-height: 1.5;
+    }
+
+    .persona-hub-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    @media (max-width: 1100px) {
+      .persona-hub-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 560px) {
+      .persona-hub-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .ph-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px 16px 18px;
+      background: rgba(11, 14, 20, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      border-radius: 12px;
+      text-align: left;
+      cursor: pointer;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .ph-card:hover {
+      border-color: rgba(45, 212, 191, 0.45);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .ph-card.is-selected {
+      border-color: #14b8a6;
+      box-shadow: 0 0 0 1px #14b8a6, 0 0 28px rgba(20, 184, 166, 0.22);
+    }
+
+    .ph-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      background: #1e293b;
+    }
+
+    .ph-body {
+      min-width: 0;
+    }
+
+    .ph-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: #f8fafc;
+      letter-spacing: -0.02em;
+    }
+
+    .ph-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: #94a3b8;
+      margin-top: 2px;
+    }
+
+    .ph-practice {
+      font-size: 11px;
+      font-weight: 600;
+      color: #5eead4;
+      margin-top: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .ph-desc {
+      font-size: 13px;
+      color: #cbd5e1;
+      line-height: 1.45;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="uip-topbar" id="uip-global-nav">
+    <div class="uip-topbar-inner">
+      <a href="homepage.html" class="uip-brand">User Intelligence Platform</a>
+      <nav class="uip-nav-main" aria-label="Primary">
+        <a class="uip-nav-link" href="homepage.html#persona-simulation" aria-current="page">Persona Simulation</a>
+        <div class="uip-nav-item has-dropdown">
+          <button type="button" class="uip-nav-dd-trigger" aria-expanded="false" aria-haspopup="true">Persona Library <span class="uip-caret" aria-hidden="true"></span></button>
+          <div class="uip-dropdown" role="menu">
+            <a href="onedata-personas.html" role="menuitem">One Data</a>
+            <a href="persona-library-tech-ecosystem.html" role="menuitem">Tech Ecosystem</a>
+          </div>
+        </div>
+        <a class="uip-nav-link" href="archetypes.html">Archetypes</a>
+        <div class="uip-nav-item has-dropdown">
+          <button type="button" class="uip-nav-dd-trigger" aria-expanded="false" aria-haspopup="true">User Journey <span class="uip-caret" aria-hidden="true"></span></button>
+          <div class="uip-dropdown" role="menu">
+            <a href="onedata-journey-maps.html" role="menuitem">One Data</a>
+            <a href="user-journey-tech-ecosystem.html" role="menuitem">Tech Ecosystem</a>
+          </div>
+        </div>
+        <a class="uip-nav-link" href="knowledgebase.html">Knowledgebase</a>
+      </nav>
+      <div class="uip-trailing">
+        <button type="button" class="theme-toggle uip-theme-btn" id="theme-toggle" title="Toggle light / dark theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section class="uip-page-hero" aria-labelledby="uip-home-hero-title">
+    <div class="uip-page-hero__inner">
+      <p class="uip-page-hero__eyebrow">User Intelligence Platform</p>
+      <h1 id="uip-home-hero-title" class="uip-page-hero__title">Persona simulation</h1>
+      <p class="uip-page-hero__lede">Choose archetypes, preview representative personas, then scroll into the hub for search, health metrics, journeys, and tools.</p>
+    </div>
+  </section>
+
+  <section class="archetype-panel" id="persona-archetype-selector" aria-labelledby="archetype-panel-title">
+    <div class="archetype-panel-inner">
+      <h2 id="archetype-panel-title">Persona &amp; role archetype</h2>
+
+      <div class="archetype-row">
+        <div class="archetype-field">
+          <label for="select-persona-archetype">Select a Persona archetype from the drop-down</label>
+          <select id="select-persona-archetype" name="persona_archetype" autocomplete="off">
+            <option value="">Choose one&hellip;</option>
+            <option value="CSP">CSP</option>
+            <option value="ESP">ESP</option>
+            <option value="FSP">FSP</option>
+            <option value="EW">EW</option>
+          </select>
+        </div>
+
+        <div class="archetype-field">
+          <label for="select-role-archetype">Select a Role archetype from the drop-down</label>
+          <select id="select-role-archetype" name="role_archetype" autocomplete="off" disabled>
+            <option value="">First select a Persona archetype&hellip;</option>
+          </select>
+        </div>
+
+        <div class="archetype-field archetype-field-wrap" id="wrap-engineer-specialty" hidden>
+          <label for="select-engineer-specialty">Select a Product/Service engineer specialty from the drop-down</label>
+          <select id="select-engineer-specialty" name="engineer_specialty" autocomplete="off">
+            <option value="">Choose one&hellip;</option>
+            <option value="Data Engineers">Data Engineers</option>
+            <option value="Data Scientist">Data Scientist</option>
+            <option value="Data Analyst">Data Analyst</option>
+            <option value="Data Citizen">Data Citizen</option>
+            <option value="Data owner / steward">Data owner / steward</option>
+            <option value="Software Engineers">Software Engineers</option>
+            <option value="Data Stakeholders (Risk, Legal, Cyber)">Data Stakeholders (Risk, Legal, Cyber)</option>
+          </select>
+        </div>
+
+        <button type="button" class="btn-select-persona" id="btn-select-persona" disabled>Select Persona</button>
+      </div>
+
+      <p class="archetype-summary" id="archetype-selection-summary" aria-live="polite">No selection yet.</p>
+
+      <div class="persona-hub-results" id="persona-hub-results" hidden>
+        <p class="persona-hub-hint">Not sure who to pick? Choose based on who your change would impact most.</p>
+        <div class="persona-hub-grid" id="persona-hub-grid" role="list"></div>
+      </div>
+    </div>
+  </section>
+
+  <main class="main">
+    <div class="page-head">
+      <h1>Customer insight intelligence</h1>
+      <p>Real-time view of experience health across journeys and personas, with quick paths into simulation, analysis, and your local libraries &mdash; modeled on the Colleague Experience Intelligence hub.</p>
+    </div>
+
+    <div class="search-row">
+      <div class="search-input-wrap">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="search" id="hub-search" placeholder="Search experiences, personas, themes..." autocomplete="off" aria-label="Search hub">
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat-card">
+        <div class="label">Portfolio health</div>
+        <div class="value" id="stat-health">72</div>
+        <div class="hint">Composite of operational, experiential, and behavioral signals (demo).</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Active journeys</div>
+        <div class="value">4</div>
+        <div class="hint">Mapped in this workspace; drill into cards below.</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Indexed personas</div>
+        <div class="value">12+</div>
+        <div class="hint">See <a href="library.html" style="color: var(--primary); font-weight: 600;">Persona Library</a> for full set.</div>
+      </div>
+    </div>
+
+    <section class="section" id="experiences" aria-labelledby="exp-title">
+      <h2 class="section-title" id="exp-title">All experiences</h2>
+      <div class="card-grid" id="experience-cards">
+        <a href="knowledgebase.html#personas" class="exp-card" data-keywords="onboarding discovery alignment persona">
+          <div class="exp-card-header">
+            <h3>Discovery &amp; persona alignment</h3>
+            <span class="badge badge-risk">At risk</span>
+          </div>
+          <p class="desc">Bring teams from raw segments to decision-ready personas with shared vocabulary across product, marketing, and CX.</p>
+          <div class="metric-row">
+            <div class="metric"><div class="m-label">Operational</div><div class="m-val">68</div></div>
+            <div class="metric"><div class="m-label">Experiential</div><div class="m-val">62</div></div>
+            <div class="metric"><div class="m-label">Behavioral</div><div class="m-val">65</div></div>
+          </div>
+        </a>
+        <a href="journey-maps.html" class="exp-card" data-keywords="journey map workshop cx">
+          <div class="exp-card-header">
+            <h3>Journey mapping workshop</h3>
+            <span class="badge badge-healthy">Healthy</span>
+          </div>
+          <p class="desc">End-to-end visualization of touchpoints, emotions, and handoffs &mdash; open the journey maps workspace to continue.</p>
+          <div class="metric-row">
+            <div class="metric"><div class="m-label">Operational</div><div class="m-val">82</div></div>
+            <div class="metric"><div class="m-label">Experiential</div><div class="m-val">79</div></div>
+            <div class="metric"><div class="m-label">Behavioral</div><div class="m-val">81</div></div>
+          </div>
+        </a>
+        <a href="archetypes.html" class="exp-card" data-keywords="archetype brand positioning">
+          <div class="exp-card-header">
+            <h3>Archetype &amp; positioning sprint</h3>
+            <span class="badge badge-healthy">Healthy</span>
+          </div>
+          <p class="desc">Align emotional brand territory with segment realities before campaign and product work diverge.</p>
+          <div class="metric-row">
+            <div class="metric"><div class="m-label">Operational</div><div class="m-val">77</div></div>
+            <div class="metric"><div class="m-label">Experiential</div><div class="m-val">74</div></div>
+            <div class="metric"><div class="m-label">Behavioral</div><div class="m-val">76</div></div>
+          </div>
+        </a>
+        <a href="knowledgebase.html#together" class="exp-card" data-keywords="measurement cadence voc">
+          <div class="exp-card-header">
+            <h3>Insight-to-action cadence</h3>
+            <span class="badge badge-risk">At risk</span>
+          </div>
+          <p class="desc">Recurring readouts that connect VOC themes to backlog and leadership decisions &mdash; see how tools work together in the Knowledgebase.</p>
+          <div class="metric-row">
+            <div class="metric"><div class="m-label">Operational</div><div class="m-val">58</div></div>
+            <div class="metric"><div class="m-label">Experiential</div><div class="m-val">61</div></div>
+            <div class="metric"><div class="m-label">Behavioral</div><div class="m-val">55</div></div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="section" id="personas" aria-labelledby="per-title">
+      <h2 class="section-title" id="per-title">All personas</h2>
+      <div class="persona-grid">
+        <a href="library.html" class="persona-card" data-keywords="strategic sarah partner">
+          <div class="persona-avatar" aria-hidden="true">&#x1F464;</div>
+          <div>
+            <h4>Strategic Sarah</h4>
+            <div class="role">Senior Partner &middot; CSP</div>
+            <span class="badge badge-healthy" style="margin-top:8px;display:inline-block;">High engagement</span>
+          </div>
+        </a>
+        <a href="library.html" class="persona-card" data-keywords="visionary victor">
+          <div class="persona-avatar" aria-hidden="true">&#x1F4A1;</div>
+          <div>
+            <h4>Visionary Victor</h4>
+            <div class="role">Senior Partner &middot; Innovation</div>
+            <span class="badge badge-risk" style="margin-top:8px;display:inline-block;">Medium engagement</span>
+          </div>
+        </a>
+        <a href="onedata-personas.html" class="persona-card" data-keywords="one data data literacy">
+          <div class="persona-avatar" aria-hidden="true">&#x1F4CA;</div>
+          <div>
+            <h4>One Data profiles</h4>
+            <div class="role">Data literacy &amp; CDB engagement</div>
+            <span class="badge badge-healthy" style="margin-top:8px;display:inline-block;">High engagement</span>
+          </div>
+        </a>
+        <a href="knowledgebase.html#personas" class="persona-card" data-keywords="operations olivia example">
+          <div class="persona-avatar" aria-hidden="true">&#x2699;&#xFE0F;</div>
+          <div>
+            <h4>Methodology primer</h4>
+            <div class="role">Operations Olivia example in Knowledgebase</div>
+            <span class="badge badge-risk" style="margin-top:8px;display:inline-block;">Medium engagement</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="section" id="persona-simulation" aria-labelledby="sim-title">
+      <h2 class="section-title" id="sim-title">Persona simulation</h2>
+      <div class="chat-panel">
+        <div class="chat-header">
+          <span aria-hidden="true">&#x1F4AC;</span> Persona chat (demo)
+        </div>
+        <div class="chat-body" id="chat-body">
+          <div class="bubble bubble-ai">Ask how a persona might react to a policy change, a new workflow, or a product decision. Replies are static demos only.</div>
+        </div>
+        <form class="chat-footer" id="chat-form">
+          <input type="text" id="chat-input" placeholder="Message a persona scenario..." autocomplete="off">
+          <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="section" id="topic-simulation" aria-labelledby="topic-title">
+      <h2 class="section-title" id="topic-title">Topic simulation</h2>
+      <div class="tools-row">
+        <div class="tool-card">
+          <h3>Topic workspace</h3>
+          <p>Stress-test messaging, policies, or journey changes against a fixed panel of persona traits before you ship.</p>
+          <div class="tool-actions">
+            <button type="button" class="btn btn-primary" id="btn-topic-demo">Run sample scenario</button>
+            <a href="knowledgebase.html#personas" class="btn btn-outline">Review persona anatomy</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="impact-analysis" aria-labelledby="impact-title">
+      <h2 class="section-title" id="impact-title">Impact analysis</h2>
+      <div class="tools-row">
+        <div class="tool-card">
+          <h3>Prioritized impact view</h3>
+          <p>Compare experience metrics before and after a change. Export narratives for leadership readouts (local demo).</p>
+          <div class="tool-actions">
+            <button type="button" class="btn btn-outline" id="btn-impact-demo">Generate demo summary</button>
+            <a href="library.html" class="btn btn-outline">Open evidence base</a>
+          </div>
+          <p id="impact-output" style="margin-top:14px;font-size:13px;color:var(--text-secondary);display:none;font-family:'JetBrains Mono',monospace;"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="admin" aria-labelledby="admin-title">
+      <h2 class="section-title" id="admin-title">Admin</h2>
+      <div class="tools-row">
+        <div class="tool-card">
+          <h3>Workspace administration</h3>
+          <p>On the live Colleague CX platform this area covers users, entitlements, and data connections. This static mirror has no backend.</p>
+          <div class="tool-actions">
+            <span class="btn btn-outline btn-muted">Manage users</span>
+            <span class="btn btn-outline btn-muted">API keys</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer-note">
+    <strong>Homepage</strong> &mdash; static mirror of the <a href="https://colleague-cx.cf.platform.mckinsey.cloud/" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600;">Colleague Experience Intelligence Platform</a> (search, health metrics, experiences, personas, simulation, impact, admin). Marketing splash: <a href="welcome.html" style="color: var(--primary); font-weight: 600;">Welcome</a>. Methodology: <a href="knowledgebase.html" style="color: var(--primary); font-weight: 600;">Knowledgebase</a>.
+  </footer>
+
+  <script src="site-theme.js"></script>
+  <script src="uip-nav.js"></script>
+  <script>
+    (function () {
+      var search = document.getElementById('hub-search');
+      var cards = document.querySelectorAll('#experience-cards [data-keywords], .persona-grid [data-keywords]');
+      if (search) {
+        search.addEventListener('input', function () {
+          var q = (search.value || '').trim().toLowerCase();
+          cards.forEach(function (el) {
+            var kw = (el.getAttribute('data-keywords') || '') + ' ' + (el.textContent || '');
+            kw = kw.toLowerCase();
+            el.style.display = !q || kw.indexOf(q) !== -1 ? '' : 'none';
+          });
+        });
+      }
+
+      var form = document.getElementById('chat-form');
+      var input = document.getElementById('chat-input');
+      var body = document.getElementById('chat-body');
+      if (form && input && body) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var t = (input.value || '').trim();
+          if (!t) return;
+          var user = document.createElement('div');
+          user.className = 'bubble bubble-user';
+          user.textContent = t;
+          body.appendChild(user);
+          var reply = document.createElement('div');
+          reply.className = 'bubble bubble-ai';
+          reply.textContent = 'Demo reply: consider validating this with recent interviews or behavioral data. For full persona cards, use the Persona Library.';
+          body.appendChild(reply);
+          input.value = '';
+          body.scrollTop = body.scrollHeight;
+        });
+      }
+
+      document.getElementById('btn-topic-demo') && document.getElementById('btn-topic-demo').addEventListener('click', function () {
+        alert('Demo: Topic simulation would run a scripted what-if across selected personas. Connect a backend to enable this flow.');
+      });
+
+      document.getElementById('btn-impact-demo') && document.getElementById('btn-impact-demo').addEventListener('click', function () {
+        var o = document.getElementById('impact-output');
+        if (!o) return;
+        o.style.display = 'block';
+        o.textContent = '{ "delta_csat": +0.4, "risk": "medium", "top_theme": "handoff clarity" }';
+      });
+
+      /* Conditional Persona → Role → (FSP + Engineers) + persona grid */
+      var ROLES_BY_PERSONA = {
+        CSP: ['Senior Partners', 'Partners', 'Engagement Managers', 'Associates', 'Business Analyst'],
+        ESP: ['Practice Leaders', 'Practice Managers', 'Practice Comms Specialists'],
+        FSP: [
+          'Firm Functions Leaders',
+          'Product/Service Leaders',
+          'Product/Service Managers',
+          'Product/Service Designers',
+          'Product/Service Engineers',
+          'Executive Assistants',
+          'GHD Support Specialists'
+        ],
+        EW: ['Mid-level Managers', 'C-Suite Executives']
+      };
+      var ENGINEER_ROLE_LABEL = 'Product/Service Engineers';
+
+      var selPersona = document.getElementById('select-persona-archetype');
+      var selRole = document.getElementById('select-role-archetype');
+      var wrapEng = document.getElementById('wrap-engineer-specialty');
+      var selEng = document.getElementById('select-engineer-specialty');
+      var summaryEl = document.getElementById('archetype-selection-summary');
+      var btnSelectPersona = document.getElementById('btn-select-persona');
+      var personaHubResults = document.getElementById('persona-hub-results');
+      var personaHubGrid = document.getElementById('persona-hub-grid');
+
+      var PERSONA_MAP = {
+        'CSP|Partners': [
+          {
+            name: 'Kenji Yamamoto',
+            title: 'Partner',
+            practice: 'Asia — Life Sciences',
+            desc: 'Balances regional client portfolio with global knowledge assets; sensitive to evidence quality and speed-to-insight.',
+            avatar: 'https://randomuser.me/api/portraits/men/32.jpg'
+          },
+          {
+            name: 'Camila Rocha',
+            title: 'Partner',
+            practice: 'LatAm — SHaPe',
+            desc: 'Leads transformation work across Spanish- and Portuguese-speaking markets; prioritizes stakeholder alignment and change adoption.',
+            avatar: 'https://randomuser.me/api/portraits/women/44.jpg'
+          },
+          {
+            name: 'Jordan Ellis',
+            title: 'Partner',
+            practice: 'NA — Electric Power & Natural Gas',
+            desc: 'Deep in capital projects, regulatory cycles, and operational risk; expects tools to work in the field, not only in HQ.',
+            avatar: 'https://randomuser.me/api/portraits/men/75.jpg'
+          }
+        ],
+        'CSP|Senior Partners': [
+          { name: 'Sarah Chen', title: 'Senior Partner', practice: 'Europe — Healthcare Systems', desc: 'Sets firm-level client agenda; values crisp narratives and defensible numbers for board-level conversations.', avatar: 'https://randomuser.me/api/portraits/women/65.jpg' },
+          { name: 'Marcus Webb', title: 'Senior Partner', practice: 'NA — Advanced Industries', desc: 'Champions digital and ops excellence; pushes teams to connect frontline reality to executive decisions.', avatar: 'https://randomuser.me/api/portraits/men/22.jpg' },
+          { name: 'Amara Okafor', title: 'Senior Partner', practice: 'Africa — Energy & Materials', desc: 'Navigates volatile markets and long investment horizons; expects transparency on trade-offs and delivery risk.', avatar: 'https://randomuser.me/api/portraits/women/28.jpg' }
+        ],
+        'CSP|Engagement Managers': [
+          { name: 'Emma Lindstrom', title: 'Engagement Manager', practice: 'Nordics — Retail', desc: 'Owns day-to-day client rhythm; needs fast access to templates, staffing, and quality control checkpoints.', avatar: 'https://randomuser.me/api/portraits/women/54.jpg' },
+          { name: 'Dev Patel', title: 'Engagement Manager', practice: 'India — Technology', desc: 'Coordinates distributed squads; friction in tooling shows up as calendar overload and rework.', avatar: 'https://randomuser.me/api/portraits/men/41.jpg' },
+          { name: 'Lucía Fernández', title: 'Engagement Manager', practice: 'Iberia — Financial Services', desc: 'Balances client escalation paths with team morale; looks for clarity on ownership and approvals.', avatar: 'https://randomuser.me/api/portraits/women/17.jpg' }
+        ],
+        'ESP|Practice Leaders': [
+          { name: 'Helena Kostas', title: 'Practice Leader', practice: 'Global — Operations', desc: 'Shapes practice IP and capability builds; cares about reusability and practitioner experience.', avatar: 'https://randomuser.me/api/portraits/women/33.jpg' },
+          { name: 'Noah Ibrahim', title: 'Practice Leader', practice: 'Americas — Risk', desc: 'Connects risk analytics to go-to-market; sensitive to governance and model explainability.', avatar: 'https://randomuser.me/api/portraits/men/52.jpg' },
+          { name: 'Yuki Morita', title: 'Practice Leader', practice: 'Asia — Organization', desc: 'Invests in talent models and leadership rituals; wants lightweight ways to sense culture health.', avatar: 'https://randomuser.me/api/portraits/women/90.jpg' }
+        ],
+        'FSP|Product/Service Engineers|Data Analyst': [
+          { name: 'Alex Rivera', title: 'Data Analyst', practice: 'Product — Customer Data Platform', desc: 'Stitches together pipelines and dashboards; blocked by unclear definitions and shifting metric logic.', avatar: 'https://randomuser.me/api/portraits/men/36.jpg' },
+          { name: 'Priya Shah', title: 'Data Analyst', practice: 'Product — Finance & Risk Analytics', desc: 'Owns month-end reporting packs; needs lineage and sign-off trails for auditors and controllers.', avatar: 'https://randomuser.me/api/portraits/women/63.jpg' },
+          { name: 'Tom Berg', title: 'Data Analyst', practice: 'Product — Sustainability Insights', desc: 'Combines operational telemetry with emissions models; wants consistent units and scenario labels.', avatar: 'https://randomuser.me/api/portraits/men/67.jpg' }
+        ]
+      };
+
+      function setRoleOptions(personaKey) {
+        if (!selRole) return;
+        selRole.innerHTML = '';
+        if (!personaKey) {
+          var ph = document.createElement('option');
+          ph.value = '';
+          ph.textContent = 'First select a Persona archetype…';
+          selRole.appendChild(ph);
+          selRole.disabled = true;
+          return;
+        }
+        var blank = document.createElement('option');
+        blank.value = '';
+        blank.textContent = 'Choose one…';
+        selRole.appendChild(blank);
+        (ROLES_BY_PERSONA[personaKey] || []).forEach(function (label) {
+          var opt = document.createElement('option');
+          opt.value = label;
+          opt.textContent = label;
+          selRole.appendChild(opt);
+        });
+        selRole.disabled = false;
+      }
+
+      function shouldShowEngineerSpecialty() {
+        return (
+          selPersona &&
+          selPersona.value === 'FSP' &&
+          selRole &&
+          selRole.value === ENGINEER_ROLE_LABEL
+        );
+      }
+
+      function syncEngineerPanel() {
+        if (!wrapEng || !selEng) return;
+        if (shouldShowEngineerSpecialty()) {
+          wrapEng.hidden = false;
+        } else {
+          wrapEng.hidden = true;
+          selEng.value = '';
+        }
+      }
+
+      function hidePersonaHub() {
+        if (personaHubResults) personaHubResults.hidden = true;
+        if (personaHubGrid) personaHubGrid.innerHTML = '';
+      }
+
+      function isArchetypeSelectionComplete() {
+        var p = selPersona && selPersona.value;
+        var r = selRole && selRole.value;
+        if (!p || !r) return false;
+        if (shouldShowEngineerSpecialty()) {
+          return !!(selEng && selEng.value);
+        }
+        return true;
+      }
+
+      function updateSelectPersonaButton() {
+        if (btnSelectPersona) btnSelectPersona.disabled = !isArchetypeSelectionComplete();
+      }
+
+      function updateArchetypeSummary() {
+        if (!summaryEl) return;
+        var p = selPersona && selPersona.value;
+        var r = selRole && selRole.value;
+        var e = selEng && selEng.value;
+        if (!p) {
+          summaryEl.textContent = 'No selection yet.';
+          updateSelectPersonaButton();
+          return;
+        }
+        if (!r) {
+          summaryEl.textContent = 'Persona archetype: ' + p + '. Select a Role archetype.';
+          updateSelectPersonaButton();
+          return;
+        }
+        var line = 'Persona archetype: ' + p + ' → Role archetype: ' + r;
+        if (shouldShowEngineerSpecialty()) {
+          line += e ? ' → Engineer specialty: ' + e + '.' : ' → Select an engineer specialty.';
+        }
+        summaryEl.textContent = line;
+        updateSelectPersonaButton();
+      }
+
+      function lookupKey(p, r, e) {
+        if (e && shouldShowEngineerSpecialty()) return p + '|' + r + '|' + e;
+        return p + '|' + r;
+      }
+
+      function buildGenericPersonas(p, r, e) {
+        var suffix = e ? ' · ' + e : '';
+        var rows = [
+          { name: 'Avery Brooks', practice: p + ' · Europe — Cross-sector insights', img: 'https://randomuser.me/api/portraits/women/68.jpg' },
+          { name: 'Morgan Lee', practice: p + ' · Middle East — Public & Social Sector', img: 'https://randomuser.me/api/portraits/men/55.jpg' },
+          { name: 'Riley Santos', practice: p + ' · Asia — Digital & Analytics', img: 'https://randomuser.me/api/portraits/women/12.jpg' }
+        ];
+        return rows.map(function (row) {
+          return {
+            name: row.name,
+            title: r,
+            practice: row.practice,
+            desc: 'Illustrative ' + r + ' for this archetype path. Use as a stand-in when calibrating change impact and adoption risk.' + suffix,
+            avatar: row.img
+          };
+        });
+      }
+
+      function resolvePersonasForSelection() {
+        var p = selPersona.value;
+        var r = selRole.value;
+        var e = selEng && selEng.value;
+        var k3 = e && p === 'FSP' && r === ENGINEER_ROLE_LABEL ? p + '|' + r + '|' + e : null;
+        var k2 = p + '|' + r;
+        if (k3 && PERSONA_MAP[k3]) return PERSONA_MAP[k3];
+        if (PERSONA_MAP[k2]) return PERSONA_MAP[k2];
+        return buildGenericPersonas(p, r, e || '');
+      }
+
+      function renderPersonaHub(personas) {
+        if (!personaHubGrid || !personaHubResults) return;
+        personaHubGrid.innerHTML = '';
+        personas.forEach(function (row, idx) {
+          var btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'ph-card';
+          btn.setAttribute('role', 'listitem');
+
+          var img = document.createElement('img');
+          img.className = 'ph-avatar';
+          img.src = row.avatar;
+          img.alt = '';
+
+          var body = document.createElement('div');
+          body.className = 'ph-body';
+
+          var nm = document.createElement('div');
+          nm.className = 'ph-name';
+          nm.textContent = row.name;
+
+          var tl = document.createElement('div');
+          tl.className = 'ph-title';
+          tl.textContent = row.title;
+
+          var pr = document.createElement('div');
+          pr.className = 'ph-practice';
+          pr.textContent = row.practice;
+
+          var ds = document.createElement('div');
+          ds.className = 'ph-desc';
+          ds.textContent = row.desc;
+
+          body.appendChild(nm);
+          body.appendChild(tl);
+          body.appendChild(pr);
+          body.appendChild(ds);
+          btn.appendChild(img);
+          btn.appendChild(body);
+
+          btn.addEventListener('click', function () {
+            personaHubGrid.querySelectorAll('.ph-card').forEach(function (c) {
+              c.classList.remove('is-selected');
+            });
+            btn.classList.add('is-selected');
+          });
+
+          personaHubGrid.appendChild(btn);
+        });
+        personaHubResults.hidden = false;
+        personaHubResults.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+
+      if (selPersona && selRole) {
+        selPersona.addEventListener('change', function () {
+          setRoleOptions(selPersona.value);
+          if (selEng) selEng.value = '';
+          syncEngineerPanel();
+          hidePersonaHub();
+          updateArchetypeSummary();
+        });
+        selRole.addEventListener('change', function () {
+          if (!shouldShowEngineerSpecialty() && selEng) selEng.value = '';
+          syncEngineerPanel();
+          hidePersonaHub();
+          updateArchetypeSummary();
+        });
+      }
+      if (selEng) {
+        selEng.addEventListener('change', function () {
+          hidePersonaHub();
+          updateArchetypeSummary();
+        });
+      }
+
+      if (btnSelectPersona) {
+        btnSelectPersona.addEventListener('click', function () {
+          if (!isArchetypeSelectionComplete()) return;
+          var list = resolvePersonasForSelection();
+          renderPersonaHub(list);
+        });
+      }
+
+      updateArchetypeSummary();
+    })();
+  </script>
+</body>
+</html>

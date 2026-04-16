@@ -1,0 +1,1906 @@
+{
+  "exported_at": "2026-03-24T15:22:43.081Z",
+  "source_file": "data.js",
+  "count": 61,
+  "personas": [
+    {
+      "persona_id": "csp-sp-1",
+      "display_name": "Strategic Sarah",
+      "full_name": null,
+      "role": "Senior Partner",
+      "tenure": "15+ years",
+      "office": null,
+      "category_id": "csp",
+      "category_name": "CSP",
+      "category_full_name": "Client Service Professionals",
+      "group_id": "csp-senior-partners",
+      "group_name": "Senior Partners",
+      "description": "A seasoned senior partner who leads major client engagements and drives firm strategy. Focuses on building long-term client relationships and mentoring the next generation of partners.",
+      "core_needs": [
+        "Strategic client growth",
+        "Firm governance",
+        "Talent development"
+      ],
+      "motivations": [
+        "Legacy building",
+        "Client impact",
+        "Revenue growth"
+      ],
+      "frustrations": [
+        "Bureaucratic processes",
+        "Slow decision-making",
+        "Resource constraints"
+      ],
+      "category_tag": null,
+      "quote": null
+    },
+    {
+      "persona_id": "csp-sp-2",
+      "display_name": "Visionary Victor",
+      "full_name": null,
+      "role": "Senior Partner",
+      "tenure": "20+ years",
+      "office": null,
+      "category_id": "csp",
+      "category_name": "CSP",
+      "category_full_name": "Client Service Professionals",
+      "group_id": "csp-senior-partners",
+      "group_name": "Senior Partners",
+      "description": "A visionary leader who champions innovation and digital transformation for clients. Known for thought leadership and industry expertise.",
+      "core_needs": [
+        "Innovation platforms",
+        "Industry insights",
+        "Cross-practice collaboration"
+      ],
+      "motivations": [
+        "Industry influence",
+        "Transformative impact",
+        "Knowledge sharing"
+      ],
+      "frustrations": [
+        "Technology adoption gaps",
+        "Siloed practices",
+        "Market disruption"
+      ],
+      "category_tag": null,
+      "quote": null
+    },
+    {
+      "persona_id": "csp-sp-3",
+      "display_name": "John",
+      "full_name": null,
+      "role": "Senior Partner",
+      "tenure": "20+ years",
+      "office": "London",
+      "category_id": "csp",
+      "category_name": "CSP",
+      "category_full_name": "Client Service Professionals",
+      "group_id": "csp-senior-partners",
+      "group_name": "Senior Partners",
+      "description": "A relationship-driven Senior Partner with 20+ years of tenure based in London. Values deep client trust and high-impact delivery above all. Prefers structured, in-person engagements and relies on EA support for technology and administrative tasks.",
+      "core_needs": [
+        "Delivering the highest impact for my clients",
+        "Creating a trustworthy client relationship",
+        "Minimizing the chaos in my life",
+        "Creating a balance between work and personal life – managing time",
+        "No waste of time on low-priority activities, reduce administration tasks",
+        "EA has pre-approved access to all required tools and technology"
+      ],
+      "motivations": [
+        "Drive the best client impact",
+        "Retention of our people",
+        "Growing the Firm and its people",
+        "Constantly learning and trying to respond to the changing world",
+        "To be innovative / groundbreaking",
+        "Pride in being part of leadership at McKinsey – it is prestigious",
+        "The success of the Firm benefits me",
+        "Preparing well for my retirement"
+      ],
+      "frustrations": [
+        "Prefers the 'way it used to be' and resorts to 4 days on client by default",
+        "Difficulty utilizing technology – resorts to white glove support",
+        "No time to learn or read",
+        "Not technology compatible with clients",
+        "VC in offices differs from the one in the meeting rooms",
+        "Technology restrictions slow down work",
+        "Client uses technology not approved by McKinsey Cyber Security",
+        "Too many videoconferences – loses the personal aspects of in-person meetings"
+      ],
+      "category_tag": null,
+      "quote": "I don't want the technology to be in the way of my relationship with the client."
+    },
+    {
+      "persona_id": "csp-p-1",
+      "display_name": "Pragmatic Pete",
+      "full_name": null,
+      "role": "Partner",
+      "tenure": "10-15 years",
+      "office": null,
+      "category_id": "csp",
+      "category_name": "CSP",
+      "category_full_name": "Client Service Professionals",
+      "group_id": "csp-partners",
+      "group_name": "Partners",
+      "description": "A results-oriented partner who balances client delivery excellence with business development. Strong operational focus with a keen eye for quality.",
+      "core_needs": [
+        "Client satisfaction",
+        "Team utilization",
+        "Deal pipeline"
+      ],
+      "motivations": [
+        "Delivery excellence",
+        "Team growth",
+        "Revenue targets"
+      ],
+      "frustrations": [
+        "Staffing challenges",
+        "Scope creep",
+        "Competing priorities"
+      ],
+      "category_tag": null,
+      "quote": null
+    },
+    {
+      "persona_id": "csp-p-2",
+      "display_name": "Collaborative Clara",
+      "full_name": null,
+      "role": "Partner",
+      "tenure": "12 years",
+      "office": null,
+      "category_id": "csp",
+      "category_name": "CSP",
+      "category_full_name": "Client Service Professionals",
+      "group_id": "csp-partners",
+      "group_name": "Partners",
+      "description": "A collaborative partner who excels at cross-functional engagements and multi-practice solutions. Known for her ability to bring diverse teams together.",
+      "core_needs": [
+        "Cross-practice resources",
+        "Client relationship management",
+        "Knowledge sharing"
+      ],
+      "motivations": [
+        "Integrated solutions",
+        "Client success",
+        "Team synergy"
+      ],
+      "frustrations": [
+        "Practice silos",
+        "Inconsistent tools",
+        "Communication gaps"
+      ],
+      "category_tag": null,
+      "quote": null
+    },
+    {
+      "persona_id": "csp-p-3",
+      "display_name": "Collaborating Colleen",
+      "full_name": null,
+      "role": "Partner",
+      "tenure": "12+ years",
+      "office": "London",
+      "category_id": "csp",
+      "category_name": "CSP",
+      "category_full_name": "Client Service Professionals",
+      "group_id": "csp-partners",
+      "group_name": "Partners",
+      "description": "An opportunity-driven Partner based in London with 12+ years of tenure. Focused on developing client opportunities and building trustworthy relationships. Values up-to-date information, streamlined workflows, and intuitive tools that require little training.",
+      "core_needs": [
+        "Up to date client information",
+        "More time to pursue opportunities vs. find them, share them",
+        "Understand the vision for Opportunity Tool",
+        "An intuitive process that requires little training",
+        "A standardized process",
+        "Be able to work and seamlessly collaborate with teams through devices from anywhere, especially while traveling",
+        "Want to leverage technology to work more effectively by reducing the number of tools, organizing communication and simplifying workflows"
+      ],
+      "motivations": [
+        "Happy to provide updated information to direct counterpart or office/cell leader within a smaller cell",
+        "Excited to share what's going on in a smaller setting",
+        "Better collaboration with practice teams which in turn supports the growth and success of my own team",
+        "Growing the partner community – being sponsors, creating opportunity for others",
+        "Want to be appreciated for the work done – more motivated when there is a sign of recognition",
+        "Like to see what other Partners are working on"
+      ],
+      "frustrations": [
+        "Lack of trust in providing information when it is unclear what/where the information will be used at a higher level",
+        "No transparency around client interaction/opportunity – no idea what is happening with Partners outside of her immediate region",
+        "Don't want outsiders knowing what I'm working on",
+        "Learning another tool will be time consuming",
+        "Continuously being inundated with information, calls, messages – difficult to keep track of things and find time to address everything",
+        "Spends a lot of time responding to many requests for expertise",
+        "Bothered by different methodologies being time consuming but also conflicts with not wanting a standardized process"
+      ],
+      "category_tag": null,
+      "quote": "I want to develop client opportunities."
+    },
+    {
+      "persona_id": "csp-p-4",
+      "display_name": "Inundated Ivan",
+      "full_name": null,
+      "role": "Partner",
+      "tenure": "10+ years",
+      "office": "Silicon Valley",
+      "category_id": "csp",
+      "category_name": "CSP",
+      "category_full_name": "Client Service Professionals",
+      "group_id": "csp-partners",
+      "group_name": "Partners",
+      "description": "A Partner based in Silicon Valley with 10+ years of tenure who is overwhelmed by email volume and communication sprawl. Works primarily with Know, Email, and Slack. Seeks more targeted, relevant communications and an easy way to manage distribution lists.",
+      "core_needs": [
+        "Organization to focus on the most relevant communications",
+        "Find the information I need",
+        "Quickly answer important communications",
+        "Know what is happening in areas that I care about",
+        "Easy way to remove myself from the distribution lists"
+      ],
+      "motivations": [
+        "Champion the Firm's mission to avoid communication sprawl",
+        "Provide relevant information to the respective group",
+        "Follow the Firm's risk guidelines – be a risk sherpa for my practice",
+        "Role model standards and best practices"
+      ],
+      "frustrations": [
+        "I get too many emails",
+        "At risk for receiving emails with information that conflicts with my study",
+        "I'm getting lost in threads and don't know where I lend my expertise",
+        "My EA isn't included in a distribution list, so they aren't able to modify my calendar"
+      ],
+      "category_tag": null,
+      "quote": "I am on so many groups and it was generated through whatever systems. There are just some emails that I don't need."
+    },
+    {
+      "persona_id": "csp-p-5",
+      "display_name": "Structured Sasha",
+      "full_name": null,
+      "role": "Partner",
+      "tenure": "10+ years",
+      "office": "SFO",
+      "category_id": "csp",
+      "category_name": "CSP",
+      "category_full_name": "Client Service Professionals",
+      "group_id": "csp-partners",
+      "group_name": "Partners",
+      "description": "A structured Partner based in SFO with 10+ years of tenure who values email as her primary workflow but recognizes the value of technology adoption. Splits time between client's office and home office. Relies heavily on laptop, mobile, and tablet.",
+      "core_needs": [
+        "Share insights and documents internally or externally quickly and easily to keep work moving",
+        "Have the ability to speak with and problem solve with clients efficiently",
+        "Keep tools on limited platforms in order to limit switching communications methods while working",
+        "Communicate clearly with engagement teams to keep everyone on the same page – desire for asynchronous communication"
+      ],
+      "motivations": [
+        "Speed/ease of communications",
+        "Maintaining client satisfaction",
+        "Efficiency and confidentiality",
+        "Keeping pulse of the team"
+      ],
+      "frustrations": [
+        "Not everyone you need to communicate with is on Slack – not all Partners are on Slack and there's no way to communicate with clients on Slack",
+        "You can't send files on Slack – forces you to switch between platforms",
+        "There's too much noise on Slack – too many channels and it's hard for a new user to navigate quickly"
+      ],
+      "category_tag": null,
+      "quote": "I'm comfortable working the way that I have been for years. But I also know that there's value in using technology to lead and collaborate."
+    },
+    {
+      "persona_id": "csp-p-6",
+      "display_name": "Willing William",
+      "full_name": null,
+      "role": "Partner",
+      "tenure": "8+ years",
+      "office": "New York",
+      "category_id": "csp",
+      "category_name": "CSP",
+      "category_full_name": "Client Service Professionals",
+      "group_id": "csp-partners",
+      "group_name": "Partners",
+      "description": "William Brown is a Partner based in New York with 8+ years of tenure who is striving to transition internal communications to Slack. Values seamless collaboration through devices from anywhere, especially while traveling. Actively adopts Box, Slack, and Zoom.",
+      "core_needs": [
+        "Build strong collaborative client relationships through ongoing communication and reduce need for co-location",
+        "Have easy access to the engagement teams to review ongoing work, engage in informal conversations, guide the problem solving and check the team health",
+        "Be able to work and seamlessly collaborate with teams through devices from anywhere, especially while traveling",
+        "Want to leverage technology to work more effectively by reducing the number of tools, organizing communication and simplifying workflows"
+      ],
+      "motivations": [
+        "Build stronger team and client relationships",
+        "Create more impact for clients and internal teams with less travel",
+        "Leverage visual cues and consensus features to drive alignment and outcomes"
+      ],
+      "frustrations": [
+        "Firm technology and integrations don't cover all collaboration and leadership needs, internally and externally",
+        "Lack of firm-wide guiding principles on using technology creates difference in the way engagements teams operate",
+        "Firm's best practices on securing client information and communication don't always align with the client's preferred way of collaboration",
+        "Increasing clutter of information, documents and communication, which is difficult to organize based on his personal ways of working",
+        "Meeting best practices and education on collaborative features within Zoom",
+        "Conference room integration that allows for full use of Zoom collaboration features",
+        "One-touch dial-in usability and education on dial-in customization"
+      ],
+      "category_tag": null,
+      "quote": "My days as an Associate or EM are not too far in the rear-view mirror."
+    },
+    {
+      "persona_id": "csp-em-1",
+      "display_name": "Driven Derek",
+      "full_name": null,
+      "role": "Engagement Manager",
+      "tenure": "5-8 years",
+      "office": null,
+      "category_id": "csp",
+      "category_name": "CSP",
+      "category_full_name": "Client Service Professionals",
+      "group_id": "csp-engagement-managers",
+      "group_name": "Engagement Managers",
+      "description": "An ambitious engagement manager who drives day-to-day delivery and manages client expectations. Aspires to partner track while maintaining work-life balance.",
+      "core_needs": [
+        "Project management tools",
+        "Client communication",
+        "Career development"
+      ],
+      "motivations": [
+        "Career progression",
+        "Client impact",
+        "Skill development"
+      ],
+      "frustrations": [
+        "Administrative overhead",
+        "Unclear career path",
+        "Workload management"
+      ],
+      "category_tag": null,
+      "quote": null
+    },
+    {
+      "persona_id": "csp-em-2",
+      "display_name": "Methodical Maya",
+      "full_name": null,
+      "role": "Engagement Manager",
+      "tenure": "6 years",
+      "office": null,
+      "category_id": "csp",
+      "category_name": "CSP",
+      "category_full_name": "Client Service Professionals",
+      "group_id": "csp-engagement-managers",
+      "group_name": "Engagement Managers",
+      "description": "A detail-oriented engagement manager known for flawless project execution and risk management. Ensures quality deliverables and client satisfaction at every stage.",
+      "core_needs": [
+        "Quality frameworks",
+        "Risk management",
+        "Team coordination"
+      ],
+      "motivations": [
+        "Delivery excellence",
+        "Process improvement",
+        "Mentoring"
+      ],
+      "frustrations": [
+        "Scope changes",
+        "Resource gaps",
+        "Last-minute requests"
+      ],
+      "category_tag": null,
+      "quote": null
+    },
+    {
+      "persona_id": "csp-a-1",
+      "display_name": "Ambitious Alex",
+      "full_name": null,
+      "role": "Associate",
+      "tenure": "2-4 years",
+      "office": null,
+      "category_id": "csp",
+      "category_name": "CSP",
+      "category_full_name": "Client Service Professionals",
+      "group_id": "csp-associates",
+      "group_name": "Associates",
+      "description": "A high-performing associate eager to develop consulting skills and build client relationships. Actively seeks learning opportunities and stretch assignments.",
+      "core_needs": [
+        "Mentorship",
+        "Skill development",
+        "Meaningful project work"
+      ],
+      "motivations": [
+        "Career growth",
+        "Learning new industries",
+        "Making an impact"
+      ],
+      "frustrations": [
+        "Repetitive tasks",
+        "Limited client exposure",
+        "Feedback delays"
+      ],
+      "category_tag": null,
+      "quote": null
+    },
+    {
+      "persona_id": "csp-a-2",
+      "display_name": "Analytical Aria",
+      "full_name": null,
+      "role": "Associate",
+      "tenure": "3 years",
+      "office": null,
+      "category_id": "csp",
+      "category_name": "CSP",
+      "category_full_name": "Client Service Professionals",
+      "group_id": "csp-associates",
+      "group_name": "Associates",
+      "description": "A data-savvy associate who brings analytical rigor to client engagements. Skilled in research, benchmarking, and synthesizing complex information into actionable insights.",
+      "core_needs": [
+        "Data tools",
+        "Research access",
+        "Analytical frameworks"
+      ],
+      "motivations": [
+        "Problem solving",
+        "Data-driven insights",
+        "Professional development"
+      ],
+      "frustrations": [
+        "Data silos",
+        "Manual reporting",
+        "Unclear expectations"
+      ],
+      "category_tag": null,
+      "quote": null
+    },
+    {
+      "persona_id": "csp-an-1",
+      "display_name": "Fresh Farhan",
+      "full_name": null,
+      "role": "Analyst",
+      "tenure": "0-2 years",
+      "office": null,
+      "category_id": "csp",
+      "category_name": "CSP",
+      "category_full_name": "Client Service Professionals",
+      "group_id": "csp-analysts",
+      "group_name": "Analysts",
+      "description": "A recently hired analyst keen to prove themselves and learn the consulting world. Brings fresh perspectives from academic training and is tech-savvy.",
+      "core_needs": [
+        "Onboarding support",
+        "Clear guidance",
+        "Learning resources"
+      ],
+      "motivations": [
+        "Career start",
+        "Skill building",
+        "Belonging"
+      ],
+      "frustrations": [
+        "Steep learning curve",
+        "Ambiguous tasks",
+        "Imposter syndrome"
+      ],
+      "category_tag": null,
+      "quote": null
+    },
+    {
+      "persona_id": "csp-an-2",
+      "display_name": "Resourceful Rita",
+      "full_name": null,
+      "role": "Analyst",
+      "tenure": "1 year",
+      "office": null,
+      "category_id": "csp",
+      "category_name": "CSP",
+      "category_full_name": "Client Service Professionals",
+      "group_id": "csp-analysts",
+      "group_name": "Analysts",
+      "description": "A resourceful analyst who quickly finds creative solutions to research challenges. Excellent at building presentations and client-ready materials.",
+      "core_needs": [
+        "Templates",
+        "Research databases",
+        "Peer collaboration"
+      ],
+      "motivations": [
+        "Contributing to team success",
+        "Learning from seniors",
+        "Building expertise"
+      ],
+      "frustrations": [
+        "Tight deadlines",
+        "Information overload",
+        "Limited autonomy"
+      ],
+      "category_tag": null,
+      "quote": null
+    },
+    {
+      "persona_id": "esp-pl-1",
+      "display_name": "Owner Persona",
+      "full_name": null,
+      "role": "Practice Leader",
+      "tenure": "10+ years",
+      "office": null,
+      "category_id": "esp",
+      "category_name": "ESP",
+      "category_full_name": "Expert Service Professionals",
+      "group_id": "esp-practice-leaders",
+      "group_name": "Practice Leaders",
+      "description": "A practice leader who owns the strategic direction and growth of their practice area. Responsible for talent, revenue, and market positioning within the practice.",
+      "core_needs": [
+        "Market intelligence",
+        "Talent pipeline",
+        "Practice strategy tools"
+      ],
+      "motivations": [
+        "Practice growth",
+        "Market leadership",
+        "Talent development"
+      ],
+      "frustrations": [
+        "Resource competition",
+        "Inconsistent quality",
+        "Market changes"
+      ],
+      "category_tag": null,
+      "quote": null
+    },
+    {
+      "persona_id": "esp-pl-2",
+      "display_name": "Practice Manager Persona",
+      "full_name": null,
+      "role": "Practice Leader",
+      "tenure": "8+ years",
+      "office": null,
+      "category_id": "esp",
+      "category_name": "ESP",
+      "category_full_name": "Expert Service Professionals",
+      "group_id": "esp-practice-leaders",
+      "group_name": "Practice Leaders",
+      "description": "Manages day-to-day operations of the practice including staffing, knowledge management, and practice development activities.",
+      "core_needs": [
+        "Staffing tools",
+        "Knowledge management",
+        "Performance tracking"
+      ],
+      "motivations": [
+        "Operational efficiency",
+        "Team satisfaction",
+        "Practice metrics"
+      ],
+      "frustrations": [
+        "Manual processes",
+        "Fragmented data",
+        "Competing demands"
+      ],
+      "category_tag": null,
+      "quote": null
+    },
+    {
+      "persona_id": "esp-pm-1",
+      "display_name": "Sender Persona",
+      "full_name": null,
+      "role": "Practice Manager",
+      "tenure": "5-8 years",
+      "office": null,
+      "category_id": "esp",
+      "category_name": "ESP",
+      "category_full_name": "Expert Service Professionals",
+      "group_id": "esp-practice-managers",
+      "group_name": "Practice Managers",
+      "description": "A practice manager responsible for communications outreach, sending targeted content and updates to practice members and stakeholders.",
+      "core_needs": [
+        "Communication platforms",
+        "Content curation",
+        "Audience segmentation"
+      ],
+      "motivations": [
+        "Effective communication",
+        "Practice engagement",
+        "Knowledge dissemination"
+      ],
+      "frustrations": [
+        "Email fatigue",
+        "Content overload",
+        "Low engagement rates"
+      ],
+      "category_tag": null,
+      "quote": null
+    },
+    {
+      "persona_id": "esp-pm-2",
+      "display_name": "Coordinator Carl",
+      "full_name": null,
+      "role": "Practice Manager",
+      "tenure": "4 years",
+      "office": null,
+      "category_id": "esp",
+      "category_name": "ESP",
+      "category_full_name": "Expert Service Professionals",
+      "group_id": "esp-practice-managers",
+      "group_name": "Practice Managers",
+      "description": "Coordinates practice events, training sessions, and knowledge-sharing initiatives. Ensures smooth operations across distributed teams.",
+      "core_needs": [
+        "Event management tools",
+        "Scheduling systems",
+        "Collaboration platforms"
+      ],
+      "motivations": [
+        "Team cohesion",
+        "Knowledge sharing",
+        "Smooth operations"
+      ],
+      "frustrations": [
+        "Timezone challenges",
+        "Low attendance",
+        "Tool fragmentation"
+      ],
+      "category_tag": null,
+      "quote": null
+    },
+    {
+      "persona_id": "esp-pcs-1",
+      "display_name": "Swift Sam",
+      "full_name": null,
+      "role": "Practice Communications Specialist",
+      "tenure": "3-5 years",
+      "office": null,
+      "category_id": "esp",
+      "category_name": "ESP",
+      "category_full_name": "Expert Service Professionals",
+      "group_id": "esp-practice-comms",
+      "group_name": "Practice Comms Specialists",
+      "description": "A fast-paced communications specialist who creates and distributes practice-level content, newsletters, and updates. Expert at crafting compelling narratives.",
+      "core_needs": [
+        "Content creation tools",
+        "Distribution channels",
+        "Analytics dashboards"
+      ],
+      "motivations": [
+        "Storytelling impact",
+        "Practice visibility",
+        "Content quality"
+      ],
+      "frustrations": [
+        "Content bottlenecks",
+        "Approval delays",
+        "Measuring impact"
+      ],
+      "category_tag": null,
+      "quote": null
+    },
+    {
+      "persona_id": "esp-pcs-2",
+      "display_name": "Creative Priya",
+      "full_name": null,
+      "role": "Practice Communications Specialist",
+      "tenure": "4 years",
+      "office": null,
+      "category_id": "esp",
+      "category_name": "ESP",
+      "category_full_name": "Expert Service Professionals",
+      "group_id": "esp-practice-comms",
+      "group_name": "Practice Comms Specialists",
+      "description": "A creative communicator who designs visually compelling practice materials, presentations, and digital content for internal and external audiences.",
+      "core_needs": [
+        "Design tools",
+        "Brand guidelines",
+        "Content templates"
+      ],
+      "motivations": [
+        "Visual storytelling",
+        "Brand consistency",
+        "Creative expression"
+      ],
+      "frustrations": [
+        "Brand inconsistency",
+        "Last-minute requests",
+        "Limited creative freedom"
+      ],
+      "category_tag": null,
+      "quote": null
+    },
+    {
+      "persona_id": "fsp-ffl-1",
+      "display_name": "Fiona",
+      "full_name": "Fiona — Firm Leader",
+      "role": "Firm Leader",
+      "tenure": "15+ years",
+      "office": "Large Office Location",
+      "category_id": "fsp",
+      "category_name": "FSP",
+      "category_full_name": "Firm Service Professionals",
+      "group_id": "fsp-firm-functions-leaders",
+      "group_name": "Firm Functions Leaders",
+      "description": "As the leader of one of our largest offices, Fiona divides her focus between defining the future of the office, coaching her team on crafting strategy and tactics to realize that vision, and serving her clients. Given the demands on her time, rapid access to accurate data about her office is absolutely critical — she needs to be able to make day-to-day decisions on her feet as well as to step back and look at the big picture when working to plan for the future. Since the beginning of the COVID-19 pandemic, much of her focus has been on attracting and retaining the key talent (especially EMs and APs) her offices needs to staff their increased engagement load, as well as on providing the transparency her current office members need to feel secure, productive, and connected.",
+      "core_needs": [
+        "Rapid access to accurate data about her office",
+        "Day-to-day decision-making tools on the go",
+        "Big picture strategic planning dashboards",
+        "Talent attraction and retention insights"
+      ],
+      "motivations": [
+        "Uphold Firm values and preserve our culture, even as we scale in size",
+        "Ensure her office can attract and retain the very best talent",
+        "Make better, more data-informed decisions without losing time",
+        "Communicate transparently with her office about what's happening at every level of the Firm"
+      ],
+      "frustrations": [
+        "Information about her office is stored in too many places and delivered via too many reports and systems",
+        "Cadence of her work is often governed by Firm committee meetings",
+        "Attrition is high for our most critical roles, making engagements difficult to staff"
+      ],
+      "category_tag": null,
+      "quote": "Technology empowers me to realize my vision for the future of the Firm"
+    },
+    {
+      "persona_id": "fsp-ffl-2",
+      "display_name": "Visionary Legend",
+      "full_name": "Visionary Legend",
+      "role": "Developer Experience Leader",
+      "tenure": "15–20 years",
+      "office": "Global",
+      "category_id": "fsp",
+      "category_name": "FSP",
+      "category_full_name": "Firm Service Professionals",
+      "group_id": "fsp-firm-functions-leaders",
+      "group_name": "Firm Functions Leaders",
+      "description": "A seasoned leader aged 40–55 with 15–20 years of experience and 8–15 years at the Firm. A vision setter and advocate for standardisation, known for long-term thinking, deep knowledge, and a drive for transparency. Builds networks across teams and is impact-driven in every initiative.",
+      "core_needs": [
+        "I do my work on time, then I need my holidays",
+        "I am up for challenges if my manager tells me",
+        "My family is my motivation to work",
+        "I have good friends here in the company — they share with me all things",
+        "I follow all firm rules and apply them diligently",
+        "I like to read some good coding articles but I don't like to share"
+      ],
+      "motivations": [
+        "Building world-class products with strong developer ethics",
+        "Setting Firm-wide best practices and standards",
+        "Reducing risk and cost through collaboration",
+        "Preserving good working culture"
+      ],
+      "frustrations": [
+        "Firm is ever changing — tools come and go, we learn something and then it gets decommissioned",
+        "I know every 2 years leadership will change — I am used to it now",
+        "I sometimes feel my manager doesn't appreciate me with my work"
+      ],
+      "category_tag": null,
+      "quote": "I am working in the firm from 15 yr. My vision is to have world class products and good working ethics for the developers. I think a best practice is important to set a valuable Firm wide standard in collaboration and brings immediate value (less risk and cost)."
+    },
+    {
+      "persona_id": "fsp-ffl-3",
+      "display_name": "Peter",
+      "full_name": "Peter — People Leader",
+      "role": "People Leader",
+      "tenure": "12+ years",
+      "office": "Multiple Offices",
+      "category_id": "fsp",
+      "category_name": "FSP",
+      "category_full_name": "Firm Service Professionals",
+      "group_id": "fsp-firm-functions-leaders",
+      "group_name": "Firm Functions Leaders",
+      "description": "As a Partner of the Firm, Peter spends most of his time cultivating client relationships and delivering meaningful impact for clients through engagements and solution delivery. His deep commitment to creating an unrivaled environment for exceptional people informs his approach to client work. He believes client engagements are as much an opportunity for sponsorship and professional development as they are for client impact, and works hard to make sure the colleagues he coaches, mentors, and sponsors receive the feedback and opportunities they need to grow. He actively embraces and celebrates the diversity of his DGLees' contributions and backgrounds and strives to provide nonhierarchical and inclusive coaching.",
+      "core_needs": [
+        "Ramp up an engagement quickly with the right talent",
+        "Evaluate a colleague fairly and comprehensively",
+        "Sponsor a colleague effectively",
+        "Mentor a colleague with care and impact"
+      ],
+      "motivations": [
+        "Building a great Firm that attracts, develops, excites, and retains exceptional people",
+        "Ensuring unbiased and meaningful evaluations for DGLees",
+        "Increasing the Firm's impact through developing and staffing exceptional talent"
+      ],
+      "frustrations": [
+        "Information about staffing opportunities outside of his own network is hard to come by",
+        "He has at least one other full-time job, which means he can't always spend as much time on apprenticeship as he would like",
+        "Diverse engagement staffing isn't as emphasized as he would like"
+      ],
+      "category_tag": null,
+      "quote": "Technology enables me to develop and staff exceptional and diverse talent"
+    },
+    {
+      "persona_id": "fsp-psl-1",
+      "display_name": "Product Manager Jenna",
+      "full_name": null,
+      "role": "Product/Service Leader",
+      "tenure": "8+ years",
+      "office": null,
+      "category_id": "fsp",
+      "category_name": "FSP",
+      "category_full_name": "Firm Service Professionals",
+      "group_id": "fsp-product-service-leaders",
+      "group_name": "Product/Service Leaders",
+      "description": "A dynamic product leader (also known as Jetting Jenna) who drives product strategy and roadmap for internal services. Balances user needs with business objectives.",
+      "core_needs": [
+        "Product analytics",
+        "User research",
+        "Roadmap tools"
+      ],
+      "motivations": [
+        "User satisfaction",
+        "Product-market fit",
+        "Innovation"
+      ],
+      "frustrations": [
+        "Conflicting stakeholder demands",
+        "Technical debt",
+        "Resource limitations"
+      ],
+      "category_tag": null,
+      "quote": null
+    },
+    {
+      "persona_id": "fsp-psl-2",
+      "display_name": "Service Director Dan",
+      "full_name": null,
+      "role": "Product/Service Leader",
+      "tenure": "10+ years",
+      "office": null,
+      "category_id": "fsp",
+      "category_name": "FSP",
+      "category_full_name": "Firm Service Professionals",
+      "group_id": "fsp-product-service-leaders",
+      "group_name": "Product/Service Leaders",
+      "description": "A service-oriented leader who ensures internal services meet the evolving needs of the firm. Champions service excellence and continuous improvement.",
+      "core_needs": [
+        "Service metrics",
+        "User feedback loops",
+        "Quality assurance"
+      ],
+      "motivations": [
+        "Service excellence",
+        "User experience",
+        "Operational efficiency"
+      ],
+      "frustrations": [
+        "Service disruptions",
+        "Unclear ownership",
+        "Legacy infrastructure"
+      ],
+      "category_tag": null,
+      "quote": null
+    },
+    {
+      "persona_id": "fsp-psm-1",
+      "display_name": "Low-Tenure Generalist",
+      "full_name": null,
+      "role": "Product/Service Manager",
+      "tenure": "1-3 years",
+      "office": null,
+      "category_id": "fsp",
+      "category_name": "FSP",
+      "category_full_name": "Firm Service Professionals",
+      "group_id": "fsp-product-service-managers",
+      "group_name": "Product/Service Managers",
+      "description": "A newer product/service manager still learning the firm's ecosystem. Brings fresh ideas but needs support navigating organizational complexity.",
+      "core_needs": [
+        "Onboarding resources",
+        "Mentor support",
+        "Process documentation"
+      ],
+      "motivations": [
+        "Quick wins",
+        "Building credibility",
+        "Learning the landscape"
+      ],
+      "frustrations": [
+        "Steep learning curve",
+        "Unclear processes",
+        "Limited network"
+      ],
+      "category_tag": null,
+      "quote": null
+    },
+    {
+      "persona_id": "fsp-psm-2",
+      "display_name": "FSP Persona",
+      "full_name": null,
+      "role": "Product/Service Manager",
+      "tenure": "5+ years",
+      "office": null,
+      "category_id": "fsp",
+      "category_name": "FSP",
+      "category_full_name": "Firm Service Professionals",
+      "group_id": "fsp-product-service-managers",
+      "group_name": "Product/Service Managers",
+      "description": "An experienced product/service manager who deeply understands the firm's operational needs and delivers reliable, scalable solutions.",
+      "core_needs": [
+        "Stakeholder management",
+        "Project tracking",
+        "Quality standards"
+      ],
+      "motivations": [
+        "Reliable delivery",
+        "Stakeholder trust",
+        "Process maturity"
+      ],
+      "frustrations": [
+        "Scope creep",
+        "Changing priorities",
+        "Technical complexity"
+      ],
+      "category_tag": null,
+      "quote": null
+    },
+    {
+      "persona_id": "fsp-psd-1",
+      "display_name": "GenX Gina",
+      "full_name": null,
+      "role": "Product/Service Designer",
+      "tenure": "10+ years",
+      "office": null,
+      "category_id": "fsp",
+      "category_name": "FSP",
+      "category_full_name": "Firm Service Professionals",
+      "group_id": "fsp-product-service-designers",
+      "group_name": "Product/Service Designers",
+      "description": "A seasoned GenX designer who combines deep experience with practical design sensibility. Values usability and accessibility in all design solutions.",
+      "core_needs": [
+        "Design systems",
+        "User research tools",
+        "Accessibility standards"
+      ],
+      "motivations": [
+        "Usable design",
+        "Inclusive experiences",
+        "Design mentoring"
+      ],
+      "frustrations": [
+        "Trend-chasing",
+        "Inconsistent standards",
+        "Limited user access"
+      ],
+      "category_tag": null,
+      "quote": null
+    },
+    {
+      "persona_id": "fsp-psd-2",
+      "display_name": "Luminary Lamar",
+      "full_name": null,
+      "role": "Product/Service Designer",
+      "tenure": "6 years",
+      "office": null,
+      "category_id": "fsp",
+      "category_name": "FSP",
+      "category_full_name": "Firm Service Professionals",
+      "group_id": "fsp-product-service-designers",
+      "group_name": "Product/Service Designers",
+      "description": "A creative luminary who pushes design boundaries and champions innovation in service design. Known for visually stunning and functionally excellent work.",
+      "core_needs": [
+        "Creative tools",
+        "Design inspiration",
+        "Prototyping platforms"
+      ],
+      "motivations": [
+        "Creative excellence",
+        "Innovation",
+        "Design impact"
+      ],
+      "frustrations": [
+        "Corporate constraints",
+        "Design-by-committee",
+        "Tight timelines"
+      ],
+      "category_tag": null,
+      "quote": null
+    },
+    {
+      "persona_id": "fsp-psd-3",
+      "display_name": "Software Architect",
+      "full_name": null,
+      "role": "Product/Service Designer",
+      "tenure": "8+ years",
+      "office": null,
+      "category_id": "fsp",
+      "category_name": "FSP",
+      "category_full_name": "Firm Service Professionals",
+      "group_id": "fsp-product-service-designers",
+      "group_name": "Product/Service Designers",
+      "description": "A technical designer who bridges the gap between design and engineering. Ensures designs are technically feasible and architecturally sound.",
+      "core_needs": [
+        "Technical documentation",
+        "Architecture tools",
+        "Cross-team collaboration"
+      ],
+      "motivations": [
+        "Technical excellence",
+        "Scalable solutions",
+        "Design-engineering alignment"
+      ],
+      "frustrations": [
+        "Design-dev handoff issues",
+        "Technical debt",
+        "Unclear requirements"
+      ],
+      "category_tag": null,
+      "quote": null
+    },
+    {
+      "persona_id": "fsp-psd-4",
+      "display_name": "Data Designer",
+      "full_name": null,
+      "role": "Product/Service Designer",
+      "tenure": "4 years",
+      "office": null,
+      "category_id": "fsp",
+      "category_name": "FSP",
+      "category_full_name": "Firm Service Professionals",
+      "group_id": "fsp-product-service-designers",
+      "group_name": "Product/Service Designers",
+      "description": "A data-focused designer who specializes in data visualization, dashboards, and information architecture for data-heavy products.",
+      "core_needs": [
+        "Data viz tools",
+        "Analytics platforms",
+        "User research"
+      ],
+      "motivations": [
+        "Data storytelling",
+        "Clear information design",
+        "User empowerment"
+      ],
+      "frustrations": [
+        "Data quality issues",
+        "Complex datasets",
+        "Stakeholder misalignment"
+      ],
+      "category_tag": null,
+      "quote": null
+    },
+    {
+      "persona_id": "fsp-pse-1",
+      "display_name": "EA Persona",
+      "full_name": null,
+      "role": "Product/Service Engineer",
+      "tenure": "5+ years",
+      "office": null,
+      "category_id": "fsp",
+      "category_name": "FSP",
+      "category_full_name": "Firm Service Professionals",
+      "group_id": "fsp-product-service-engineers",
+      "group_name": "Product/Service Engineers",
+      "description": "An enterprise architect persona who designs and maintains the technical infrastructure powering firm services. Ensures system reliability and scalability.",
+      "core_needs": [
+        "Architecture tools",
+        "Monitoring systems",
+        "Security frameworks"
+      ],
+      "motivations": [
+        "System reliability",
+        "Technical innovation",
+        "Scalability"
+      ],
+      "frustrations": [
+        "Legacy systems",
+        "Technical debt",
+        "Resource constraints"
+      ],
+      "category_tag": null,
+      "quote": null
+    },
+    {
+      "persona_id": "fsp-pse-2",
+      "display_name": "Full-Stack Dev",
+      "full_name": null,
+      "role": "Product/Service Engineer",
+      "tenure": "3 years",
+      "office": null,
+      "category_id": "fsp",
+      "category_name": "FSP",
+      "category_full_name": "Firm Service Professionals",
+      "group_id": "fsp-product-service-engineers",
+      "group_name": "Product/Service Engineers",
+      "description": "A versatile full-stack developer who builds and maintains internal tools and platforms. Comfortable across the technology stack.",
+      "core_needs": [
+        "Dev tools",
+        "CI/CD pipelines",
+        "Code review processes"
+      ],
+      "motivations": [
+        "Clean code",
+        "Feature delivery",
+        "Technical growth"
+      ],
+      "frustrations": [
+        "Context switching",
+        "Legacy codebases",
+        "Unclear requirements"
+      ],
+      "category_tag": null,
+      "quote": null
+    },
+    {
+      "persona_id": "fsp-ea-1",
+      "display_name": "Organized Olivia",
+      "full_name": null,
+      "role": "Executive Assistant",
+      "tenure": "7+ years",
+      "office": null,
+      "category_id": "fsp",
+      "category_name": "FSP",
+      "category_full_name": "Firm Service Professionals",
+      "group_id": "fsp-executive-assistants",
+      "group_name": "Executive Assistants",
+      "description": "A highly organized executive assistant who manages complex schedules, travel, and communications for firm leaders. The backbone of executive productivity.",
+      "core_needs": [
+        "Calendar management",
+        "Travel tools",
+        "Communication platforms"
+      ],
+      "motivations": [
+        "Smooth operations",
+        "Executive support",
+        "Proactive problem-solving"
+      ],
+      "frustrations": [
+        "Last-minute changes",
+        "Tool fragmentation",
+        "Information gaps"
+      ],
+      "category_tag": null,
+      "quote": null
+    },
+    {
+      "persona_id": "fsp-ea-2",
+      "display_name": "Tech-Savvy Tina",
+      "full_name": null,
+      "role": "Executive Assistant",
+      "tenure": "3 years",
+      "office": null,
+      "category_id": "fsp",
+      "category_name": "FSP",
+      "category_full_name": "Firm Service Professionals",
+      "group_id": "fsp-executive-assistants",
+      "group_name": "Executive Assistants",
+      "description": "A tech-forward executive assistant who leverages digital tools and automation to increase efficiency. Champions new technology adoption among support staff.",
+      "core_needs": [
+        "Automation tools",
+        "Digital workspace",
+        "Training resources"
+      ],
+      "motivations": [
+        "Efficiency gains",
+        "Technology adoption",
+        "Professional development"
+      ],
+      "frustrations": [
+        "Manual processes",
+        "Outdated tools",
+        "Resistance to change"
+      ],
+      "category_tag": null,
+      "quote": null
+    },
+    {
+      "persona_id": "ew-cs-1",
+      "display_name": "Michael Morrison",
+      "full_name": null,
+      "role": "C-Suite Executive",
+      "tenure": "External",
+      "office": null,
+      "category_id": "ew",
+      "category_name": "EW",
+      "category_full_name": "Everyday Wins",
+      "group_id": "ew-c-suite",
+      "group_name": "C-Suite Executives",
+      "description": "A C-suite executive client who values strategic partnerships and measurable outcomes. Expects premium service and thought leadership from consulting engagements.",
+      "core_needs": [
+        "Strategic insights",
+        "ROI measurement",
+        "Executive reporting"
+      ],
+      "motivations": [
+        "Business transformation",
+        "Competitive advantage",
+        "Shareholder value"
+      ],
+      "frustrations": [
+        "Slow delivery",
+        "Misaligned priorities",
+        "Lack of innovation"
+      ],
+      "category_tag": null,
+      "quote": null
+    },
+    {
+      "persona_id": "ew-cs-2",
+      "display_name": "Executive Emma",
+      "full_name": null,
+      "role": "C-Suite Executive",
+      "tenure": "External",
+      "office": null,
+      "category_id": "ew",
+      "category_name": "EW",
+      "category_full_name": "Everyday Wins",
+      "group_id": "ew-c-suite",
+      "group_name": "C-Suite Executives",
+      "description": "A forward-thinking C-suite executive focused on digital transformation and organizational agility. Values partners who challenge conventional thinking.",
+      "core_needs": [
+        "Digital strategy",
+        "Change management",
+        "Innovation frameworks"
+      ],
+      "motivations": [
+        "Digital leadership",
+        "Organizational agility",
+        "Market disruption"
+      ],
+      "frustrations": [
+        "Resistance to change",
+        "Vendor fatigue",
+        "Unclear outcomes"
+      ],
+      "category_tag": null,
+      "quote": null
+    },
+    {
+      "persona_id": "fa-an-1",
+      "display_name": "Connected Chris",
+      "full_name": null,
+      "role": "Firm Alumni",
+      "tenure": "Former (5 years at firm)",
+      "office": null,
+      "category_id": "firm-alumni",
+      "category_name": "Firm Alumni",
+      "category_full_name": "Firm Alumni",
+      "group_id": "fa-alumni",
+      "group_name": "Alumni Network",
+      "description": "A well-connected alumni who actively participates in firm events and refers potential clients. Values the ongoing relationship with the firm.",
+      "core_needs": [
+        "Alumni network access",
+        "Event invitations",
+        "Industry updates"
+      ],
+      "motivations": [
+        "Professional network",
+        "Industry connections",
+        "Giving back"
+      ],
+      "frustrations": [
+        "Losing touch",
+        "Outdated contact info",
+        "Irrelevant communications"
+      ],
+      "category_tag": null,
+      "quote": null
+    },
+    {
+      "persona_id": "fa-an-2",
+      "display_name": "Advocate Anita",
+      "full_name": null,
+      "role": "Firm Alumni",
+      "tenure": "Former (8 years at firm)",
+      "office": null,
+      "category_id": "firm-alumni",
+      "category_name": "Firm Alumni",
+      "category_full_name": "Firm Alumni",
+      "group_id": "fa-alumni",
+      "group_name": "Alumni Network",
+      "description": "A passionate firm advocate who actively promotes the firm brand in their current organization. Often serves as a bridge for new business opportunities.",
+      "core_needs": [
+        "Firm updates",
+        "Networking events",
+        "Knowledge resources"
+      ],
+      "motivations": [
+        "Brand advocacy",
+        "Professional growth",
+        "Community belonging"
+      ],
+      "frustrations": [
+        "Communication gaps",
+        "Exclusion from events",
+        "Outdated information"
+      ],
+      "category_tag": null,
+      "quote": null
+    },
+    {
+      "persona_id": "data-td-1",
+      "display_name": "Sarah",
+      "full_name": "Sarah — Product Manager",
+      "role": "Product Manager",
+      "tenure": "10+ years",
+      "office": "New York 711",
+      "category_id": "data",
+      "category_name": "Data Persona",
+      "category_full_name": "Data Personas",
+      "group_id": "data-td",
+      "group_name": "T&D (Technology & Development)",
+      "description": "I've been with the Firm for over 10 years. I joined the firm as a software engineer right after graduate school and is now the product manager that supports the firm's staffing needs. As part of the nature of my work, I often find myself making decisions on allocating resources to ensure we are on track of product roadmap while contributing to firm-wide initiatives. Sometimes with some specific tasks, I wish I have more support or resources I could use to help me better manage my team's work.",
+      "core_needs": [
+        "**Need to understand the quality of our data and how that can help prioritize work and make product decisions**",
+        "Being able to fix issues quickly",
+        "Identify product requirements and prioritize requirements"
+      ],
+      "motivations": [
+        "Data-driven product decisions",
+        "Team resource optimization",
+        "Firm-wide initiative alignment"
+      ],
+      "frustrations": [
+        "**Not able to identify potential risks timely due to inadequate reports**",
+        "Resource and capability management, may not have the right person on the team to work on this — i.e. don't have the right talent available on team to work on data governance",
+        "No immediate output or reports available because coding and set up time is required",
+        "Lack of understanding of business functions",
+        "Lack of full understanding of data and therefore leads to issues"
+      ],
+      "category_tag": "T&D",
+      "quote": null
+    },
+    {
+      "persona_id": "data-td-2",
+      "display_name": "Raina",
+      "full_name": "Raina — Tech Lead",
+      "role": "Tech Lead",
+      "tenure": "8 years",
+      "office": "Waltham Office",
+      "category_id": "data",
+      "category_name": "Data Persona",
+      "category_full_name": "Data Personas",
+      "group_id": "data-td",
+      "group_name": "T&D (Technology & Development)",
+      "description": "I started at the Firm's Waltham office 8 years ago as a Technical Architect for Optimize team. Since I became the Tech Lead of my team, I took up more responsibilities at overseeing the team's work and collaborating with my business partners and other team leads to make sure my plan is agreed upon and executed properly. The next goal in my career is to be the Head of Engineers and overseeing multiple teams. I'm excited to take up more management skills and operate at a higher level to see bigger picture.",
+      "core_needs": [
+        "**Ensure the team has a clear direction for development**",
+        "Provide a smooth onboarding experience for CDB users",
+        "Get regular updates and review data reports",
+        "Provide solutions to achieving product requirements"
+      ],
+      "motivations": [
+        "Team leadership",
+        "Technical excellence",
+        "Career growth to Head of Engineers"
+      ],
+      "frustrations": [
+        "Not getting insights to keep a pulse on data needs",
+        "**Stretched thin and constantly solving impediments and setting technical direction**",
+        "Lack of dedicated data engineer limits the bandwidth to support on additional data needs",
+        "I do not always know what firm data is available for me to use and how reliable it currently is"
+      ],
+      "category_tag": "T&D",
+      "quote": null
+    },
+    {
+      "persona_id": "data-td-3",
+      "display_name": "Rahul",
+      "full_name": "Rahul — Software Engineer",
+      "role": "Software Engineer / Full-stack Developer",
+      "tenure": "4 years",
+      "office": "Gurgaon",
+      "category_id": "data",
+      "category_name": "Data Persona",
+      "category_full_name": "Data Personas",
+      "group_id": "data-td",
+      "group_name": "T&D (Technology & Development)",
+      "description": "I've been at the firm for about 4 years now, and primarily working on Drupal apps. I got into technology because I enjoy solving problems and creating solutions that make people's job easier. In recent years Cloud Migration has gained a lot of attention in enterprises big and small, so I started a learning journey to get AWS certification recently and my goal is to become an expert in cloud migration.",
+      "core_needs": [
+        "**Build features for the products as planned and prioritized by the team while collaborating with other team members**",
+        "Data quality is important to me, I need to have access to comprehensive and accurate data",
+        "Need to understand how the data is consumed internally in the application"
+      ],
+      "motivations": [
+        "Problem solving",
+        "Cloud migration expertise",
+        "AWS certification"
+      ],
+      "frustrations": [
+        "**Have to stay up-to-date with latest technological developments while continuously delivering**",
+        "Do not always have the broader picture of what we are trying to solve for",
+        "Data engineer sometimes missing in the teams but more teams adding now eg. Engage",
+        "**My team does not have a full-time Data Engineer so sometimes I have to support that role, although often times I don't have the capacity or capability to provide full support**"
+      ],
+      "category_tag": "T&D",
+      "quote": null
+    },
+    {
+      "persona_id": "data-td-4",
+      "display_name": "Amir",
+      "full_name": "Amir — Data Engineer",
+      "role": "Data Engineer",
+      "tenure": "3 years",
+      "office": "New York 711",
+      "category_id": "data",
+      "category_name": "Data Persona",
+      "category_full_name": "Data Personas",
+      "group_id": "data-td",
+      "group_name": "T&D (Technology & Development)",
+      "description": "I've been with McKinsey for the last three years, primarily working with the recruitment team to support data needs. A lot of my work is about cleaning up and running data quality checks over unstructured data from different offices globally, and making sure the data meet the firm's compliance standards. I have learned a lot while supporting such a global effort, and want to broaden my expertise by supporting other product teams and become a Tech Lead in the data engineering space.",
+      "core_needs": [
+        "**Accelerate data management work efficiently and repeatably**",
+        "Ensure the process of handling data and the outcome are in compliance with firm requirements",
+        "Ability to fix issues quickly"
+      ],
+      "motivations": [
+        "Career growth to Tech Lead",
+        "Data quality excellence",
+        "Global data compliance"
+      ],
+      "frustrations": [
+        "**Not sure how to select the best tool available within the firm to use for data needs — i.e. handle large-size dataset and apply various data quality check rules**",
+        "**Not sure how to handle confidential data sensitively and adhere to secure guidelines**",
+        "Challenging to identify and clean data issues especially for the ones not generating in our systems — unable to trace the source of the issue to fix it in the right place",
+        "No easy way to find the data stewards associated for each firm-wide system"
+      ],
+      "category_tag": "T&D",
+      "quote": null
+    },
+    {
+      "persona_id": "data-csp-1",
+      "display_name": "Joseph",
+      "full_name": "Joseph — Data Engineer",
+      "role": "Data Engineer",
+      "tenure": "5 years",
+      "office": "New York Office",
+      "category_id": "data",
+      "category_name": "Data Persona",
+      "category_full_name": "Data Personas",
+      "group_id": "data-csp",
+      "group_name": "CSP (Client-Serving Professionals)",
+      "description": "I've been with McKinsey for 5 years. I started out as a software engineer at a tech startup before moving into consulting, and am now an Expert at the firm. I have primarily worked with clients in the GEM sector, and I really enjoy working with data and analytics, drawing insights and setting up data pipelines that are sustainable. Throughout the years I have built really good relationships with our clients and I aspire to be a Partner one day be more engaged in managing client relationships.",
+      "core_needs": [
+        "Help client set up the pipeline and run data quality check",
+        "**Ensure the completeness and the comprehensiveness of data**"
+      ],
+      "motivations": [
+        "Client relationship building",
+        "Data pipeline sustainability",
+        "Career growth to Partner"
+      ],
+      "frustrations": [
+        "**Need to build standardize Data Quality check on every client engagement from scratch**",
+        "No best-in-class industry tool to use",
+        "Sometimes license constraints come into play when choosing platforms",
+        "In some cases, coding from scratch might be required for every dataset"
+      ],
+      "category_tag": "CSP",
+      "quote": null
+    },
+    {
+      "persona_id": "data-csp-2",
+      "display_name": "Vicky",
+      "full_name": "Vicky — Data Scientist",
+      "role": "Data Scientist",
+      "tenure": "3 years",
+      "office": "Seattle Office",
+      "category_id": "data",
+      "category_name": "Data Persona",
+      "category_full_name": "Data Personas",
+      "group_id": "data-csp",
+      "group_name": "CSP (Client-Serving Professionals)",
+      "description": "I have been with the firm for three years and served a lot of clients in the M&S sector. Most of my work involves building data science models to extract patterns and insights. I am truly passionate about the potential of data science and love seeing the impact of our team's work on client's business. I am planning to get a Ph.D degree in the data science field and join the Quantum Black team to do more advanced analytics work.",
+      "core_needs": [
+        "Explore and clean data to generate insight and build analytic models",
+        "**Deep-dive into certain sections of data to dig up insights**"
+      ],
+      "motivations": [
+        "Data science passion",
+        "Client impact",
+        "Ph.D and Quantum Black aspiration"
+      ],
+      "frustrations": [
+        "**Worried about 'Garbage in garbage out'**",
+        "CST team waiting for answers from day 1 without appropriate time for set-up and data clean-up",
+        "No standard process or tool to check data quality and usability"
+      ],
+      "category_tag": "CSP",
+      "quote": null
+    },
+    {
+      "persona_id": "data-disc-1",
+      "display_name": "Helpful Georgiana",
+      "full_name": null,
+      "role": "Product Manager, Panorama IT Team",
+      "tenure": null,
+      "office": null,
+      "category_id": "data",
+      "category_name": "Data Persona",
+      "category_full_name": "Data Personas",
+      "group_id": "data-discovery",
+      "group_name": "Data Discovery & Usage",
+      "description": "Manages and distributes the latest versions of model files to her team, ensuring data is centralized and not siloed on individual computers. Technically proficient; uses her team's dedicated space and clear naming conventions to manage data effectively. Works with specific, versioned model files for different countries (e.g., \"model dash Hungary\"). Finds data by searching directly within her team's dedicated space in Data World. Systems: Data World.",
+      "core_needs": [
+        "**Specific, versioned model files for different countries**",
+        "Centralized data (not siloed on individual computers)",
+        "Find data by searching within team's dedicated space in Data World"
+      ],
+      "motivations": [
+        "Centralized versioning",
+        "Clear naming conventions",
+        "Team efficiency"
+      ],
+      "frustrations": [
+        "The primary pain point, which she has solved, was data getting stuck on individual computers and the lack of a central versioning system."
+      ],
+      "category_tag": "Data",
+      "quote": null
+    },
+    {
+      "persona_id": "data-disc-2",
+      "display_name": "Curious Mariela",
+      "full_name": null,
+      "role": "CCN, Global Consumer",
+      "tenure": null,
+      "office": null,
+      "category_id": "data",
+      "category_name": "Data Persona",
+      "category_full_name": "Data Personas",
+      "group_id": "data-discovery",
+      "group_name": "Data Discovery & Usage",
+      "description": "Fields questions about methodology, data definitions, and firm access to specific databases. Seeks out examples and subject matter experts. Technically moderate; comfortable using both data catalogs and community channels. Needs definitions, methodology catalogs, database subscription information, and contact information for experts. Consults Data World for formal definitions and catalogs and uses the \"Consumer Network\" Slack channel to ask for examples or find experts. Systems: Data World, Slack.",
+      "core_needs": [
+        "**Definitions, methodology catalogs, database subscription information**",
+        "Contact information for experts",
+        "Data World for formal definitions; Consumer Network Slack for examples and experts"
+      ],
+      "motivations": [
+        "Methodology clarity",
+        "Expert access",
+        "Catalog usage"
+      ],
+      "frustrations": [
+        "Not always having the answer immediately available and needing to consult external sources."
+      ],
+      "category_tag": "Data",
+      "quote": null
+    },
+    {
+      "persona_id": "data-disc-3",
+      "display_name": "Networker Ryan",
+      "full_name": null,
+      "role": "Data Engineer / Tech Lead",
+      "tenure": null,
+      "office": null,
+      "category_id": "data",
+      "category_name": "Data Persona",
+      "category_full_name": "Data Personas",
+      "group_id": "data-discovery",
+      "group_name": "Data Discovery & Usage",
+      "description": "Day to day: locating, understanding, and gaining access to new datasets required by his team. Technically high; navigates social networks and formal systems. Needs new, domain-specific datasets (e.g., LMS dataset) and the context/nuances of data tables. Process starts with people—identifying and contacting domain experts; uses Slack channels (e.g., EDW channel) to find experts, then Data World to submit formal access requests. Systems: Slack, Data World.",
+      "core_needs": [
+        "**New, domain-specific datasets and context/nuances of data tables**",
+        "Discovery via people and domain experts; Slack (EDW channel); Data World for access requests"
+      ],
+      "motivations": [
+        "Team data needs",
+        "Domain expertise",
+        "Structured access"
+      ],
+      "frustrations": [
+        "Confusion between similarly named Slack channels.",
+        "Initial discovery relies heavily on organic networking, which can be inefficient."
+      ],
+      "category_tag": "Data",
+      "quote": null
+    },
+    {
+      "persona_id": "data-disc-4",
+      "display_name": "Self-reliant James",
+      "full_name": null,
+      "role": "Strategy & Operations, Tech Ecosystem",
+      "tenure": null,
+      "office": null,
+      "category_id": "data",
+      "category_name": "Data Persona",
+      "category_full_name": "Data Personas",
+      "group_id": "data-discovery",
+      "group_name": "Data Discovery & Usage",
+      "description": "Primarily works with a known set of data; occasionally needs to find new data when his existing mental map is insufficient. Technically moderate; prefers direct communication and browsing catalogs over dedicated search tools. Needs new data tables relevant to his work. First step is to ask colleagues what tables they use; if that fails, browses the Snowflake catalog directly. Systems: Snowflake.",
+      "core_needs": [
+        "**New data tables relevant to his work**",
+        "Asks colleagues first; browses Snowflake catalog directly"
+      ],
+      "motivations": [
+        "Known data set",
+        "Colleague knowledge",
+        "Direct catalog access"
+      ],
+      "frustrations": [
+        "Has found Data World unhelpful.",
+        "Finds the table names in the Snowflake catalog to be confusing and untrustworthy (\"horrible\")."
+      ],
+      "category_tag": "Data",
+      "quote": null
+    },
+    {
+      "persona_id": "data-disc-5",
+      "display_name": "Pragmatic Ishika",
+      "full_name": null,
+      "role": "Senior Capabilities & Insights Analyst, Private Capital",
+      "tenure": null,
+      "office": null,
+      "category_id": "data",
+      "category_name": "Data Persona",
+      "category_full_name": "Data Personas",
+      "group_id": "data-discovery",
+      "group_name": "Data Discovery & Usage",
+      "description": "Conducts research using a mix of internal knowledge bases, external web searches, and specialized portals. Technically high; efficiently navigates multiple platforms. Needs pre-DDP reports, AI-generated memos, and documents specific to the private capital sector. Primary sources: Know (internal knowledge platform), Press Search (web search), and the specialized Private Capital Portal; uses Data World mainly as a gateway to external sources like EMIS. Systems: Know, Press Search, Private Capital Portal, Data World.",
+      "core_needs": [
+        "**Pre-DDP reports, AI-generated memos, private capital sector documents**",
+        "Know, Press Search, Private Capital Portal; Data World for external sources (e.g., EMIS)"
+      ],
+      "motivations": [
+        "Research efficiency",
+        "Multi-source synthesis",
+        "Sector-specific content"
+      ],
+      "frustrations": [
+        "The need to use multiple, distinct systems to get a complete picture."
+      ],
+      "category_tag": "Data",
+      "quote": null
+    },
+    {
+      "persona_id": "data-disc-6",
+      "display_name": "Gatekeeper Nicolas",
+      "full_name": null,
+      "role": "CCN, Capabilities & Insights",
+      "tenure": null,
+      "office": null,
+      "category_id": "data",
+      "category_name": "Data Persona",
+      "category_full_name": "Data Personas",
+      "group_id": "data-discovery",
+      "group_name": "Data Discovery & Usage",
+      "description": "Acts as a data search proxy for his busy CST colleagues; also discovers new data availability through his network. Technically moderate; uses the search tool on behalf of less technical or time-constrained colleagues. Needs specific data points and numbers for CST requests. Discovers data by asking colleagues; when a request comes in, he always searches Data World on their behalf. Systems: Data World.",
+      "core_needs": [
+        "**Specific data points and numbers for CST requests**",
+        "Discovers by asking colleagues; searches Data World on behalf of CSTs"
+      ],
+      "motivations": [
+        "Supporting CSTs",
+        "Proxy search",
+        "Network discovery"
+      ],
+      "frustrations": [
+        "His clients (CSTs) are too busy to search for data themselves and need the final answer, not just a pointer to the source."
+      ],
+      "category_tag": "Data",
+      "quote": null
+    },
+    {
+      "persona_id": "data-disc-7",
+      "display_name": "Resourceful Joanna",
+      "full_name": null,
+      "role": "Analytics & Data Science",
+      "tenure": null,
+      "office": null,
+      "category_id": "data",
+      "category_name": "Data Persona",
+      "category_full_name": "Data Personas",
+      "group_id": "data-discovery",
+      "group_name": "Data Discovery & Usage",
+      "description": "Finds and requests access to data for analytics projects. Technically high; prefers community-driven channels for discovery and uses formal tools only when necessary. Needs data on specific topics (e.g., \"data on X, Y, Z\"). Primary discovery channel is the \"ADS Consult\" Slack channel, which she finds more helpful than data catalogs; also reaches out to product teams directly. Uses Data World only at the final step to request access once she knows the exact table name. Systems: Slack, Data World.",
+      "core_needs": [
+        "**Data on specific topics for analytics projects**",
+        "ADS Consult Slack and product teams for discovery; Data World for access requests"
+      ],
+      "motivations": [
+        "Analytics delivery",
+        "Community discovery",
+        "Efficient access"
+      ],
+      "frustrations": [
+        "Finds Data World not very helpful for the initial discovery phase of her work."
+      ],
+      "category_tag": "Data",
+      "quote": null
+    },
+    {
+      "persona_id": "data-disc-8",
+      "display_name": "Direct Gunjan",
+      "full_name": null,
+      "role": "McKinsey (API / Partner Capital)",
+      "tenure": null,
+      "office": null,
+      "category_id": "data",
+      "category_name": "Data Persona",
+      "category_full_name": "Data Personas",
+      "group_id": "data-discovery",
+      "group_name": "Data Discovery & Usage",
+      "description": "Accessing and working with data directly in the data warehouse. Technically high; comfortable with data warehouses and search using conceptual keywords. Needs core business data. Goes directly to Snowflake; also uses Data World, searching with core concept keywords rather than technical names. Systems: Snowflake, Data World.",
+      "core_needs": [
+        "**Core business data**",
+        "Direct use of Snowflake; Data World with conceptual keywords"
+      ],
+      "motivations": [
+        "Direct data access",
+        "Concept-based search",
+        "Warehouse fluency"
+      ],
+      "frustrations": [
+        "Implied need for clear mapping between core concepts and technical data asset names."
+      ],
+      "category_tag": "Data",
+      "quote": null
+    },
+    {
+      "persona_id": "data-disc-9",
+      "display_name": "Collaborative Abhishek",
+      "full_name": null,
+      "role": "Senior Software Engineer",
+      "tenure": null,
+      "office": null,
+      "category_id": "data",
+      "category_name": "Data Persona",
+      "category_full_name": "Data Personas",
+      "group_id": "data-discovery",
+      "group_name": "Data Discovery & Usage",
+      "description": "Explores and integrates with APIs. Technically high; comfortable with APIs and reaching out to technical support teams. Needs information about available APIs that fit his use case. Previously asked colleagues; now reaches out directly to the Gateway API team via Slack for support and exploration. Systems: Slack.",
+      "core_needs": [
+        "**Information about available APIs that fit his use case**",
+        "Gateway API team via Slack for support and exploration"
+      ],
+      "motivations": [
+        "API integration",
+        "Direct support",
+        "Efficient discovery"
+      ],
+      "frustrations": [
+        "Not knowing the correct, dedicated channel for support initially."
+      ],
+      "category_tag": "Data",
+      "quote": null
+    },
+    {
+      "persona_id": "data-disc-10",
+      "display_name": "Architect Adam",
+      "full_name": null,
+      "role": "Engineering Manager, Platform McKinsey",
+      "tenure": null,
+      "office": null,
+      "category_id": "data",
+      "category_name": "Data Persona",
+      "category_full_name": "Data Personas",
+      "group_id": "data-discovery",
+      "group_name": "Data Discovery & Usage",
+      "description": "Finding available APIs on the Firm Gateway for his engineering work. Technically high; prefers structured documentation over search-based discovery tools. Needs a list of available APIs, with documentation and Swagger files. Primary source is a Confluence page that lists all available APIs on the Firm Gateway. Systems: Confluence.",
+      "core_needs": [
+        "**List of available APIs with documentation and Swagger files**",
+        "Confluence page listing Firm Gateway APIs"
+      ],
+      "motivations": [
+        "Structured documentation",
+        "Gateway APIs",
+        "Engineering efficiency"
+      ],
+      "frustrations": [
+        "Data World was not his discovery channel; he learned about data from other systems first and sees it only as a future option."
+      ],
+      "category_tag": "Data",
+      "quote": null
+    },
+    {
+      "persona_id": "data-disc-11",
+      "display_name": "Team-Player Danny",
+      "full_name": null,
+      "role": "Internal Audit Team",
+      "tenure": null,
+      "office": null,
+      "category_id": "data",
+      "category_name": "Data Persona",
+      "category_full_name": "Data Personas",
+      "group_id": "data-discovery",
+      "group_name": "Data Discovery & Usage",
+      "description": "Sourcing specific operational data from different regions (e.g., China travel data). Technically low; relies entirely on his personal and team network, being unaware of formal data teams. Needs specific, regional operational data for audits. First step is to ask in his team's Slack channel; if that fails, goes through his personal network and regional contacts to find the right person. Systems: Slack.",
+      "core_needs": [
+        "**Specific, regional operational data for audits**",
+        "Team Slack channel; then personal network and regional contacts"
+      ],
+      "motivations": [
+        "Audit compliance",
+        "Regional data",
+        "Network-based discovery"
+      ],
+      "frustrations": [
+        "Was completely unaware that the EDW or data catalog teams existed, representing a significant gap in his knowledge of firm resources."
+      ],
+      "category_tag": "Data",
+      "quote": null
+    },
+    {
+      "persona_id": "data-disc-12",
+      "display_name": "Multichannel Lisa",
+      "full_name": null,
+      "role": "Senior Compliance Manager, SHaPE",
+      "tenure": null,
+      "office": null,
+      "category_id": "data",
+      "category_name": "Data Persona",
+      "category_full_name": "Data Personas",
+      "group_id": "data-discovery",
+      "group_name": "Data Discovery & Usage",
+      "description": "Finding data for compliance purposes, navigating both technical and organizational systems. Technically low to moderate; describes a \"lack of the technology component\" on her part. Needs data for compliance checks. Layered approach: first checks her own Snowflake role, then searches Data World (with limited success), then uses a product-specific Slack channel or reaches out to a POC in the ROCKS team. Systems: Snowflake, Data World, Slack.",
+      "core_needs": [
+        "**Data needed for compliance checks**",
+        "Snowflake role → Data World → product Slack or ROCKS POC"
+      ],
+      "motivations": [
+        "Compliance",
+        "Layered discovery",
+        "POC support"
+      ],
+      "frustrations": [
+        "Has not been successful with Data World.",
+        "Was also unaware that an EDW team existed."
+      ],
+      "category_tag": "Data",
+      "quote": null
+    },
+    {
+      "persona_id": "data-disc-13",
+      "display_name": "Skeptical Sebastian",
+      "full_name": null,
+      "role": "Manager, Cell Ops",
+      "tenure": null,
+      "office": null,
+      "category_id": "data",
+      "category_name": "Data Persona",
+      "category_full_name": "Data Personas",
+      "group_id": "data-discovery",
+      "group_name": "Data Discovery & Usage",
+      "description": "Finding answers to operational questions (e.g., firm member counts). Technically moderate; uses search tools but finds them inefficient for broad questions. Needs specific operational metrics. First asks his team; if they don't know, he checks Data World. Systems: Data World, Slack.",
+      "core_needs": [
+        "**Specific operational metrics**",
+        "Asks team first; then Data World"
+      ],
+      "motivations": [
+        "Operational answers",
+        "Team-first",
+        "Targeted metrics"
+      ],
+      "frustrations": [
+        "Finds that large, general Slack channels are inefficient and would prefer a more targeted way to reach the 2–3 people who actually know the answer.",
+        "Finds tools like Lily unhelpful."
+      ],
+      "category_tag": "Data",
+      "quote": null
+    },
+    {
+      "persona_id": "data-disc-14",
+      "display_name": "Methodical Sebastian",
+      "full_name": null,
+      "role": "EC&I (CNI Analyst)",
+      "tenure": null,
+      "office": null,
+      "category_id": "data",
+      "category_name": "Data Persona",
+      "category_full_name": "Data Personas",
+      "group_id": "data-discovery",
+      "group_name": "Data Discovery & Usage",
+      "description": "Finding data on both familiar and unfamiliar topics, including details on external data subscriptions. Technically moderate; follows a clear, escalating path from local team to firm-wide tools. Needs data on building materials, usage rights for external data (e.g., Euromonitor), and subscription details. Starts by talking to teammates; for unfamiliar topics, Know and Data World are his top two tools; uses Data World to check subscriptions, definitions, and usage rights for known external sources. Systems: Know, Data World.",
+      "core_needs": [
+        "**Data on building materials, usage rights (e.g., Euromonitor), subscription details**",
+        "Teammates → Know and Data World for unfamiliar topics; Data World for subscriptions and usage rights"
+      ],
+      "motivations": [
+        "Subscription clarity",
+        "Escalating discovery",
+        "Usage rights"
+      ],
+      "frustrations": [
+        "The need to verify what data the firm has subscribed to and the specific usage rights associated with it."
+      ],
+      "category_tag": "Data",
+      "quote": null
+    },
+    {
+      "persona_id": "data-disc-15",
+      "display_name": "Portal-Driven Basia",
+      "full_name": null,
+      "role": "Client Capabilities Risk / Technology Risk",
+      "tenure": null,
+      "office": null,
+      "category_id": "data",
+      "category_name": "Data Persona",
+      "category_full_name": "Data Personas",
+      "group_id": "data-discovery",
+      "group_name": "Data Discovery & Usage",
+      "description": "Gathers information to understand products and cross-check them against firm risk policies. Technically moderate; relies on structured information repositories and portals. Needs product information and firm policies. Uses three main channels: a product portal (to understand the product), shared SharePoint folders from other teams, and the Firm Risk Intranet portal (to check policies). Systems: Product Portals, SharePoint, Firm Risk Intranet.",
+      "core_needs": [
+        "**Product information and firm policies**",
+        "Product portal, shared SharePoint folders, Firm Risk Intranet portal"
+      ],
+      "motivations": [
+        "Risk alignment",
+        "Structured repositories",
+        "Policy compliance"
+      ],
+      "frustrations": [
+        "Data and information are scattered across different portals and shared folders."
+      ],
+      "category_tag": "Data",
+      "quote": null
+    }
+  ]
+}

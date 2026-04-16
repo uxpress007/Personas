@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>try{var k="cif-theme";var t=localStorage.getItem(k);if(t!=="light"&&t!=="dark")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","light");}</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>One Data — User Journey — User Intelligence Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="uip-nav.css">
+  <link rel="stylesheet" href="uip-page.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #f0f9ff;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #94a3b8;
+      --border: #e2e8f0;
+      --primary: #0277bd;
+      --primary-light: #e1f5fe;
+      --teal: #0d9488;
+      --teal-light: #ccfbf1;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05);
+    }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    .wrap { max-width: 1000px; margin: 0 auto; padding: 40px 24px 60px; }
+    .page-intro { font-size: 16px; color: var(--text-secondary); margin-bottom: 24px; line-height: 1.7; }
+
+    .source-box {
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md);
+      padding: 16px 20px; margin-bottom: 32px; font-size: 14px; color: var(--text-secondary);
+    }
+    .source-box a { color: var(--primary); font-weight: 500; }
+    .source-box a:hover { text-decoration: underline; }
+
+    .maps-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+
+    .map-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: 24px; transition: box-shadow 0.2s ease, transform 0.2s ease;
+      position: relative; overflow: hidden;
+    }
+    .map-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--teal);
+    }
+    .map-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .map-card .category { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--teal); margin-bottom: 8px; }
+    .map-card h2 { font-size: 18px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.3px; }
+    .map-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px; }
+    .map-card .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 18px; background: var(--teal); color: #fff;
+      font-size: 13px; font-weight: 600; border-radius: 100px; text-decoration: none; transition: background 0.2s ease;
+    }
+    .map-card .btn:hover { background: #0f766e; }
+    .map-card .btn.disabled { background: #cbd5e1; cursor: not-allowed; pointer-events: none; }
+
+    .empty-note {
+      text-align: center; padding: 60px 20px; color: var(--text-muted);
+    }
+    .empty-note .icon { font-size: 48px; margin-bottom: 12px; }
+    .empty-note h3 { font-size: 18px; color: var(--text); margin-bottom: 8px; }
+
+    .cross-link {
+      margin-top: 40px; padding: 20px 24px;
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md);
+      display: flex; align-items: center; gap: 16px; text-decoration: none; color: inherit;
+      transition: box-shadow 0.2s ease;
+    }
+    .cross-link:hover { box-shadow: var(--shadow-md); }
+    .cross-link .cl-icon { font-size: 24px; }
+    .cross-link .cl-text { flex: 1; }
+    .cross-link .cl-text strong { font-size: 14px; display: block; margin-bottom: 2px; }
+    .cross-link .cl-text span { font-size: 13px; color: var(--text-secondary); }
+    .cross-link .cl-arrow { font-size: 18px; color: var(--text-muted); }
+  </style>
+</head>
+<body>
+
+  <header class="uip-topbar" id="uip-global-nav">
+    <div class="uip-topbar-inner">
+      <a href="homepage.html" class="uip-brand">User Intelligence Platform</a>
+      <nav class="uip-nav-main" aria-label="Primary">
+        <a class="uip-nav-link" href="homepage.html#persona-simulation">Persona Simulation</a>
+        <div class="uip-nav-item has-dropdown">
+          <button type="button" class="uip-nav-dd-trigger" aria-expanded="false" aria-haspopup="true">Persona Library <span class="uip-caret" aria-hidden="true"></span></button>
+          <div class="uip-dropdown" role="menu">
+            <a href="onedata-personas.html" role="menuitem">One Data</a>
+            <a href="persona-library-tech-ecosystem.html" role="menuitem">Tech Ecosystem</a>
+          </div>
+        </div>
+        <a class="uip-nav-link" href="archetypes.html">Archetypes</a>
+        <div class="uip-nav-item has-dropdown">
+          <button type="button" class="uip-nav-dd-trigger" aria-expanded="false" aria-haspopup="true">User Journey <span class="uip-caret" aria-hidden="true"></span></button>
+          <div class="uip-dropdown" role="menu">
+            <a href="onedata-journey-maps.html" role="menuitem" aria-current="page">One Data</a>
+            <a href="user-journey-tech-ecosystem.html" role="menuitem">Tech Ecosystem</a>
+          </div>
+        </div>
+        <a class="uip-nav-link" href="knowledgebase.html">Knowledgebase</a>
+      </nav>
+      <div class="uip-trailing">
+        <button type="button" class="theme-toggle uip-theme-btn" id="theme-toggle" title="Toggle light / dark theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section class="uip-page-hero" aria-labelledby="odjm-hero-title">
+    <div class="uip-page-hero__inner">
+      <h1 id="odjm-hero-title" class="uip-page-hero__title">&#x1F5FA;&#xFE0F; One Data Journey Maps</h1>
+      <p class="uip-page-hero__lede">End-to-end experience maps for data practitioners across the firm.</p>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <p class="page-intro">
+      These journey maps visualize how data practitioners — product managers, engineers, scientists, and analysts —
+      discover, access, evaluate, and use data assets. Each map is hosted on Miro for interactive exploration.
+    </p>
+
+    <div class="source-box">
+      &#x1F4C4; Source of truth: <a href="https://mckinsey.atlassian.net/wiki/spaces/DSCC/pages/1208880597/User+Journey+Maps" target="_blank" rel="noopener">DSCC Confluence — User Journey Maps</a>
+    </div>
+
+    <div class="maps-grid" id="mapsGrid"></div>
+
+    <a href="journey-maps.html" class="cross-link">
+      <span class="cl-icon">&#x1F5FA;&#xFE0F;</span>
+      <div class="cl-text">
+        <strong>General Journey Maps</strong>
+        <span>Browse journey maps across all firm programs and initiatives.</span>
+      </div>
+      <span class="cl-arrow">&rarr;</span>
+    </a>
+
+    <a href="onedata-personas.html" class="cross-link">
+      <span class="cl-icon">&#x1F464;</span>
+      <div class="cl-text">
+        <strong>One Data Personas</strong>
+        <span>Explore the data practitioner personas that these journey maps are built around.</span>
+      </div>
+      <span class="cl-arrow">&rarr;</span>
+    </a>
+  </div>
+
+  <script src="journey-maps.js"></script>
+  <script>
+    const grid = document.getElementById('mapsGrid');
+    const odMaps = journeyMapsData.maps.filter(m => m.scope === 'onedata');
+
+    if (odMaps.length === 0) {
+      grid.innerHTML = `
+        <div class="empty-note" style="grid-column:1/-1">
+          <div class="icon">&#x1F6A7;</div>
+          <h3>Journey maps coming soon</h3>
+          <p>One Data journey maps are being developed. Check the <a href="${journeyMapsData.sourceUrl}" target="_blank">Confluence page</a> for updates.</p>
+        </div>`;
+    } else {
+      grid.innerHTML = odMaps.map(m => {
+        const hasUrl = m.miroUrl && m.miroUrl !== 'https://miro.com/app/board/';
+        return `
+          <div class="map-card">
+            <div class="category">${m.category}</div>
+            <h2>${m.title}</h2>
+            <p>${m.description}</p>
+            <a href="${hasUrl ? m.miroUrl : '#'}" target="${hasUrl ? '_blank' : ''}" rel="noopener" class="btn ${hasUrl ? '' : 'disabled'}">
+              ${hasUrl ? '&#x1F517; Open in Miro' : '&#x23F3; Link pending'}
+            </a>
+          </div>`;
+      }).join('');
+    }
+  </script>
+  <script src="site-theme.js"></script>
+  <script src="uip-nav.js"></script>
+</body>
+</html>

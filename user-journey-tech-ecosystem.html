@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>try{var k="cif-theme";var t=localStorage.getItem(k);if(t!=="light"&&t!=="dark")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","light");}</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Journey — Tech Ecosystem | User Intelligence Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="uip-nav.css">
+  <link rel="stylesheet" href="uip-page.css">
+  <style>
+    :root { --bg: #f8fafc; --text: #0f172a; --muted: #64748b; --border: #e2e8f0; --card: #fff; --accent: #0891b2; }
+    [data-theme="dark"] { color-scheme: dark; --bg: #0b1120; --text: #e2e8f0; --muted: #94a3b8; --border: #2d3d56; --card: #141c2b; --accent: #67e8f9; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Inter, system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 40px 24px 64px; }
+    h1 { font-size: 28px; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 12px; }
+    .lede { font-size: 16px; color: var(--muted); margin-bottom: 28px; max-width: 720px; }
+    .jlist { list-style: none; }
+    .jlist li { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; margin-bottom: 12px; font-size: 14px; color: var(--muted); }
+    .jlist li strong { display: block; color: var(--text); font-size: 15px; margin-bottom: 6px; }
+    .links { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 12px; }
+    .links a { font-size: 14px; font-weight: 600; color: var(--accent); text-decoration: none; }
+    .links a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <header class="uip-topbar" id="uip-global-nav">
+    <div class="uip-topbar-inner">
+      <a href="homepage.html" class="uip-brand">User Intelligence Platform</a>
+      <nav class="uip-nav-main" aria-label="Primary">
+        <a class="uip-nav-link" href="homepage.html#persona-simulation">Persona Simulation</a>
+        <div class="uip-nav-item has-dropdown">
+          <button type="button" class="uip-nav-dd-trigger" aria-expanded="false" aria-haspopup="true">Persona Library <span class="uip-caret" aria-hidden="true"></span></button>
+          <div class="uip-dropdown" role="menu">
+            <a href="onedata-personas.html" role="menuitem">One Data</a>
+            <a href="persona-library-tech-ecosystem.html" role="menuitem">Tech Ecosystem</a>
+          </div>
+        </div>
+        <a class="uip-nav-link" href="archetypes.html">Archetypes</a>
+        <div class="uip-nav-item has-dropdown">
+          <button type="button" class="uip-nav-dd-trigger" aria-expanded="false" aria-haspopup="true">User Journey <span class="uip-caret" aria-hidden="true"></span></button>
+          <div class="uip-dropdown" role="menu">
+            <a href="onedata-journey-maps.html" role="menuitem">One Data</a>
+            <a href="user-journey-tech-ecosystem.html" role="menuitem" aria-current="page">Tech Ecosystem</a>
+          </div>
+        </div>
+        <a class="uip-nav-link" href="knowledgebase.html">Knowledgebase</a>
+      </nav>
+      <div class="uip-trailing">
+        <button type="button" class="theme-toggle uip-theme-btn" id="theme-toggle" title="Toggle theme" style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid var(--border);border-radius:999px;background:var(--card);cursor:pointer;">
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section class="uip-page-hero uip-page-hero--blank" aria-hidden="true"></section>
+
+  <div class="wrap">
+    <h1>User Journey — Tech Ecosystem</h1>
+    <p class="lede">Journey maps here focus on how engineers, platform owners, and internal customers move through technical change: discovery of capabilities, onboarding to golden paths, production promotion, and incident learning. Use them alongside the general journey index when the experience is primarily tool- and API-centric.</p>
+
+    <ul class="jlist">
+      <li><strong>Discover &amp; evaluate</strong>Compare internal platforms and external vendors; security review and architecture guardrails shape what is even allowed to progress.</li>
+      <li><strong>Build &amp; integrate</strong>Local development, CI/CD, secrets, and contract testing. Pain often appears as flaky pipelines or unclear ownership of shared libraries.</li>
+      <li><strong>Operate &amp; improve</strong>Runbooks, SLOs, post-incident reviews, and roadmap feedback into the platform backlog.</li>
+    </ul>
+
+    <div class="links">
+      <a href="journey-maps.html">All user journey maps (general)</a>
+      <a href="onedata-journey-maps.html">One Data journey maps</a>
+    </div>
+  </div>
+
+  <script src="site-theme.js"></script>
+  <script src="uip-nav.js"></script>
+</body>
+</html>

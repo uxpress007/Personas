@@ -1,62 +1,207 @@
 const archetypeData = {
   list: [
     {
-      id: "tomas",
-      name: "Tomas",
-      role: "Technologist",
-      tagline: "Technology provides me with workflows and environments that foster focus, flow, and feedback.",
-      avatar: "archetype-tomas.png",
-      otherRoles: ["Product Owner", "Engagement Team Member"],
-      deviceUsage: { laptop: 50, desktop: 35, mobile: 15 },
-      currentRole: ["Consultant", "Team Lead", "Office Lead", "Project Leader"],
-      regionalCollaboration: ["EMEA", "APAC", "Japan", "Latin America", "North America", "Global"],
-      keyCollaborators: ["Engagement Team Lead", "Office Leads", "Project Leaders", "Talent Manager", "Technologist"],
-      description: "Tomas (an Expert API) is a designer by craft and loves bringing his expertise and repertoire to bear on his clients' thorniest challenges. He's happy talking to customers, problem-solving with colleagues, and creating on his own, headphones blasting the latest Arcade Fire album. He is resourceful and creative, but struggles with the limited tools the Firm provides for designers and researchers, and finds it difficult to spool up research and tooling at scale—never mind getting clients to think outside the box when working with them from home. As a convener of the global Design Guild, he finds deep satisfaction in mentoring the next generation of McKinsey Design talent.",
+      id: "data-scientist",
+      name: "Data Scientist",
+      role: "Insights & modeling",
+      tagline: "Turn data into actionable insight that drives client impact.",
+      avatar: "https://api.dicebear.com/9.x/avataaars/svg?seed=DataScientist",
+      otherRoles: ["Analytics", "ML / stats modeling"],
+      deviceUsage: { laptop: 65, desktop: 25, mobile: 10 },
+      coreJourneys: ["Frame analytical questions", "Build models", "Tell the story", "Embed with teams"],
+      keyCollaborators: ["Data Engineer", "Engagement teams", "Knowledge Professional", "Principal Architect"],
+      description: "Mission: turn data into actionable insight that drives client impact. Typical firm tenure is roughly 2–5 years (junior through experienced practitioners). They frame ambiguous business problems into analytical questions, build statistical and ML models (forecasting, segmentation, optimization), translate results into clear decision-ready narratives, and partner with consultants and clients to embed insights.",
       howSpendsTime: [
-        "Developing a deep understanding of his clients' core customers",
-        "Leading clients and colleagues through design-led problem solving to define and tackle business and user problems",
-        "Creating and sharing assets and artifacts to ensure alignment and develop concepts",
-        "Advising clients on design best practices"
+        "Frame ambiguous business problems into analytical questions",
+        "Build statistical / ML models (forecasting, segmentation, optimization)",
+        "Translate results into clear, decision-ready narratives",
+        "Partner with consultants and clients to embed insights"
       ],
-      traitIcons: ["Maximize Direction", "Reduce Risk", "Speed Up", "Find Answers", "Drive Impact", "Achieve Clarity", "Create Harmony", "Be Efficient"],
+      traitIcons: ["Problem framing", "Modeling", "Storytelling", "Client partnership"],
       motivations: [
-        "Apply his craft to solve the world's toughest problems",
-        "Have substantial impact on his clients and the organization",
-        "Know how to navigate the tech ecosystem",
-        "Be recognized by colleagues and clients as an expert"
+        "Identify non-obvious drivers of performance",
+        "Improve decision quality with evidence-based insights",
+        "Enable predictive and prescriptive analytics"
       ],
       challenges: [
-        "Feels the Firm treats his leading needs as secondary or tertiary to those of his innovative colleagues",
-        "Aspires to protect the Firm and his clients from risk, but has trouble finding the latest policies and best practices",
-        "It takes ages to get access to sandbox environments, making experimentation a challenge"
+        "Top performer: drives decision impact, not just model accuracy—bridging analytics and business storytelling seamlessly."
       ],
       dailyToolkit: {
-        produce: ["PowerPoint", "Excel", "Word", "Teams", "Tableau", "Analytics"],
-        collaborate: ["Outlook", "Teams", "SharePoint", "Box"],
-        administrate: ["Concur", "C"]
+        produce: ["Python", "R", "SQL", "scikit-learn", "TensorFlow", "PyTorch", "XGBoost", "Pandas", "NumPy", "Tableau", "Power BI", "matplotlib", "seaborn", "Databricks", "SageMaker", "Vertex AI"],
+        collaborate: ["Teams", "Outlook", "Miro", "Confluence"],
+        administrate: ["Experimentation / A-B platforms", "Cloud consoles"]
       },
       preferredChannels: {
         communication: [
-          { name: "Email", level: 85 },
-          { name: "Chat", level: 75 },
-          { name: "Phone", level: 40 },
-          { name: "Meetings", level: 60 },
-          { name: "Video Calls", level: 70 },
-          { name: "In-Person", level: 55 }
+          { name: "Email", level: 75 },
+          { name: "Chat", level: 80 },
+          { name: "Working sessions", level: 85 },
+          { name: "Video", level: 70 }
         ],
         support: [
-          { name: "In-Person", level: 70 },
-          { name: "Online", level: 80 },
-          { name: "Phone", level: 35 },
-          { name: "Email", level: 50 },
-          { name: "Chat", level: 45 }
+          { name: "Data platform teams", level: 70 },
+          { name: "IT / access", level: 55 },
+          { name: "Knowledge / research", level: 65 }
         ]
       },
       regionalConsiderations: {
-        APAC: ["Frequent power outages in India", "Security needs in China vary greatly", "WeChat used almost exclusively with clients in China"],
-        EMEA: ["Connectivity is spotty in parts of Africa"],
-        LatAm: ["Equipment provisioning issues & delays"],
-        NA: ["Those serving governments may have different security requirements"]
+        APAC: ["Client data residency and access patterns vary widely"],
+        EMEA: ["Model governance and GDPR-aligned analytics"],
+        LatAm: ["Bandwidth for large datasets can affect iteration speed"],
+        NA: ["Strong demand for real-time dashboards and self-serve analytics"]
+      }
+    },
+    {
+      id: "data-engineer",
+      name: "Data Engineer",
+      role: "Data platforms & pipelines",
+      tagline: "Build scalable, reliable data foundations that power analytics and AI.",
+      avatar: "https://api.dicebear.com/9.x/avataaars/svg?seed=DataEngineer",
+      otherRoles: ["ETL/ELT", "Data quality & governance"],
+      deviceUsage: { laptop: 70, desktop: 25, mobile: 5 },
+      coreJourneys: ["Design pipelines", "Integrate sources", "Ensure quality", "Optimize cost & performance"],
+      keyCollaborators: ["Data scientists", "Platform teams", "Security & risk", "Cloud architects"],
+      description: "Mission: build scalable, reliable data foundations that power analytics and AI. Typical firm tenure is roughly 2–5 years (often longer for specialized senior engineers). They design and build data pipelines (ETL/ELT), integrate structured and unstructured sources, ensure data quality, governance, and accessibility, and optimize infrastructure for performance and cost.",
+      howSpendsTime: [
+        "Design and build data pipelines (ETL/ELT)",
+        "Integrate multiple data sources (structured / unstructured)",
+        "Ensure data quality, governance, and accessibility",
+        "Optimize infrastructure for performance and cost"
+      ],
+      traitIcons: ["Pipelines", "Integration", "Quality", "Scale"],
+      motivations: [
+        "Provide clean, reliable, and timely data",
+        "Enable scalable analytics and AI deployment",
+        "Reduce friction across teams"
+      ],
+      challenges: [
+        "Top performer: builds reusable, production-grade data platforms that support multiple use cases across clients."
+      ],
+      dailyToolkit: {
+        produce: ["Python", "SQL", "Scala", "Java", "Spark", "Hadoop", "Airflow", "Prefect", "Dagster", "Snowflake", "BigQuery", "Redshift", "Kafka", "Kinesis", "dbt", "AWS", "Azure", "GCP"],
+        collaborate: ["Git", "Teams", "Jira", "Data catalog"],
+        administrate: ["IAM", "Cost dashboards", "Runbooks"]
+      },
+      preferredChannels: {
+        communication: [
+          { name: "Chat", level: 85 },
+          { name: "Email", level: 65 },
+          { name: "Incident bridge", level: 70 },
+          { name: "Video", level: 60 }
+        ],
+        support: [
+          { name: "Cloud support", level: 75 },
+          { name: "Platform SRE", level: 70 },
+          { name: "Vendor support", level: 50 }
+        ]
+      },
+      regionalConsiderations: {
+        APAC: ["Multi-region replication and latency-sensitive jobs"],
+        EMEA: ["Sovereign cloud and residency requirements"],
+        LatAm: ["Hybrid on-prem and cloud footprints"],
+        NA: ["Lakehouse and modern warehouse adoption"]
+      }
+    },
+    {
+      id: "principal-architect",
+      name: "Principal Architect",
+      role: "Enterprise & solution architecture",
+      tagline: "Design end-to-end technology architecture enabling scalable digital and AI transformation.",
+      avatar: "https://api.dicebear.com/9.x/avataaars/svg?seed=PrincipalArchitect",
+      otherRoles: ["Multi-cloud", "Security trade-offs"],
+      deviceUsage: { laptop: 55, desktop: 40, mobile: 5 },
+      coreJourneys: ["Define architecture", "Select platforms", "Guide engineering", "Engage executives"],
+      keyCollaborators: ["Engineering leads", "CIO/CTO stakeholders", "Security", "Data platform leads"],
+      description: "Mission: design end-to-end technology architecture enabling scalable digital and AI transformation. Typical firm tenure is roughly 8–15+ years, often including prior industry experience. They define architecture across applications, data, and infrastructure; select platforms and integration patterns; balance cost, performance, security, and maintainability; and guide engineering teams while engaging senior client stakeholders.",
+      howSpendsTime: [
+        "Define architecture across applications, data, and infrastructure",
+        "Select platforms, define integration patterns, and ensure scalability",
+        "Balance trade-offs (cost, performance, security, maintainability)",
+        "Guide engineering teams and engage senior client stakeholders"
+      ],
+      traitIcons: ["Reference models", "Trade-offs", "Scale", "Stakeholder alignment"],
+      motivations: [
+        "Ensure long-term scalability and flexibility",
+        "Prevent costly rework through sound architecture decisions",
+        "Align technology with business strategy"
+      ],
+      challenges: [
+        "Top performer: acts as a C-level trusted advisor, shaping architecture that is future-proof, scalable, and aligned to transformation goals."
+      ],
+      dailyToolkit: {
+        produce: ["AWS", "Azure", "GCP", "Kubernetes", "Docker", "REST", "GraphQL", "MuleSoft", "Apigee", "Jenkins", "GitHub Actions", "GitLab CI", "Databricks", "Delta Lake", "Snowflake", "IAM patterns"],
+        collaborate: ["Miro", "Confluence", "Teams", "Architecture review boards"],
+        administrate: ["Roadmaps", "RFCs", "Risk registers"]
+      },
+      preferredChannels: {
+        communication: [
+          { name: "Executive workshops", level: 80 },
+          { name: "Email", level: 70 },
+          { name: "Video", level: 75 },
+          { name: "Architecture forums", level: 85 }
+        ],
+        support: [
+          { name: "Cloud partner teams", level: 75 },
+          { name: "Security architecture", level: 80 },
+          { name: "Enterprise architecture guild", level: 65 }
+        ]
+      },
+      regionalConsiderations: {
+        APAC: ["Regulated industries and cross-border data flows"],
+        EMEA: ["Zero-trust and hybrid integration complexity"],
+        LatAm: ["Vendor footprint and managed services mix"],
+        NA: ["Large-scale modernization and platform consolidation"]
+      }
+    },
+    {
+      id: "knowledge-professional",
+      name: "Knowledge Professional",
+      role: "Research & domain synthesis (KP)",
+      tagline: "Bring the best of the Firm's knowledge to every client problem.",
+      avatar: "https://api.dicebear.com/9.x/avataaars/svg?seed=KnowledgePro",
+      otherRoles: ["Expert research", "IP & thought leadership"],
+      deviceUsage: { laptop: 75, tablet: 20, mobile: 5 },
+      coreJourneys: ["Curate knowledge", "Synthesize benchmarks", "Support teams", "Deepen domain expertise"],
+      keyCollaborators: ["Engagement teams", "Client service leaders", "Subject-matter experts", "Research platforms"],
+      regionalConsiderations: {
+        APAC: ["Access to global research tools varies by market"],
+        EMEA: ["Multilingual sources and regulatory context"],
+        LatAm: ["Industry datasets and local benchmarks"],
+        NA: ["High volume of peer-firm and capital-markets intelligence requests"]
+      },
+      description: "Mission: bring the best of the Firm's knowledge to every client problem. Typical firm tenure is roughly 2–5 years (longer for deep domain experts). Knowledge Professionals curate and synthesize firm knowledge and benchmarks, support teams with targeted research and insights, develop thought leadership and IP, and provide domain expertise in industry and function.",
+      howSpendsTime: [
+        "Curate and synthesize firm knowledge and benchmarks",
+        "Support teams with targeted research and insights",
+        "Develop thought leadership and IP",
+        "Provide domain expertise in industry and function"
+      ],
+      traitIcons: ["Synthesis", "Benchmarks", "Story-ready insights", "Domain depth"],
+      motivations: [
+        "Accelerate problem solving with proven insights",
+        "Improve recommendation quality and depth",
+        "Provide specialized expertise"
+      ],
+      challenges: [
+        "Top performer: a thought partner, not just a researcher—shaping hypotheses, not only answering questions."
+      ],
+      dailyToolkit: {
+        produce: ["AlphaSense", "Factiva", "PitchBook", "Capital IQ", "Excel (advanced)", "Python (light)", "Alteryx", "PowerPoint", "Tableau", "Internal knowledge systems", "Miro", "Teams", "SharePoint"],
+        collaborate: ["Teams", "Outlook", "Expert networks"],
+        administrate: ["Research subscriptions", "Knowledge taxonomies"]
+      },
+      preferredChannels: {
+        communication: [
+          { name: "Email", level: 80 },
+          { name: "Chat", level: 75 },
+          { name: "Office hours / clinics", level: 70 },
+          { name: "Video", level: 65 }
+        ],
+        support: [
+          { name: "Library / research desk", level: 70 },
+          { name: "Data product teams", level: 55 },
+          { name: "Legal / compliance for sources", level: 50 }
+        ]
       }
     },
     {
@@ -166,61 +311,6 @@ const archetypeData = {
           { name: "CRM", level: 20 },
           { name: "KB", level: 10 },
           { name: "FAQ", level: 30 }
-        ]
-      }
-    },
-    {
-      id: "karol",
-      name: "Karol",
-      role: "Knowledge Professional",
-      tagline: "Technology frees me to expand my expertise and deliver insight that propels our clients toward their goals.",
-      avatar: "archetype-karol.png",
-      otherRoles: ["Engagement Team Member"],
-      deviceUsage: { laptop: 75, tablet: 25, mobile: 0 },
-      coreJourneys: ["I need a xxxxxxx", "I want to xxxxxxx", "I want to xxxxxxx"],
-      keyCollaborators: ["Engagement Team Lead", "Engagement Team Member", "Client Service Leader", "Administrative Professional"],
-      regionalConsiderations: {
-        APAC: ["Frequent power outages in India", "Security needs in China vary greatly from global needs", "WeChat used almost exclusively", "Strong cultural push against quality"],
-        EMEA: ["Connectivity is spotty in much of Africa", "Power outages in many countries in Africa", "WhatsApp used frequently with colleagues in EU and UK/IO"],
-        LatAm: ["Equipment provisioning issues & delays"],
-        NA: ["Those serving governments may have different security requirements"]
-      },
-      description: "Karol contributes to the Firm's knowledge base and stays current with trends. They face challenges in collaboration especially with remote teams, and are dedicated to growing their network and being known as an expert inside and outside the Firm.",
-      howSpendsTime: [
-        "Finding opportunities to join exciting engagements",
-        "Regularly contributing to the Firm's knowledge base",
-        "Curating and sharing knowledge with colleagues",
-        "Staying current with industry trends",
-        "Building deep expertise in their domain"
-      ],
-      traitIcons: ["Load balancer", "Beacon of knowledge", "Network builder", "Information hungry", "Frequent traveler", "Dives deep"],
-      motivations: [
-        "Grow their network within the Firm",
-        "Be known as an expert inside and outside the Firm",
-        "Deliver insight that propels clients toward their goals",
-        "Expand expertise continuously"
-      ],
-      challenges: [
-        "Engagement teams are not always great at working in a hybrid mode",
-        "Getting access to research from behind the China firewall is a persistent challenge",
-        "Balancing multiple engagements and knowledge demands"
-      ],
-      dailyToolkit: {
-        produce: ["PowerPoint", "Excel", "Word", "Know"],
-        collaborate: ["DTN Connect", "N", "Box"],
-        administrate: ["C", "Documents"]
-      },
-      preferredChannels: {
-        communication: [
-          { name: "Email", level: 85 },
-          { name: "Text", level: 50 },
-          { name: "Slack", level: 80 }
-        ],
-        support: [
-          { name: "U", level: 55 },
-          { name: "GHD", level: 50 },
-          { name: "CASEE", level: 45 },
-          { name: "ITSA", level: 25 }
         ]
       }
     },
@@ -499,10 +589,10 @@ const archetypeData = {
       role: "Services Team Member",
       tagline: "Technology empowers me to help my customers achieve their goals.",
       avatar: "archetype-simon.png",
-      otherRoles: ["Technologist"],
+      otherRoles: ["Data Scientist"],
       deviceUsage: { laptop: 70, mobile: 30, tablet: 0 },
       coreJourneys: ["I need a xxxxxxx", "I need a xxxxxxx", "I want to xxxxxxxx", "I want to xxxxxxxx"],
-      keyCollaborators: ["Technologist", "Firm Leader", "Client Service Leader", "Supports all archetypes"],
+      keyCollaborators: ["Data Scientist", "Firm Leader", "Client Service Leader", "Supports all archetypes"],
       regionalConsiderations: {
         APAC: ["Frequent power outages in India", "Security needs in China vary greatly from global needs", "WeChat used almost exclusively with clients in China", "Strong cultural push against quality of HR considerations"],
         EMEA: ["Connectivity is spotty in much of Africa", "Power outages in many countries in Africa", "WhatsApp used frequently with colleagues in EU and UK/IO"],
@@ -557,7 +647,7 @@ const archetypeData = {
       otherRoles: ["People Leader", "Client Service Leader"],
       deviceUsage: { tablet: 60, laptop: 25, mobile: 15 },
       coreJourneys: ["I need xxxxxxxx", "I need xxxxxxxxx", "I want to xxxxxxxx", "I want to xxxxxxxx"],
-      keyCollaborators: ["Client Service Leader", "Firm Professional", "Administrative Professional", "Technologist", "People Leader"],
+      keyCollaborators: ["Client Service Leader", "Firm Professional", "Administrative Professional", "Data Scientist", "People Leader"],
       regionalConsiderations: {
         APAC: ["Frequent power outages in India", "Security needs in China vary greatly from global needs", "WeChat used almost exclusively with clients in China", "Strong cultural push against quality"],
         EMEA: ["Connectivity is spotty in much of Africa", "Power outages in many countries in Europe", "WhatsApp used frequently with colleagues in EU and UK/IO"],

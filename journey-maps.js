@@ -9,13 +9,28 @@ const journeyMapsData = {
   maps: [
     {
       id: 'jm-1',
+      scope: 'general',
       title: 'User Journey Maps (main)',
       description: 'Overview and index of user journey maps from the DSCC space.',
       miroUrl: 'https://miro.com/app/board/',
       category: 'Overview'
+    },
+    {
+      id: 'jm-od-1',
+      scope: 'onedata',
+      title: 'One Data — Data Discovery Journey',
+      description: 'End-to-end journey of how data practitioners discover, access, and use data assets across the firm.',
+      miroUrl: 'https://miro.com/app/board/',
+      category: 'One Data'
+    },
+    {
+      id: 'jm-od-2',
+      scope: 'onedata',
+      title: 'One Data — Data Quality & Governance Journey',
+      description: 'Journey map covering data quality assessment, governance workflows, and accountability touchpoints.',
+      miroUrl: 'https://miro.com/app/board/',
+      category: 'One Data'
     }
-    // Add more entries from Confluence when you have the Miro links, e.g.:
-    // { id: 'jm-2', title: 'Example Journey', description: '...', miroUrl: 'https://miro.com/app/board/...', category: 'Product' },
   ]
 };
 if (typeof window !== 'undefined') window.journeyMapsData = journeyMapsData;

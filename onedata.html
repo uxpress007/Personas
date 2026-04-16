@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>try{var k="cif-theme";var t=localStorage.getItem(k);if(t!=="light"&&t!=="dark")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","light");}</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>One Data — User Intelligence Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="uip-nav.css">
+  <link rel="stylesheet" href="uip-page.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f0f9ff;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #94a3b8;
+      --border: #e2e8f0;
+      --border-light: #f1f5f9;
+      --primary: #0277bd;
+      --primary-dark: #01579b;
+      --primary-light: #e1f5fe;
+      --cyan: #0891b2;
+      --cyan-light: #cffafe;
+      --teal: #0d9488;
+      --teal-light: #ccfbf1;
+      --indigo: #4338ca;
+      --indigo-light: #e0e7ff;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -4px rgba(0,0,0,0.04);
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .content-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 40px 60px;
+    }
+
+    .context-banner {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--primary);
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+      margin-bottom: 48px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .context-banner .icon {
+      font-size: 24px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .context-banner p {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .context-banner a {
+      color: var(--primary);
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    .context-banner a:hover {
+      text-decoration: underline;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .section-desc {
+      font-size: 16px;
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+      max-width: 700px;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+      margin-bottom: 56px;
+    }
+
+    .hub-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      transition: all 200ms ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hub-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+    }
+
+    .hub-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-3px);
+      border-color: transparent;
+    }
+
+    .hub-card .card-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      margin-bottom: 20px;
+    }
+
+    .hub-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      margin-bottom: 8px;
+    }
+
+    .hub-card p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .hub-card .card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .hub-card .card-stat {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .hub-card .card-arrow {
+      font-size: 18px;
+      color: var(--text-muted);
+      transition: transform 200ms ease;
+    }
+
+    .hub-card:hover .card-arrow {
+      transform: translateX(4px);
+      color: var(--primary);
+    }
+
+    .hub-card.personas-card::before { background: var(--primary); }
+    .hub-card.personas-card .card-icon { background: var(--primary-light); color: var(--primary); }
+
+    .hub-card.journeys-card::before { background: var(--teal); }
+    .hub-card.journeys-card .card-icon { background: var(--teal-light); color: var(--teal); }
+
+    .groups-preview {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .groups-preview .tag {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 100px;
+      background: var(--primary-light);
+      color: var(--primary);
+    }
+
+    .methodology-link {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 200ms ease;
+      margin-bottom: 48px;
+    }
+
+    .methodology-link:hover {
+      box-shadow: var(--shadow-md);
+      border-color: var(--indigo);
+    }
+
+    .methodology-link .ml-icon {
+      width: 64px;
+      height: 64px;
+      background: var(--indigo-light);
+      color: var(--indigo);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      flex-shrink: 0;
+    }
+
+    .methodology-link .ml-text h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .methodology-link .ml-text p {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .methodology-link .ml-arrow {
+      margin-left: auto;
+      font-size: 20px;
+      color: var(--text-muted);
+    }
+
+    .footer {
+      text-align: center;
+      padding: 32px;
+      font-size: 13px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+    }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  </style>
+</head>
+<body>
+
+  <header class="uip-topbar" id="uip-global-nav">
+    <div class="uip-topbar-inner">
+      <a href="homepage.html" class="uip-brand">User Intelligence Platform</a>
+      <nav class="uip-nav-main" aria-label="Primary">
+        <a class="uip-nav-link" href="homepage.html#persona-simulation">Persona Simulation</a>
+        <div class="uip-nav-item has-dropdown">
+          <button type="button" class="uip-nav-dd-trigger" aria-expanded="false" aria-haspopup="true">Persona Library <span class="uip-caret" aria-hidden="true"></span></button>
+          <div class="uip-dropdown" role="menu">
+            <a href="onedata-personas.html" role="menuitem">One Data</a>
+            <a href="persona-library-tech-ecosystem.html" role="menuitem">Tech Ecosystem</a>
+          </div>
+        </div>
+        <a class="uip-nav-link" href="archetypes.html">Archetypes</a>
+        <div class="uip-nav-item has-dropdown">
+          <button type="button" class="uip-nav-dd-trigger" aria-expanded="false" aria-haspopup="true">User Journey <span class="uip-caret" aria-hidden="true"></span></button>
+          <div class="uip-dropdown" role="menu">
+            <a href="onedata-journey-maps.html" role="menuitem">One Data</a>
+            <a href="user-journey-tech-ecosystem.html" role="menuitem">Tech Ecosystem</a>
+          </div>
+        </div>
+        <a class="uip-nav-link" href="knowledgebase.html">Knowledgebase</a>
+      </nav>
+      <div class="uip-trailing">
+        <button type="button" class="theme-toggle uip-theme-btn" id="theme-toggle" title="Toggle light / dark theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section class="uip-page-hero" aria-labelledby="onedata-hero-title">
+    <div class="uip-page-hero__inner">
+      <div class="uip-page-hero__badge">&#x25C6; One Data Program</div>
+      <h1 id="onedata-hero-title" class="uip-page-hero__title">One Data Personas &amp; Journey Maps</h1>
+      <p class="uip-page-hero__lede">Research-backed personas and journey maps built specifically for the One Data program — data practitioners, stakeholders, and their workflows.</p>
+    </div>
+  </section>
+
+  <div class="content-wrap">
+
+    <div class="context-banner">
+      <div class="icon">&#x1F517;</div>
+      <p>These personas apply the <a href="knowledgebase.html">Customer Insight Framework methodology</a> to the One Data program. They complement the <a href="library.html">general persona library</a> with data-specific research: data literacy profiles, CDB engagement levels, and data governance accountability.</p>
+    </div>
+
+    <div class="section-label">Explore</div>
+    <h2 class="section-title">One Data Resources</h2>
+    <p class="section-desc">Deep-dive into data-focused personas and their journey maps across the firm.</p>
+
+    <div class="cards-grid" id="hubCards"></div>
+
+    <div class="section-label">Methodology</div>
+    <h2 class="section-title">Part of a Broader Framework</h2>
+    <p class="section-desc">One Data personas are one application of a general customer insight methodology used across the firm.</p>
+
+    <a href="knowledgebase.html" class="methodology-link">
+      <div class="ml-icon">&#x1F4D6;</div>
+      <div class="ml-text">
+        <h3>Knowledgebase</h3>
+        <p>Learn about personas, archetypes, and journey maps as strategic business tools — and why personas differ across projects.</p>
+      </div>
+      <span class="ml-arrow">&rarr;</span>
+    </a>
+
+    <a href="library.html" class="methodology-link">
+      <div class="ml-icon">&#x1F465;</div>
+      <div class="ml-text">
+        <h3>General Persona Library</h3>
+        <p>Browse all firm-wide personas across CSP, ESP, FSP, Executive, and Alumni categories.</p>
+      </div>
+      <span class="ml-arrow">&rarr;</span>
+    </a>
+
+  </div>
+
+  <footer class="footer">
+    <p>One Data — User Intelligence Platform</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="journey-maps.js"></script>
+  <script>
+    const odCategories = personaData.categories.filter(c => c.scope === 'onedata');
+    const odPersonaCount = odCategories.reduce((sum, cat) =>
+      sum + cat.groups.reduce((gs, g) => gs + g.personas.length, 0), 0);
+    const odGroupNames = odCategories.flatMap(cat => cat.groups.map(g => g.name));
+
+    const odMaps = journeyMapsData.maps.filter(m => m.scope === 'onedata');
+
+    const hubCards = document.getElementById('hubCards');
+
+    hubCards.innerHTML = `
+      <a href="onedata-personas.html" class="hub-card personas-card">
+        <div class="card-icon">&#x1F464;</div>
+        <h3>One Data Personas</h3>
+        <p>Research-backed personas for data practitioners — product managers, tech leads, data engineers, data scientists, and discovery users.</p>
+        <div class="groups-preview">
+          ${odGroupNames.map(n => `<span class="tag">${n}</span>`).join('')}
+        </div>
+        <div class="card-meta">
+          <span class="card-stat">${odPersonaCount} personas &middot; ${odGroupNames.length} groups</span>
+          <span class="card-arrow">&rarr;</span>
+        </div>
+      </a>
+      <a href="onedata-journey-maps.html" class="hub-card journeys-card">
+        <div class="card-icon">&#x1F5FA;&#xFE0F;</div>
+        <h3>One Data Journey Maps</h3>
+        <p>Visualize end-to-end data practitioner experiences — from data discovery and access to quality assessment and governance workflows.</p>
+        <div class="card-meta">
+          <span class="card-stat">${odMaps.length} journey map${odMaps.length !== 1 ? 's' : ''}</span>
+          <span class="card-arrow">&rarr;</span>
+        </div>
+      </a>
+    `;
+  </script>
+  <script src="site-theme.js"></script>
+  <script src="uip-nav.js"></script>
+</body>
+</html>
